@@ -58,10 +58,10 @@ class Tutor(models.Model):
 
 class Class(models.Model):
     class_id = models.AutoField(primary_key=True) 
-    tutor = models.ForeignKey(Tutor, on_delete=models.CASCADE) 
-    student = models.ForeignKey(Student, on_delete=models.CASCADE)
-    parent = models.ForeignKey(Parent, on_delete=models.CASCADE)  
-    subject = models.CharField(max_length=255) 
+    tutor = models.ForeignKey(Tutor, on_delete=models.SET_NULL) 
+    student = models.ForeignKey(Student, on_delete=models.SET_NULL)
+    parent = models.ForeignKey(Parent, on_delete=models.SET_NULL)  
+    subject = models.CharField(max_length=50) 
     created_at = models.DateField(auto_now_add=True)  
     point = models.IntegerField() 
     scheduled_classes = models.IntegerField()  
