@@ -15,3 +15,8 @@ class UserAccount(models.Model):
     name = models.CharField(max_length=20, unique=True)
     role = models.CharField(max_length=10, choices=Role.choices, default=Role.STUDENT)
     created_at = models.DateTimeField(auto_created=True)
+
+
+class Parent(models.Model):
+    parent_id = models.AutoField(primary_key=True)
+    user_id = models.ForeignKey(UserAccount, on_delete=models.CASCADE)
