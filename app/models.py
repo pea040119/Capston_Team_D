@@ -67,7 +67,7 @@ class D_Day(models.Model):
     d_day_id = models.AutoField(primary_key=True)
     user_id = models.ForeignKey(UserAccount, on_delete=models.CASCADE)
     name = models.CharField(max_length=20)
-    date = models.DateTimeField()
+    date = models.DateTimeField(default=datetime.now())
 
 
 class Class(models.Model):
@@ -77,11 +77,11 @@ class Class(models.Model):
     parent = models.ForeignKey(Parent, on_delete=models.SET_NULL)  
     subject = models.CharField(max_length=50) 
     created_at = models.DateField(auto_now_add=True)  
-    point = models.IntegerField() 
-    scheduled_classes = models.IntegerField()  
-    start_date = models.DateTimeField() 
+    point = models.IntegerField(dafault=0) 
+    scheduled_classes = models.IntegerField(default=0)  
+    start_date = models.DateTimeField(default=datetime.now()) 
     payment_status = models.JSONField() 
-    tuition = models.IntegerField()  
+    tuition = models.IntegerField(default=0)  
     
     
 class Daily(models.Model):
@@ -97,6 +97,6 @@ class Assignment(models.Model):
     tutor_id = models.ForeignKey(Tutor, on_delete=models.SET_NULL)
     daily_id = models.ForeignKey(Daily, on_delete=models.SET_NULL)
     date = models.DateTimeField(auto_created=True)
-    due = models.DateTimeField()
+    due = models.DateTimeField(default=datetime.now())
     contents = models.TextField()
     state = models.BooleanField(default=False)
