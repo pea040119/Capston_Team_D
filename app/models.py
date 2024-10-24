@@ -1,7 +1,7 @@
 # Completed Tasks
-#     UserAccount, Parent, Student, Tutor, Class, D_Day, Assignment, Daily, Score
+#     UserAccount, Parent, Student, Tutor, Class, D_Day, Assignment, Daily, Score, Classtime
 # Incomplete Task
-#     None Classtime
+#     None 
 # Revision Needed
 #     None
 
