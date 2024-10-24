@@ -8,6 +8,25 @@ class Role(models.TextChoices):
     PARENT = "parent", "Parent"
     
     
+class Grade(models.TextChoices):
+    K = "k", "유치원"
+    E1 = "e1", "초1"
+    E2 = "e2", "초2"
+    E3 = "e3", "초3"
+    E4 = "e4", "초4"
+    E5 = "e5", "초5"
+    E6 = "e6", "초6"
+    M1 = "m1", "중1"
+    M2 = "m2", "중2"
+    M3 = "m3", "중3"
+    H1 = "h1", "고1"
+    H2 = "h2", "고2"
+    H3 = "h3", "고3"
+    N = "n", "N수생"
+    U = "u", "대학생"
+    A = "a", "성인"
+    
+    
 class UserAccount(models.Model):
     user_id = models.AutoField(primary_key=True)
     login_id = models.CharField(max_length=32, unique=True)
@@ -20,3 +39,10 @@ class UserAccount(models.Model):
 class Parent(models.Model):
     parent_id = models.AutoField(primary_key=True)
     user_id = models.ForeignKey(UserAccount, on_delete=models.CASCADE)
+    
+    
+class Student(models.Model):
+    student_id = models.AutoField(primary_key=True)
+    user_id = models.ForeignKey(UserAccount, on_delete=models.CASCADE)
+    parent_id = models.ForeignKey(Parent, on_delete=models.SET_NULL)
+    grade = models.CharField(max_length=2, choices=Grade.choices, default=Grade.A)
