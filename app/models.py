@@ -54,3 +54,17 @@ class Tutor(models.Model):
     bank_account = models.CharField(max_length = 50)
     bank_name = models.CharField(max_length = 50)
     bank_depositor = models.CharField(max_length = 50)
+
+
+class Class(models.Model):
+    class_id = models.AutoField(primary_key=True) 
+    tutor = models.ForeignKey(Tutor, on_delete=models.CASCADE) 
+    student = models.ForeignKey(Student, on_delete=models.CASCADE)
+    parent = models.ForeignKey(Parent, on_delete=models.CASCADE)  
+    subject = models.CharField(max_length=255) 
+    created_at = models.DateField(auto_now_add=True)  
+    point = models.IntegerField() 
+    scheduled_classes = models.IntegerField()  
+    start_date = models.DateTimeField() 
+    payment_status = models.JSONField() 
+    tuition = models.IntegerField()  
