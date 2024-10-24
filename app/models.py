@@ -1,3 +1,9 @@
+# Completed Tasks
+#     UserAccount, Parent, Student, Tutor, Class
+# Incomplete Task
+#     D_Day, Assignment, Daily, Score, Supplements, Classtime
+# Revision Needed
+
 from django.db import models
 
 
