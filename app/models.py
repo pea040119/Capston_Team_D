@@ -1,7 +1,7 @@
 # Completed Tasks
-#     UserAccount, Parent, Student, Tutor, Class
+#     UserAccount, Parent, Student, Tutor, Class, D_Day, Assignment, Daily, Score
 # Incomplete Task
-#     D_Day, Assignment, Daily, Score, Supplements, Classtime
+#     Supplements, Classtime, Progress
 # Revision Needed
 
 from django.db import models
@@ -108,3 +108,10 @@ class Score(models.Model):
     student_id = models.ForeignKey(Student, on_delete=models.CASCADE)
     type = models.CharField(max_length=20)
     grade = models.JSONField()
+    
+    
+class Progress(models.Model):
+    progress_id = models.AutoField(primary_key=True)
+    class_id = models.ForeignKey(Class, on_delete=models.CASCADE)
+    subject = models.CharField(max_length=20)
+    unit = models.JSONField()
