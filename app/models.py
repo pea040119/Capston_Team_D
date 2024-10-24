@@ -60,6 +60,13 @@ class Tutor(models.Model):
     bank_account = models.CharField(max_length = 50)
     bank_name = models.CharField(max_length = 50)
     bank_depositor = models.CharField(max_length = 50)
+    
+    
+class D_Day(models.Model):
+    d_day_id = models.AutoField(primary_key=True)
+    user_id = models.ForeignKey(UserAccount, on_delete=models.CASCADE)
+    name = models.CharField(max_length=20)
+    date = models.DateTimeField()
 
 
 class Class(models.Model):
