@@ -115,3 +115,11 @@ class Progress(models.Model):
     class_id = models.ForeignKey(Class, on_delete=models.CASCADE)
     subject = models.CharField(max_length=20)
     unit = models.JSONField()
+    
+    
+class Supplements(models.Model):
+    supplements_id = models.AutoField(primary_key=True)
+    class_id = models.ForeignKey(Class, on_delete=models.CASCADE)
+    contents = models.TextField()
+    file_name = models.CharField(max_length=50)
+    file_data = models.BinaryField()
