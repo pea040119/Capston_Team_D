@@ -1,8 +1,9 @@
 # Completed Tasks
 #     UserAccount, Parent, Student, Tutor, Class, D_Day, Assignment, Daily, Score
 # Incomplete Task
-#     Supplements, Classtime, Progress
+#     None Classtime
 # Revision Needed
+#     None
 
 from django.db import models
 from datetime import datetime
@@ -32,6 +33,17 @@ class Grade(models.TextChoices):
     N = "n", "N수생"
     U = "u", "대학생"
     A = "a", "성인"
+    
+    
+class Day(models.TextChoices):
+    SUN = "sun", "Sun"
+    MON = "mon", "Mon"
+    TUE = "tue", "Tue"
+    WED = "wed", "Wed"
+    THU = "thu", "Thu"
+    FRI = "fri", "Fri"
+    SAT = "sat", "Sat"
+    
     
     
 class UserAccount(models.Model):
@@ -123,3 +135,11 @@ class Supplements(models.Model):
     contents = models.TextField()
     file_name = models.CharField(max_length=50)
     file_data = models.BinaryField()
+    
+    
+class Classtime(models.Model):
+    classtime_id = models.AutoField(primary_key=True)
+    class_id = models.ForeignKey(Class, on_delete=models.CASCADE)
+    type = models.CharField(max_length=20)
+    day = models.CharField(max_length=3, choices=Day.choices, default=Day.MON)
+    time = models.TimeField()
