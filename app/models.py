@@ -87,7 +87,7 @@ class Class(models.Model):
 class Daily(models.Model):
     daily_id = models.AutoField(primary_key=True)
     class_id = models.ForeignKey(Class, on_delete=models.CASCADE)
-    date = models.DateTimeField()
+    date = models.DateTimeField(default=datetime.now())
     contents = models.TextField()
     memo = models.TextField()
     
