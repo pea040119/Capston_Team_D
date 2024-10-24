@@ -5,6 +5,7 @@
 # Revision Needed
 
 from django.db import models
+from datetime import datetime
 
 
 
@@ -89,3 +90,13 @@ class Daily(models.Model):
     date = models.DateTimeField()
     contents = models.TextField()
     memo = models.TextField()
+    
+    
+class Assignment(models.Model):
+    assignment_id = models.AutoField(primary_key=True)
+    tutor_id = models.ForeignKey(Tutor, on_delete=models.SET_NULL)
+    daily_id = models.ForeignKey(Daily, on_delete=models.SET_NULL)
+    date = models.DateTimeField(auto_created=True)
+    due = models.DateTimeField()
+    contents = models.TextField()
+    state = models.BooleanField(default=False)
