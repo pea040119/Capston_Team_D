@@ -100,3 +100,11 @@ class Assignment(models.Model):
     due = models.DateTimeField(default=datetime.now())
     contents = models.TextField()
     state = models.BooleanField(default=False)
+    
+    
+class Score(models.Model):
+    score_id = models.AutoField(primary_key=True)
+    class_id = models.ForeignKey(Class, on_delete=models.CASCADE)
+    student_id = models.ForeignKey(Student, on_delete=models.CASCADE)
+    type = models.CharField(max_length=20)
+    grade = models.JSONField()
