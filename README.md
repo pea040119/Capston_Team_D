@@ -9,4 +9,4 @@ Downlaod Docker Image
     - https://drive.google.com/file/d/1DiUK0E2I26DYY_5cDaz3AHNmbtHE1XmJ/view?usp=drive_link
 
 Setting Status
-    - 이승환(O), 이채연(...)
+    - 이승환(O), 이채연(O)
