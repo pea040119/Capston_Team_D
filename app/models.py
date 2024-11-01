@@ -16,7 +16,7 @@ class Role(models.TextChoices):
     PARENT = "parent", "Parent"
     
     
-class Grade(models.TextChoices):
+class Grade(models.TextChoices): 
     K = "k", "유치원"
     E1 = "e1", "초1"
     E2 = "e2", "초2"
