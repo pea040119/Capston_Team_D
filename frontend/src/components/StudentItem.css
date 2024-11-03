@@ -1,0 +1,41 @@
+.StudentItem {
+  display: flex;
+  align-items: center; /* 수평 정렬 */
+  gap: 18px; /* 각 요소 간격 조절 */
+}
+
+.img_section img {
+  width: 30px; /* 이미지 크기 */
+  height: 30px;
+  border-radius: 50%; /* 원형 이미지 */
+}
+
+.info1 {
+  display: flex;
+  flex-direction: column; /* 이름과 시간 정보가 세로로 배치되도록 설정 */
+}
+
+.name {
+  color: black;
+  font-size: 16px;
+  font-family: Inter;
+  font-weight: 500;
+  word-wrap: break-word;
+}
+
+.time {
+  font-size: 14px;
+  color: #94d2e4;
+  font-size: 10px;
+  font-family: Inter;
+  font-weight: 500;
+  word-wrap: break-word;
+}
+
+.info2 {
+  color: #40b3d2;
+  font-size: 13px;
+  font-family: Inter;
+  font-weight: 400;
+  word-wrap: break-word;
+}

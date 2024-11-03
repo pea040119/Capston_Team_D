@@ -3,27 +3,38 @@
   align-items: center;
   padding: 20px 0px;
   color: #40b3d2;
-  font-size: 35px;
+
   font-family: Inter;
   font-weight: 700;
   word-wrap: break-word;
+  gap: 20px;
+  position: fixed;
 }
-
 .Header > div {
   display: flex;
+  align-items: center;
 }
 
 .Header .header_center {
-  width: 30%;
-  font-size: 25px;
-  justify-content: center;
+  font-size: 35px;
+  word-wrap: break-word;
+  white-space: nowrap;
 }
 
 .Header .header_left {
   width: 25%;
+  cursor: pointer;
+  background-color: white;
+  border: none;
 }
 
 .Header .header_right {
   width: 25%;
-  justify-content: flex-end;
+  cursor: pointer;
+  background-color: white;
+  border: none;
+}
+.header-image {
+  width: 25px; /* 원하는 크기로 조정 */
+  height: auto;
 }

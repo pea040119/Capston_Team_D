@@ -2,24 +2,53 @@
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  margin-top: 128px; /* 전체 컨테이너의 위쪽 여백 */
+  margin-top: 128px;
 }
 
 .calendar {
   display: flex;
-  gap: 0; /* 버튼 사이 공백 제거 */
+  gap: 0;
   padding: 0;
-  margin-right: 93px; /* 전체 버튼 그룹을 오른쪽에서 93px 떨어뜨림 */
+  margin-right: 93px;
 }
 
 .day-content {
-  margin-top: 20px; /* 버튼과 내용 사이의 간격 */
+  margin-top: 20px;
   font-size: 18px;
   font-weight: 400;
   color: #333;
 }
 .box-container {
   position: absolute;
-  top: 505px; /* 위에서 505px */
-  right: 766px; /* 오른쪽에서 766px */
+  top: 505px;
+  right: 766px;
+}
+.header-container {
+  position: absolute;
+  top: 42px;
+  left: 581px;
+  position: fixed;
+}
+.logo {
+  position: absolute;
+  top: 50px;
+  left: 82px;
+  width: 100px;
+  height: 40px;
+}
+.StudentList {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  gap: 19px;
+  top: 377px;
+  left: 55px;
+}
+
+.add-student-button {
+  align-self: flex-start; /* 버튼을 리스트의 왼쪽에 정렬 */
+  margin-top: 10px; /* 리스트와 버튼 사이의 간격 */
+  padding: 8px 12px;
+  font-size: 14px;
+  cursor: pointer;
 }

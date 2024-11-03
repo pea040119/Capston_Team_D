@@ -1,15 +1,19 @@
 .Box {
-  background-color: #40b3de; /* 버튼의 배경색 */
-  color: white; /* 텍스트 색상 */
-  font-size: 16px; /* 텍스트 크기 */
-  font-weight: 500; /* 텍스트 굵기 */
-  width: 174px; /* 고정된 가로 길이 */
-  height: 35px; /* 고정된 세로 길이 */
-  border-radius: 10px; /* 둥근 모서리 */
-  display: inline-flex; /* 버튼 크기 고정 및 가운데 정렬 */
-  align-items: center; /* 수직 중앙 정렬 */
-  justify-content: center; /* 수평 중앙 정렬 */
+  background-color: #40b3de;
+  color: white;
+  font-size: 16px;
+  font-weight: 500;
+  width: 174px;
+  height: 35px;
+  border-radius: 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
-  font-family: 'Inter'; /* 폰트 패밀리 */
-  white-space: nowrap; /* 텍스트 줄바꿈 방지 */
+  font-family: 'Inter';
+  white-space: nowrap;
+}
+.Box_gray {
+  background-color: #e9eff0;
+  color: #759097;
 }

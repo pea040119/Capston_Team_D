@@ -1,7 +1,7 @@
 import './Box.css';
 
-const Box = ({ text }) => {
-  return <div className="Box">{text}</div>;
+const Box = ({ text, type }) => {
+  return <div className={`Box Box_${type}`}>{text}</div>;
 };
 
 export default Box;
