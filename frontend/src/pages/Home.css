@@ -1,0 +1,41 @@
+.logo {
+  position: absolute;
+  top: 50px;
+  left: 25px;
+  width: 140px;
+  height: 68px;
+}
+.home-container {
+  position: relative;
+  width: 100%;
+  height: 100vh; /* 페이지 전체 높이를 차지하게 설정 */
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  padding: 27px 26px; /* 오른쪽과 상단에 여백 */
+  gap: 20px;
+}
+.home-container button {
+  width: 160px;
+  height: 50px;
+  font-size: 18px;
+  display: flex;
+  align-items: center; /* 수직 중앙 정렬 */
+  justify-content: center;
+}
+.centered-text {
+  position: absolute;
+  top: 368px; /* 위에서 318px 떨어진 위치 */
+  right: 103px; /* 오른쪽에서 103px 떨어진 위치 */
+  font-size: 50px; /* 글자 크기 */
+  color: #333; /* 텍스트 색상 */
+  font-weight: bold;
+}
+
+.center-left-image {
+  position: absolute;
+  top: 158px; /* 위에서 158px 떨어진 위치 */
+  left: 66px; /* 왼쪽에서 66px 떨어진 위치 */
+  width: 768px; /* 가로 크기 */
+  height: 468px; /* 세로 크기 */
+}
