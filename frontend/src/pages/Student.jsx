@@ -1,5 +1,6 @@
+import Box from '../components/Box';
 const Student = () => {
-  return <div>s</div>;
+  return <Box text={10} />;
 };
 
 export default Student;

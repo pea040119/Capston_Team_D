@@ -1,0 +1,18 @@
+.Cbutton {
+  background-color: #c8e2e9;
+  cursor: pointer;
+  border: none;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  font-size: 20px;
+  font-weight: 500;
+  width: 121px;
+  height: 57px;
+  white-space: nowrap;
+  color: white;
+  font-family: Inter;
+}
+
+.Cbutton_selected {
+  background-color: #40b3de;
+}

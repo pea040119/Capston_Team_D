@@ -2,6 +2,11 @@
   display: flex;
   align-items: center;
   padding: 20px 0px;
+  color: #40b3d2;
+  font-size: 35px;
+  font-family: Inter;
+  font-weight: 700;
+  word-wrap: break-word;
 }
 
 .Header > div {
