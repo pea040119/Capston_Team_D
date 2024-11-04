@@ -10,5 +10,27 @@
   flex-direction: column;
   gap: 19px;
   top: 316px;
-  left: 57px;
+  left: 55px;
+}
+.WeekProgress {
+  position: absolute;
+  top: 505px;
+  left: 340px;
+}
+.WeekAssignment {
+  position: absolute;
+  top: 505px;
+  left: 804px;
+}
+.logo {
+  position: absolute;
+  top: 44px;
+  left: 94px;
+  width: 100px;
+  height: 40px;
+}
+.CalendarHeader {
+  position: absolute;
+  top: 42px;
+  left: 340px;
 }

@@ -98,7 +98,6 @@ const Tutor = () => {
           ))}
           <Button
             onClick={() => setIsModalOpen(true)}
-            className="add-student-button"
             text={'등록'}
             style={{ backgroundColor: '#40B3DE', color: 'white' }}
           />

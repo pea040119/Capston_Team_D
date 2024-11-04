@@ -1,0 +1,43 @@
+.Box {
+  background-color: #40b3de;
+  color: white;
+  font-size: 16px;
+  font-weight: 500;
+  height: 35px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-family: 'Inter';
+  white-space: nowrap;
+  padding: 0 10px;
+}
+
+.Box_gray {
+  background-color: #e9eff0;
+  color: #759097;
+}
+
+.Box_left {
+  width: 114px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.Box_right {
+  width: 30px;
+  height: 19px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px; /* 텍스트 크기를 약간 줄여 맞춤 */
+}
+
+.Box_divider {
+  width: 1px;
+  height: 100%;
+  background-color: #c8e2e9;
+  margin: 0 10px;
+}
