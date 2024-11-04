@@ -26,8 +26,7 @@
 .header-container {
   position: absolute;
   top: 42px;
-  left: 581px;
-  position: fixed;
+  left: 340px;
 }
 .logo {
   position: absolute;
@@ -52,7 +51,7 @@
 }
 .total-fee {
   display: flex;
-  margin-top: 40px;
+  margin-top: 29px;
   align-items: center;
 }
 .add-student-button {
