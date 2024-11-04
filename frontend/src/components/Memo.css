@@ -1,0 +1,26 @@
+.memo-container {
+  position: absolute;
+  left: 750px;
+  top: 850px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 400px;
+}
+
+.button {
+  position: absolute;
+  left: 300px;
+  display: flex;
+  margin: 5px;
+  align-items: center;
+  justify-content: center;
+}
+
+.memo-input {
+  margin: 5px;
+  border: 2px solid #f3f3f3;
+  position: absolute;
+  left: 10px;
+}
