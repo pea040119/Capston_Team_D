@@ -1,0 +1,26 @@
+.Content {
+  background-color: #e9eff0;
+  width: 121px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Inter';
+  position: relative;
+  margin-top: 10px;
+}
+
+.time {
+  font-size: 12px;
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  color: black;
+}
+
+.name {
+  font-size: 16px;
+  text-align: center;
+  color: black;
+  margin-top: 6px;
+}

@@ -1,16 +1,28 @@
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import profile1 from '../img/profile1.png';
-import Profile2 from '../img/profile2.png';
 import './StudentItem.css';
 
-const StudentItem = ({ name, time, grade, sub }) => {
+const StudentItem = ({ id, name, sch, grade, sub }) => {
+  const navigate = useNavigate();
+
+  // Function to handle click and navigate to TutorManager with the student ID
+  const handleClick = () => {
+    navigate(`/TutorManager/${id}`);
+  };
+
   return (
-    <div className="StudentItem">
+    <div
+      className="StudentItem"
+      onClick={handleClick}
+      style={{ cursor: 'pointer' }}
+    >
       <div className="img_section">
-        <img src={profile1} />
+        <img src={profile1} alt={`${name}'s profile`} />
       </div>
       <div className="info1">
         <div className="name">{name}</div>
-        <div className="time">{time}</div>
+        <div className="sch">{sch}</div>
       </div>
       <div className="info2">
         {grade} {sub}
@@ -18,4 +30,5 @@ const StudentItem = ({ name, time, grade, sub }) => {
     </div>
   );
 };
+
 export default StudentItem;
