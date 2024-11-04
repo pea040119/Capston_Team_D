@@ -7,7 +7,6 @@
   border-radius: 10px;
   display: flex;
   align-items: center;
-  cursor: pointer;
   font-family: 'Inter';
   white-space: nowrap;
   padding: 0 10px;
@@ -32,7 +31,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 14px; /* 텍스트 크기를 약간 줄여 맞춤 */
+  font-size: 14px;
 }
 
 .Box_divider {

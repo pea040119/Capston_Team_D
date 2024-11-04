@@ -17,13 +17,13 @@ const Student = () => {
   const [tutors, setTutors] = useState([]);
   const [today, setToday] = useState(null);
   const days = [
-    'Sunday',
-    'Monday',
-    'Tuesday',
-    'Wednesday',
-    'Thursday',
-    'Friday',
-    'Saturday',
+    '일요일',
+    '월요일',
+    '화요일',
+    '수요일',
+    '목요일',
+    '금요일',
+    '토요일',
   ];
 
   useEffect(() => {
@@ -36,18 +36,18 @@ const Student = () => {
   };
 
   const studentschedule = {
-    Monday: [
+    월요일: [
       { time: '09:00', name: '영어' },
       { time: '11:00', name: '수학' },
     ],
-    Tuesday: [{ time: '10:00', name: '과학' }],
+    금요일: [{ time: '9:00', name: '과학' }],
     // 다른 요일에 맞는 스케줄 추가
   };
   return (
     <>
       <div className="CalendarHeader">
         <Header
-          title="10월 3주차"
+          title="11월 1주차"
           leftchild={<img src={larrow} alt="Left" className="header-image" />}
           rightchild={<img src={rarrow} alt="Right" className="header-image" />}
         />
@@ -79,6 +79,9 @@ const Student = () => {
       <div className="WeekAssignment">
         <Box text={'이번 주 과제'} />
       </div>
+      <div className="StudentAchievement">
+        <Box text={'이 달의 주요 성과'} />
+      </div>
       <div className="TutorList">
         <DivBox leftText={'과외 목록'} rightText={'상점'} type={'gray'} />
         {tutors.map((tutor, index) => (
@@ -93,7 +96,7 @@ const Student = () => {
           onClick={() => setIsModalOpen(true)}
           className="add-tutor-button"
           text={'등록'}
-          style={{ backgroundColor: '#40B3DE', color: 'white' }}
+          style={{ backgroundColor: '#6ac995', color: 'white', left: 130 }}
         />
       </div>
 

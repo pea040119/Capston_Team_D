@@ -2,6 +2,7 @@
   display: flex;
   align-items: center;
   gap: 18px;
+  border-bottom: 2px solid #c8e2e9;
 }
 .tutorsub {
   color: #40b3d2;

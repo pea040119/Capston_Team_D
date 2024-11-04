@@ -10,10 +10,11 @@
   width: 121px;
   height: 57px;
   white-space: nowrap;
-  color: white;
+  color: #759097;
   font-family: Inter;
 }
 
 .Cbutton_selected {
   background-color: #40b3de; /* 선택된 상태의 색상 */
+  color: white;
 }
