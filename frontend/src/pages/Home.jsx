@@ -10,8 +10,13 @@ import './Home.css';
 
 const Home = () => {
   const nav = useNavigate();
-  const onClickButton = () => {
+
+  const onClickLogin = () => {
     nav('/login');
+  };
+
+  const onClickSignup = () => {
+    nav('/signup');
   };
 
   // 상태 변수로 텍스트와 이미지를 관리
@@ -43,17 +48,16 @@ const Home = () => {
 
   return (
     <div onWheel={handleWheel}>
-      {' '}
-      {/* 마우스 휠 이벤트 추가 */}
       <img src={logo} alt="logo" className="logo" />
       <div className="home-container">
         <Button
           text={'로그인'}
-          onClick={onClickButton}
+          onClick={onClickLogin}
           style={{ backgroundColor: '#40B3DE', color: 'white' }}
         />
         <Button
           text={'회원가입'}
+          onClick={onClickSignup}
           style={{ backgroundColor: '#e9eff0', color: '#40B3DE' }}
         />
       </div>

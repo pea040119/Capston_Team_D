@@ -8,6 +8,7 @@ import Student from './pages/Student.jsx';
 import Parents from './pages/Parents.jsx';
 import Header from './components/Header.jsx';
 import TutorManager from './pages/TutorManager.jsx';
+import Signup from './pages/Signup.jsx';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path="/tutor" element={<Tutor />} />
         <Route path="/student" element={<Student />} />
         <Route path="/parents" element={<Parents />} />
+        <Route path="/signup" element={<Signup />} />
       </Routes>
     </>
   );
