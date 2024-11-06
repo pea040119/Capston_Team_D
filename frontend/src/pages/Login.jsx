@@ -82,7 +82,7 @@ const Login = () => {
     <div className="login-container">
       <header className="header">
         <h1 className="header-title">올인과외</h1>
-        <img className="logo" src={logo} alt="로고" />
+        <img src={logo} alt="로고" className="logo" />
       </header>
 
       <div className="role-tabs">
