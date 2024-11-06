@@ -2,8 +2,8 @@
   position: absolute;
   width: Fixed (199px) px;
   height: Fixed (61px) px;
-  top: 220px;
-  left: 605px;
+  top: 230px;
+  left: 705px;
   gap: 0px;
   opacity: 0px;
   color: var(--First-Blue, #40b3d2);
@@ -17,7 +17,7 @@
 
 .logo {
   position: absolute;
-  left: 465px;
+  left: 565px;
   top: 250px;
   width: 60px;
   height: 60px;
@@ -25,7 +25,7 @@
 
 .role-tabs {
   position: absolute;
-  left: 465px;
+  left: 565px;
   top: 364px;
   display: flex;
   gap: 10px;
@@ -66,7 +66,7 @@
   display: flex;
   flex-direction: column;
   position: absolute;
-  left: 465px;
+  left: 565px;
   top: 414px;
   gap: 10px;
   margin-bottom: 20px;
@@ -110,7 +110,7 @@
 
 .alternative-login p {
   position: absolute;
-  left: 576px;
+  left: 676px;
   top: 515px;
   font-size: 12px;
   color: #40b3d2;
@@ -121,7 +121,7 @@
   justify-content: center;
   position: absolute;
   top: 551px;
-  left: 560px;
+  left: 660px;
   gap: 30px;
   margin-top: 10px;
 }

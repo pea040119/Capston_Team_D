@@ -5,7 +5,7 @@ import './Login.css';
 import kakaoLogo from '../img/kakao.png';
 import naverLogo from '../img/naver.png';
 import googleLogo from '../img/google.png';
-import logo192 from '../img/logo192.png';
+import logo from '../img/logo.png';
 
 const Login = () => {
   const [role, setRole] = useState('teacher');
@@ -33,15 +33,15 @@ const Login = () => {
   // };
 
   const handleSubmit = async (e) => {
-    e.preventDefault();  // 기본 폼 제출 동작을 막음
-  
+    e.preventDefault(); // 기본 폼 제출 동작을 막음
+
     try {
       // 로그인 API 호출
       const response = await axios.post('http://localhost:8000/api/login/', {
-        username,  // 사용자 아이디
-        password,  // 사용자 비밀번호
+        username, // 사용자 아이디
+        password, // 사용자 비밀번호
       });
-  
+
       if (response.status === 200) {
         console.log('로그인 성공', response.data);
         // 로그인 성공 후, 역할에 따라 페이지 이동
@@ -58,23 +58,23 @@ const Login = () => {
       setError('로그인 실패. 다시 시도해주세요.');
     }
   };
-  
 
   const handleImageClick = (platform) => {
     console.log(`${platform} 로그인 클릭!`);
     if (platform === 'Naver') {
-      const clientId = 'JeOy14JJKcJ6zoekf8XT';  
-      const redirectUri = 'http://localhost:3000/naver/callback';  
-      const state = 'random_string_for_state'; 
+      const clientId = 'JeOy14JJKcJ6zoekf8XT';
+      const redirectUri = 'http://localhost:3000/naver/callback';
+      const state = 'random_string_for_state';
       const naverAuthUrl = `https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=${clientId}&redirect_uri=${redirectUri}&state=${state}`;
-  
-      window.location.href = naverAuthUrl; 
+
+      window.location.href = naverAuthUrl;
     } else if (platform === 'Google') {
-      const googleClientId = '357474094849-7cv15bj3j64iru2drltjejb4aeuqldap.apps.googleusercontent.com'; 
-      const redirectUri = 'http://localhost:3000/google/callback'; 
+      const googleClientId =
+        '357474094849-7cv15bj3j64iru2drltjejb4aeuqldap.apps.googleusercontent.com';
+      const redirectUri = 'http://localhost:3000/google/callback';
       const googleAuthUrl = `https://accounts.google.com/o/oauth2/v2/auth?scope=openid%20profile%20email&response_type=code&redirect_uri=${redirectUri}&client_id=${googleClientId}`;
-  
-      window.location.href = googleAuthUrl;  
+
+      window.location.href = googleAuthUrl;
     }
   };
 
@@ -82,7 +82,7 @@ const Login = () => {
     <div className="login-container">
       <header className="header">
         <h1 className="header-title">올인과외</h1>
-        <img src={logo192} alt="로고" className="logo" />
+        <img className="logo" src={logo} alt="로고" />
       </header>
 
       <div className="role-tabs">
