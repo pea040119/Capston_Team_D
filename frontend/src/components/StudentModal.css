@@ -1,4 +1,3 @@
-/* 모달 창의 전체 배경 */
 .modal {
   position: fixed;
   top: 0;
@@ -13,14 +12,14 @@
 }
 .schedule-list li {
   display: flex;
-  align-items: center; /* 아이템들을 수직 중앙에 정렬 */
+  align-items: center;
 
   gap: 152px;
   margin-left: 10px;
-  text-align: left; /* 텍스트는 왼쪽 정렬 */
+  text-align: left;
   padding: 4px 0;
 }
-/* 모달 내용 스타일 */
+
 .modal-content {
   background-color: #e9eff0;
   padding: 20px;
@@ -36,7 +35,6 @@
   margin-top: 0;
 }
 
-/* 입력 폼 레이블 */
 .modal-content label {
   display: block;
   margin-top: 10px;
@@ -44,7 +42,6 @@
   font-size: 14px;
 }
 
-/* 공통 인풋 필드 스타일 */
 .modal-content input {
   width: calc(100% - 10px);
   padding: 8px;
@@ -54,7 +51,6 @@
   margin-bottom: 20px;
 }
 
-/* 요일과 시간 선택 부분 스타일 */
 .schedule-input {
   display: flex;
   align-items: center;
@@ -69,7 +65,6 @@
   font-size: 14px;
 }
 
-/* 추가 버튼 스타일 */
 .add-schedule-button {
   background-color: #c8e2e9 !important;
   color: #40b3d2;
@@ -83,7 +78,6 @@
   background-color: #35a1c8;
 }
 
-/* 스케줄 목록 스타일 */
 .schedule-list {
   list-style-type: none;
   padding: 0;
@@ -94,7 +88,6 @@
   color: #333;
 }
 
-/* 모달 내의 버튼들 */
 .modal-content button {
   padding: 8px 16px;
   border: none;
@@ -103,35 +96,32 @@
   background-color: #40b3de;
 }
 
-/* 저장 버튼 스타일 */
 .modal-content button:first-of-type {
   background-color: #40b3de;
   color: #fff;
 }
 
-/* 닫기 버튼 스타일 */
 .modal-content button:last-of-type {
   background-color: #fff;
   color: #333;
   margin-left: 10px;
 }
 
-/* 버튼들에 마우스 오버 효과 추가 */
 .modal-content button:hover {
   opacity: 0.9;
 }
 .remove-schedule-button {
-  background-color: #ff5c5c; /* 빨간색 배경 */
+  background-color: #ff5c5c;
   border: none;
   color: white;
   margin-left: 8px;
   cursor: pointer;
   border-radius: 4px;
   font-size: 12px;
-  width: 50px; /* 버튼 너비 */
+  width: 50px;
   height: 20px;
-  display: flex; /* Flexbox로 중앙 정렬 */
-  align-items: center; /* 세로 중앙 정렬 */
+  display: flex;
+  align-items: center;
   justify-content: center;
   white-space: nowrap;
 }
