@@ -105,18 +105,6 @@ body {
   /* z-index: 0; */
 }
 
-/* .Comment_box1 {
-  width: 479px;
-  height: 158px;
-  flex-shrink: 0;
-  border: 1.5px solid #888888;
-  background: #fff;
-  position: absolute;
-  left: 750px;
-  top: 800px;
-  border-radius: 5px;
-} */
-
 table {
   width: 100%;
   table-layout: fixed;
@@ -149,15 +137,6 @@ th:nth-child(4),
 td:nth-child(4) {
   width: 0%;
 }
-/* .checkbox {
-  padding: 50px;
-  width: 10px;
-  position: absolute;
-  left: 30px;
-} */
-/* th {
-    /* background-color: #f0f0f0;  
-  } */
 
 tbody tr:hover {
   background-color: #f1f1f1;
