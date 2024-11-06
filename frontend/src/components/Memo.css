@@ -1,17 +1,21 @@
 .memo-container {
   position: absolute;
   left: 750px;
-  top: 850px;
-
+  top: 870px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   width: 400px;
+  height: 100px;
 }
 
 .button {
   position: absolute;
-  left: 300px;
+  left: 70px;
+  margin: 10px;
+  gap: 20px;
+  padding: 10px;
+  top: 160px;
   display: flex;
   margin: 5px;
   align-items: center;
@@ -22,5 +26,7 @@
   margin: 5px;
   border: 2px solid #f3f3f3;
   position: absolute;
-  left: 10px;
+  left: 70px;
+  width: 440px;
+  height: 155px;
 }
