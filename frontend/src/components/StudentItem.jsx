@@ -6,7 +6,6 @@ import './StudentItem.css';
 const StudentItem = ({ id, name, sch, grade, sub }) => {
   const navigate = useNavigate();
 
-  // Function to handle click and navigate to TutorManager with the student ID
   const handleClick = () => {
     navigate(`/TutorManager/${id}`);
   };

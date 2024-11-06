@@ -16,6 +16,7 @@
 }
 
 .name {
+  align-self: start;
   color: black;
   font-size: 16px;
   font-family: Inter;
@@ -38,4 +39,5 @@
   font-family: Inter;
   font-weight: 400;
   word-wrap: break-word;
+  margin-left: auto;
 }

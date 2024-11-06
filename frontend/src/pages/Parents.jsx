@@ -1,5 +1,6 @@
+import MiniCalendar from '../components/MiniCalendar';
 const Parents = () => {
-  return <div>s</div>;
+  return <MiniCalendar />;
 };
 
 export default Parents;

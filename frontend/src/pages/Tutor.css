@@ -2,28 +2,37 @@
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  margin-top: 128px;
+  margin-top: 80px;
 }
 
+.mini-calendar {
+  position: absolute;
+  top: 141px;
+  left: 71px;
+}
 .calendar {
   display: flex;
   gap: 0;
   padding: 0;
   margin-right: 93px;
- 
 }
 
 .day-content {
-  margin-top: 20px;
+  margin-top: 10px;
   font-size: 18px;
   font-weight: 400;
   color: #333;
+  margin-left: 5px;
 }
 .box-container {
   position: absolute;
   top: 505px;
   left: 340px;
 }
+.small-text {
+  font-size: 15px;
+}
+
 .header-container {
   position: absolute;
   top: 42px;
@@ -64,6 +73,7 @@
 .day-content {
   display: flex;
   flex-direction: column;
+  flex-grow: 1;
 }
 .time-blocks {
   display: flex;

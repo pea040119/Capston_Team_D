@@ -11,52 +11,101 @@ import StudentModal from '../components/StudentModal';
 import won from '../img/won.png';
 import Button from '../components/Button';
 import Content from '../components/Content';
+import MiniCalendar from '../components/MiniCalendar';
 
 const Tutor = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [students, setStudents] = useState([]);
   const [totalFee, setTotalFee] = useState(0);
-  const [today, setToday] = useState(null);
+  const [currentWeek, setCurrentWeek] = useState(new Date());
+  const [today, setToday] = useState({ formattedDate: '', formattedDay: '' });
 
   const days = [
-    '일요일',
     '월요일',
     '화요일',
     '수요일',
     '목요일',
     '금요일',
     '토요일',
+    '일요일',
   ];
 
   useEffect(() => {
     const date = new Date();
     const dayIndex = date.getDay();
-    const dayName = days[dayIndex];
-    const formattedDate = `${date.getDate()}일(${dayName[0]})`;
-    setToday(formattedDate);
+    const dayName = days[(dayIndex + 6) % 7];
+    const formattedDate = `${date.getDate()}일`;
+    const formattedDay = `(${dayName[0]})`;
+    setToday({ formattedDate, formattedDay });
   }, []);
 
   const addStudent = (student) => {
-    setStudents([...students, student]);
+    const newSchedule = student.schedule.reduce((acc, sch) => {
+      const key = sch.time;
+      if (acc[key]) {
+        acc[key].push(sch.day);
+      } else {
+        acc[key] = [sch.day];
+      }
+      return acc;
+    }, {});
+
+    const formattedSchedule = Object.entries(newSchedule).map(
+      ([time, days]) => `${days.join(', ')} ${time}`
+    );
+
+    const updatedStudent = {
+      ...student,
+      formattedSchedule,
+    };
+
+    setStudents([...students, updatedStudent]);
     setTotalFee(totalFee + student.fee);
   };
 
-  const schedule = {
-    월요일: [
-      { time: '09:00', name: '김철수 영어' },
-      { time: '11:00', name: '이영희 수학' },
-    ],
-    금요일: [{ time: '9:00', name: '박민수 과학', type: 'blue' }],
+  const calculateTopPosition = (time) => {
+    const [hour, minute] = time.split(':').map(Number);
+    const hourOffset = (hour - 9) * 20;
+    const minuteOffset = (minute / 60) * 20;
+    return hourOffset + minuteOffset;
+  };
+
+  const changeWeek = (direction) => {
+    const newDate = new Date(currentWeek);
+    newDate.setDate(currentWeek.getDate() + direction * 7);
+    setCurrentWeek(newDate);
+  };
+
+  const getWeekOfMonth = (date) => {
+    const firstDay = new Date(date.getFullYear(), date.getMonth(), 1).getDay();
+    return Math.ceil((date.getDate() + firstDay) / 7);
   };
 
   return (
     <>
+      <MiniCalendar></MiniCalendar>
       <img src={logo} alt="logo" className="logo" />
       <div className="header-container">
         <Header
-          title="11월 1주차"
-          leftchild={<img src={larrow} alt="Left" className="header-image" />}
-          rightchild={<img src={rarrow} alt="Right" className="header-image" />}
+          title={`${currentWeek.getMonth() + 1}월 ${getWeekOfMonth(
+            currentWeek
+          )}주차`}
+          leftchild={
+            <img
+              src={larrow}
+              alt="Left"
+              className="header-image"
+              onClick={() => changeWeek(-1)}
+            />
+          }
+          rightchild={
+            <img
+              src={rarrow}
+              alt="Right"
+              className="header-image"
+              onClick={() => changeWeek(1)}
+            />
+          }
         />
       </div>
       <div className="box-container">
@@ -70,22 +119,51 @@ const Tutor = () => {
       <div className="calendar-container">
         <div className="calendar">
           {days.map((day, index) => {
-            const date = new Date();
-            date.setDate(date.getDate() - date.getDay() + index);
-            const formattedDate = `${date.getDate()}일(${day[0]})`;
+            const date = new Date(currentWeek);
+            date.setDate(
+              currentWeek.getDate() - ((date.getDay() + 6) % 7) + index
+            );
+            const formattedDate = `${date.getDate()}일`;
+            const formattedDay = `(${day[0]})`;
 
             return (
               <div key={day} className="day-section">
                 <Cbutton
-                  text={formattedDate}
-                  type={today === formattedDate ? 'selected' : 'default'}
+                  text={
+                    <>
+                      {formattedDate}
+                      <span className="small-text">{formattedDay}</span>
+                    </>
+                  }
+                  type={
+                    today?.formattedDate === formattedDate
+                      ? 'selected'
+                      : 'default'
+                  }
                   onClick={() => {}}
                 />
-                <div className="day-content">
-                  {schedule[day] &&
-                    schedule[day].map((item, idx) => (
-                      <Content key={idx} time={item.time} name={item.name} />
-                    ))}
+                <div
+                  className="day-content"
+                  style={{ position: 'relative', marginTop: '10px' }}
+                >
+                  {students.flatMap((student) =>
+                    student.schedule
+                      .filter((sch) => sch.day === day[0])
+                      .map((sch) => (
+                        <div
+                          key={`${student.name}-${sch.time}`}
+                          style={{
+                            position: 'absolute',
+                            top: `${calculateTopPosition(sch.time)}px`,
+                          }}
+                        >
+                          <Content
+                            time={sch.time}
+                            name={`${student.name} ${student.subject}`}
+                          />
+                        </div>
+                      ))
+                  )}
                 </div>
               </div>
             );
@@ -97,12 +175,12 @@ const Tutor = () => {
             <StudentItem
               key={index}
               name={student.name}
-              sch={student.sch}
+              sch={(student.formattedSchedule || []).join(', ')}
               grade={student.grade}
               sub={student.subject}
             />
           ))}
-          <div className="ButtonContiner">
+          <div className="ButtonContainer">
             <Button
               onClick={() => setIsModalOpen(true)}
               text={'등록'}
