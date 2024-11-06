@@ -4,7 +4,7 @@ import './Signup.css';
 import kakaoLogo from '../img/kakao.png';
 import naverLogo from '../img/naver.png';
 import googleLogo from '../img/google.png';
-import logo192 from '../img/logo192.png';
+import logo from '../img/logo.png';
 
 const Signup = () => {
   const [role, setRole] = useState('teacher');
@@ -40,7 +40,7 @@ const Signup = () => {
     <div className="signup-container">
       <header className="signup-header">
         <h1 className="signup-header-title">올인과외</h1>
-        <img src={logo192} alt="로고" className="signup-logo" />
+        <img src={logo} alt="로고" className="signup-logo" />
       </header>
 
       <div className="signup-role-tabs">
