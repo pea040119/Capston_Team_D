@@ -66,6 +66,10 @@ const TutorManager = () => {
     );
   };
 
+  const removeHomeworkRow = (id) => {
+    setHomeworkData(homeworkData.filter((row) => row[0] !== id));
+  }; /*삭제 추가*/
+
   const addSupplementRow = () => {
     if (newSupplementItem) {
       const newRow = [supplementData.length + 1, newSupplementItem];
@@ -133,10 +137,12 @@ const TutorManager = () => {
                 item[1],
                 item[2],
                 <input
+                  className="checkbox"
                   type="checkbox"
                   checked={item[3]}
                   onChange={() => toggleHomeworkCompletion(item[0])}
                 />,
+                ,
               ]),
               [
                 '',

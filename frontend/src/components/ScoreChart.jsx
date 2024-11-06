@@ -105,17 +105,21 @@ const ScoreCharts = ({ barTitle, lineTitle }) => {
           <div>
             <input
               type="text"
+              className="exam_text"
               value={newBarName}
               onChange={(e) => setNewBarName(e.target.value)}
-              placeholder="시험명 입력"
+              placeholder="시험 입력"
             />
             <input
               type="number"
+              className="exam_num"
               value={newBarScore}
               onChange={(e) => setNewBarScore(e.target.value)}
               placeholder="점수 입력"
             />
-            <button onClick={addBarData}>성적 추가</button>
+            <button className="exam_button" onClick={addBarData}>
+              성적 추가
+            </button>
           </div>
         </div>
       </div>
@@ -148,17 +152,21 @@ const ScoreCharts = ({ barTitle, lineTitle }) => {
         <div>
           <input
             type="text"
+            className="exam_text"
             value={newLineName}
             onChange={(e) => setNewLineName(e.target.value)}
-            placeholder="시험명 입력"
+            placeholder="시험 입력"
           />
           <input
             type="number"
+            className="exam_num"
             value={newLineScore}
             onChange={(e) => setNewLineScore(e.target.value)}
             placeholder="점수 입력"
           />
-          <button onClick={addLineData}>성적 추가</button>
+          <button className="exam_button" onClick={addLineData}>
+            성적 추가
+          </button>
         </div>
       </div>
 

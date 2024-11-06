@@ -18,3 +18,29 @@
   top: 450px;
   left: 755px;
 }
+
+.exam_text {
+  font-size: 10px;
+  padding: 5px;
+  margin: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 60px;
+  position: relative;
+  left: 150px;
+}
+
+.exam_num {
+  font-size: 10px;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 60px;
+  position: relative;
+  left: 150px;
+}
+
+.exam_button {
+  left: 160px;
+  top: 2px;
+}

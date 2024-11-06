@@ -20,11 +20,10 @@ const Memo = () => {
 
   return (
     <div className="memo-container">
-      <input
+      <textarea
         type="text"
         className="memo-input"
         placeholder="메모를 입력하세요."
-        size={35}
         value={isEditing ? memo : savedMemo}
         onChange={(e) => setMemo(e.target.value)}
       />
