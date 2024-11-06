@@ -13,6 +13,10 @@ const Signup = () => {
   const [password, setPassword] = useState('');
   const isButtonDisabled = email === '' || username === '' || password === '';
 
+  const onClickLogin = () => {
+    navigate('/login');
+  };
+
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
@@ -97,6 +101,11 @@ const Signup = () => {
         </div>
       </form>
 
+      <div className="signup-gologin">
+        <p onClick={onClickLogin} style={{ cursor: 'pointer' }}>
+          Login
+        </p>
+      </div>
       <div className="signup-alternative-login">
         <p>다음으로 회원가입하기</p>
         <SignupImageGallery handleImageClick={handleImageClick} />

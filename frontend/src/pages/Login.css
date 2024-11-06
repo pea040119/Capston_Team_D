@@ -21,38 +21,13 @@
   white-space: nowrap;
 }
 
-.logo {
+.login-logo {
   position: absolute;
   left: 573px;
-  top: 180px;
+  top: 278px;
   width: 100px;
   height: 50px;
 }
-
-/* .header-title {
-  position: absolute;
-  width: Fixed (199px) px;
-  height: Fixed (61px) px;
-  top: 230px;
-  left: 705px;
-  gap: 0px;
-  opacity: 0px;
-  color: var(--First-Blue, #40b3d2);
-  font-family: Inter;
-  font-size: 50px;
-  font-weight: 700;
-  line-height: 60.51px;
-  letter-spacing: 0.1em;
-  text-align: left;
-}
-
-.logo {
-  position: absolute;
-  left: 565px;
-  top: 250px;
-  width: 60px;
-  height: 60px;
-} */
 
 .role-tabs {
   position: absolute;
@@ -97,7 +72,7 @@
   display: flex;
   flex-direction: column;
   position: absolute;
-  left: 565px;
+  left: 570px;
   top: 414px;
   gap: 10px;
   margin-bottom: 20px;
