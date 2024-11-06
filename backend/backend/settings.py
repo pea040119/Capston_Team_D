@@ -45,8 +45,14 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
     'allauth.socialaccount.providers.naver',
-    'allauth.socialaccount.providers.kakao'
+    #'allauth.socialaccount.providers.kakao'
+    'corsheaders',
+    # 'app',
+    # 'restframework',
+    
 ]
+
+CORS_ALLOW_ALL_ORIGINS = True
 
 SITE_ID = 1
 
@@ -59,6 +65,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'allauth.account.middleware.AccountMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'backend.urls'
@@ -98,6 +105,8 @@ AUTHENTICATION_BACKENDS = [
     'allauth.account.auth_backends.AuthenticationBackend',
 ]
 
+
+LOGIN_URL = '/accounts/login/'
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
