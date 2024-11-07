@@ -221,27 +221,30 @@ const TutorManager = () => {
             <StudentItem
               key={index}
               name={student.name}
-              sch={student.sch}
+              sch={(student.formattedSchedule || []).join(', ')}
               grade={student.grade}
               sub={student.subject}
             />
           ))}
-          <Button
-            onClick={() => setIsModalOpen(true)}
-            className="add-student-button"
-            text={'등록'}
-            style={{ backgroundColor: '#40B3DE', color: 'white' }}
-          />
+          <div className="ButtonContainer">
+            <Button
+              onClick={() => setIsModalOpen(true)}
+              text={'등록'}
+              style={{
+                backgroundColor: '#6ac665',
+                color: 'white',
+                left: 130,
+              }}
+            />
+          </div>
         </div>
-
-        {/* Student Modal for adding new students */}
-        {isModalOpen && (
-          <StudentModal
-            onClose={() => setIsModalOpen(false)}
-            onSave={addStudent}
-          />
-        )}
       </div>
+      {isModalOpen && (
+        <StudentModal
+          onClose={() => setIsModalOpen(false)}
+          onSave={addStudent}
+        />
+      )}
     </>
   );
 };
