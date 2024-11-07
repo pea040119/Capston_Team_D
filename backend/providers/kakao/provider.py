@@ -1,5 +1,6 @@
 from allauth.socialaccount.providers.base import ProviderAccount
 from allauth.socialaccount.providers.oauth2.provider import OAuth2Provider
+from .adapters import KakaoOAuth2Adapter
 
 class KakaoAccount(ProviderAccount):
     def get_profile_url(self):
@@ -16,6 +17,7 @@ class KakaoProvider(OAuth2Provider):
     id = 'kakao'
     name = 'Kakao'
     account_class = KakaoAccount
+    oauth2_adapter_class = KakaoOAuth2Adapter
 
     def extract_uid(self, data):
         return str(data['id'])
