@@ -33,31 +33,45 @@ const Login = () => {
   // };
 
   const handleSubmit = async (e) => {
-    e.preventDefault(); // 기본 폼 제출 동작을 막음
+    e.preventDefault();
+    console.log('role:', role);
 
-    try {
-      // 로그인 API 호출
-      const response = await axios.post('http://localhost:8000/api/login/', {
-        username, // 사용자 아이디
-        password, // 사용자 비밀번호
-      });
-
-      if (response.status === 200) {
-        console.log('로그인 성공', response.data);
-        // 로그인 성공 후, 역할에 따라 페이지 이동
-        if (role === 'teacher') {
-          navigate('/tutor');
-        } else if (role === 'student') {
-          navigate('/student');
-        } else if (role === 'parent') {
-          navigate('/parents');
-        }
-      }
-    } catch (error) {
-      console.error('로그인 실패:', error);
-      setError('로그인 실패. 다시 시도해주세요.');
+    // 임시로 로그인 성공
+    if (role === 'teacher') {
+      console.log('Navigating to /tutor');
+      navigate('/tutor');
+    } else if (role === 'student') {
+      console.log('Navigating to /student');
+      navigate('/student');
+    } else if (role === 'parent') {
+      console.log('Navigating to /parents');
+      navigate('/parents');
     }
   };
+
+  //   try {
+  //     // 로그인 API 호출
+  //     const response = await axios.post('http://localhost:8000/api/login/', {
+  //       username, // 사용자 아이디
+  //       password, // 사용자 비밀번호
+  //     });
+
+  //     if (response.status === 200) {
+  //       console.log('로그인 성공', response.data);
+  //       // 로그인 성공 후, 역할에 따라 페이지 이동
+  //       if (role === 'teacher') {
+  //         navigate('/tutor');
+  //       } else if (role === 'student') {
+  //         navigate('/student');
+  //       } else if (role === 'parent') {
+  //         navigate('/parents');
+  //       }
+  //     }
+  //   } catch (error) {
+  //     console.error('로그인 실패:', error);
+  //     setError('로그인 실패. 다시 시도해주세요.');
+  //   }
+  // };
 
   const handleImageClick = (platform) => {
     console.log(`${platform} 로그인 클릭!`);
