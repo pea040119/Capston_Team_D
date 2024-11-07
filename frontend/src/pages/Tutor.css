@@ -5,24 +5,27 @@
   margin-top: 80px;
 }
 
-.mini-calendar {
-  position: absolute;
-  top: 141px;
-  left: 71px;
-}
 .calendar {
   display: flex;
   gap: 0;
   padding: 0;
   margin-right: 93px;
 }
-
+/* Tutor.css */
+.day-section {
+  border-bottom: 1px solid #c8e2e9; /* 구분선 색상 */
+  padding-bottom: 280px;
+  margin-bottom: 10px;
+  border-left: 1px solid #c8e2e9;
+}
+.day-section:last-child {
+  border-right: 1px solid #c8e2e9; /* 오른쪽 보더 */
+}
 .day-content {
   margin-top: 10px;
   font-size: 18px;
   font-weight: 400;
   color: #333;
-  margin-left: 5px;
 }
 .box-container {
   position: absolute;
