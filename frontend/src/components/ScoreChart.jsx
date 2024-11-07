@@ -176,6 +176,7 @@ const ScoreCharts = ({ barTitle, lineTitle }) => {
           <div className="modal">
             {/* <h4>데이터 수정</h4> */}
             <input
+              className="edit_text"
               type="text"
               value={currentItem.data.name}
               onChange={(e) =>
@@ -198,9 +199,11 @@ const ScoreCharts = ({ barTitle, lineTitle }) => {
                 })
               }
             />
-            <button onClick={saveChanges}>저장</button>
-            <button onClick={deleteItem}>삭제</button>
-            <button onClick={() => setEditMode(false)}>취소</button>
+            <div className="edit_button">
+              <button onClick={saveChanges}>저장</button>
+              <button onClick={deleteItem}>삭제</button>
+              <button onClick={() => setEditMode(false)}>취소</button>
+            </div>
           </div>
         )}
       </div>
