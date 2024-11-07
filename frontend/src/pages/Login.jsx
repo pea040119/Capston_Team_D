@@ -16,6 +16,10 @@ const Login = () => {
 
   const navigate = useNavigate();
 
+  const onClickSignup = () => {
+    navigate('/signup');
+  };
+
   // const handleSubmit = (e) => {
   //   e.preventDefault();
 
@@ -149,6 +153,11 @@ const Login = () => {
       <div className="alternative-login">
         <p>다음으로 로그인하기</p>
         <ImageGallery handleImageClick={handleImageClick} /> {}
+      </div>
+      <div className="login-gosignup">
+        <p onClick={onClickSignup} style={{ cursor: 'pointer' }}>
+          회원가입
+        </p>
       </div>
     </div>
   );

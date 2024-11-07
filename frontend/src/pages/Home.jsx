@@ -19,6 +19,10 @@ const Home = () => {
     nav('/signup');
   };
 
+  const onClickStart = () => {
+    nav('/login'); // 시작하기 버튼 클릭 시 로그인 페이지로 이동
+  };
+
   const texts = [
     '나만의 수업을\n관리하세요.',
     '편리한 일정 공유.\n동기화 된 일정.',
@@ -28,7 +32,6 @@ const Home = () => {
 
   const images = [home1, home2, home3, home4];
 
-  // 각 텍스트와 이미지 섹션을 참조할 배열 생성
   const sectionsRef = useRef([]);
   const [visibleSections, setVisibleSections] = useState([]);
 
@@ -77,15 +80,30 @@ const Home = () => {
           <div
             key={index}
             ref={(el) => (sectionsRef.current[index] = el)}
-            className={`scroll-item ${visibleSections.includes(index) ? 'visible' : ''}`}
+            className={`scroll-item ${
+              visibleSections.includes(index) ? 'visible' : ''
+            }`}
           >
-            <div className="left-text">
-              {text}
-            </div>
-
-            <img src={images[index]} alt={`home${index + 1}`} className="center-left-image" />
+            <div className="left-text">{text}</div>
+            <img
+              src={images[index]}
+              alt={`home${index + 1}`}
+              className="center-left-image"
+            />
           </div>
         ))}
+
+        <div className="start-button-container">
+          <Button
+            text="시작하기!"
+            onClick={onClickStart}
+            style={{
+              backgroundColor: '#40B3DE',
+              color: 'white',
+              marginTop: '20px',
+            }}
+          />
+        </div>
       </div>
     </div>
   );

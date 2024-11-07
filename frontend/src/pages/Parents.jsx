@@ -1,6 +1,6 @@
-import MiniCalendar from '../components/MiniCalendar';
+import MainCalendar from '../components/MainCalendar';
 const Parents = () => {
-  return <MiniCalendar />;
+  return <MainCalendar />;
 };
 
 export default Parents;

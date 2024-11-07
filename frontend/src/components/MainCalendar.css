@@ -1,0 +1,47 @@
+/* 메인 달력 컨테이너 */
+.mainCalendar {
+  width: 100%;
+  max-width: 500px;
+}
+
+/* 개별 날짜 타일 스타일 */
+.tutorcalendarTile {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  position: relative;
+  height: 600px; /* 날짜 타일 높이 */
+  width: 60px; /* 날짜 타일 너비 */
+  border: 1px solid #e0e0e0; /* 각 날짜 경계 구분 */
+  box-sizing: border-box;
+  padding: 5px;
+}
+
+/* 날짜 타일의 기본 스타일 */
+.reactCalendarTile span {
+  font-size: 0.6rem;
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  color: #555;
+}
+
+/* 월/연도 네비게이션 버튼 스타일 */
+.reactCalendarNavigationButton {
+  font-size: 1rem;
+  padding: 0.5rem;
+  font-weight: bold;
+}
+.tutorcalendar {
+  width: 850px;
+  height: 10px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  position: relative;
+  height: 60px; /* 날짜 타일 높이 */
+  width: 60px; /* 날짜 타일 너비 */
+  border: 1px solid #e0e0e0; /* 각 날짜 경계 구분 */
+  box-sizing: border-box;
+  padding: 5px;
+}

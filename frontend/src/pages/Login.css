@@ -136,3 +136,10 @@
   width: 30px;
   height: 30px;
 }
+.login-gosignup p {
+  position: absolute;
+  left: 850px;
+  top: 515px;
+  font-size: 12px;
+  color: #40b3d2;
+}
