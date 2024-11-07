@@ -37,8 +37,8 @@ const StudentModal = ({ onClose, onSave }) => {
   };
 
   return (
-    <div className="modal">
-      <div className="modal-content">
+    <div className="studentmodal">
+      <div className="studentmodal-content">
         <h2>학생 등록</h2>
         <label>이름</label>
         <input value={name} onChange={(e) => setName(e.target.value)} />

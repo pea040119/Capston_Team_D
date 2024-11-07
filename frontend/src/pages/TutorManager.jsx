@@ -9,6 +9,7 @@ import StudentItem from '../components/StudentItem';
 import StudentModal from '../components/StudentModal';
 import Box from '../components/Box';
 import Button from '../components/Button';
+import MiniCalendar from '../components/MiniCalendar.jsx';
 
 const TutorManager = () => {
   const [progressData, setProgressData] = useState([]);
@@ -87,158 +88,161 @@ const TutorManager = () => {
   };
 
   return (
-    <div className="Progress-container" style={{ padding: '20px' }}>
-      {/* Progress Section */}
-      <div className="Progress-section">
-        <p className="Progress">진도</p>
-        <div className="Progress_table">
-          <Table
-            title=""
-            data={[
-              ...progressData.map((item) => [
-                ...item,
-                <button onClick={() => removeProgressRow(item[0])}>
-                  삭제
-                </button>,
-              ]),
-              [
-                '',
-                <input
-                  className="input_text"
-                  type="text"
-                  value={newProgressName}
-                  onChange={(e) => setNewProgressName(e.target.value)}
-                  placeholder="진도 내용"
-                />,
-                <input
-                  className="input_num"
-                  type="text"
-                  value={newProgressPeriod}
-                  onChange={(e) => setNewProgressPeriod(e.target.value)}
-                  placeholder="진도(예: p30~50)"
-                />,
-                <button onClick={addProgressRow}>추가</button>,
-              ],
-            ]}
-            columns={progressColumns}
+    <>
+      <MiniCalendar />
+      <div className="Progress-container" style={{ padding: '20px' }}>
+        {/* Progress Section */}
+        <div className="Progress-section">
+          <p className="Progress">진도</p>
+          <div className="Progress_table">
+            <Table
+              title=""
+              data={[
+                ...progressData.map((item) => [
+                  ...item,
+                  <button onClick={() => removeProgressRow(item[0])}>
+                    삭제
+                  </button>,
+                ]),
+                [
+                  '',
+                  <input
+                    className="input_text"
+                    type="text"
+                    value={newProgressName}
+                    onChange={(e) => setNewProgressName(e.target.value)}
+                    placeholder="진도 내용"
+                  />,
+                  <input
+                    className="input_num"
+                    type="text"
+                    value={newProgressPeriod}
+                    onChange={(e) => setNewProgressPeriod(e.target.value)}
+                    placeholder="진도(예: p30~50)"
+                  />,
+                  <button onClick={addProgressRow}>추가</button>,
+                ],
+              ]}
+              columns={progressColumns}
+            />
+          </div>
+        </div>
+
+        {/* Homework Section */}
+        <div className="Homework-section">
+          <p className="Homework">숙제</p>
+          <div className="Homework_table">
+            <Table
+              title=""
+              data={[
+                ...homeworkData.map((item) => [
+                  item[0],
+                  item[1],
+                  item[2],
+                  <input
+                    className="checkbox"
+                    type="checkbox"
+                    checked={item[3]}
+                    onChange={() => toggleHomeworkCompletion(item[0])}
+                  />,
+                  ,
+                ]),
+                [
+                  '',
+                  <input
+                    className="input_text"
+                    type="text"
+                    value={newHomeworkName}
+                    onChange={(e) => setNewHomeworkName(e.target.value)}
+                    placeholder="숙제 내용"
+                  />,
+                  <input
+                    className="input_num"
+                    type="text"
+                    value={newHomeworkAssignment}
+                    onChange={(e) => setNewHomeworkAssignment(e.target.value)}
+                    placeholder="기간 (예:24.10.31)"
+                  />,
+                  <button onClick={addHomeworkRow}>추가</button>,
+                ],
+              ]}
+              columns={homeworkColumns}
+            />
+          </div>
+        </div>
+
+        {/* Supplement Section */}
+        <div className="classSupplement-container">
+          <p className="classSupplement">수업 준비물</p>
+          <div className="supplement_table">
+            <Table
+              title=""
+              data={[
+                ...supplementData.map((item) => [
+                  ...item,
+                  <button onClick={() => removeSupplementRow(item[0])}>
+                    삭제
+                  </button>,
+                ]),
+                [
+                  '',
+                  <input
+                    className="input_text"
+                    type="text"
+                    value={newSupplementItem}
+                    onChange={(e) => setNewSupplementItem(e.target.value)}
+                    placeholder="준비물"
+                  />,
+                  <button className="Sub_button" onClick={addSupplementRow}>
+                    추가
+                  </button>,
+                ],
+              ]}
+              columns={supplementColumns}
+            />
+          </div>
+        </div>
+
+        <div className="Score-container">
+          <p className="Score">성적결과</p>
+          <ScoreCharts barTitle="미적분 성적" lineTitle="쪽지시험 성적" />
+        </div>
+
+        <div className="Comment-container">
+          <div className="Comment_box1"></div>
+          <p className="Comment">메모</p>
+          <Memo />
+        </div>
+
+        {/* Student List Section */}
+        <div className="StudentList">
+          <Box text={'학생 목록'} type={'gray'} />
+          {students.map((student, index) => (
+            <StudentItem
+              key={index}
+              name={student.name}
+              sch={student.sch}
+              grade={student.grade}
+              sub={student.subject}
+            />
+          ))}
+          <Button
+            onClick={() => setIsModalOpen(true)}
+            className="add-student-button"
+            text={'등록'}
+            style={{ backgroundColor: '#40B3DE', color: 'white' }}
           />
         </div>
-      </div>
 
-      {/* Homework Section */}
-      <div className="Homework-section">
-        <p className="Homework">숙제</p>
-        <div className="Homework_table">
-          <Table
-            title=""
-            data={[
-              ...homeworkData.map((item) => [
-                item[0],
-                item[1],
-                item[2],
-                <input
-                  className="checkbox"
-                  type="checkbox"
-                  checked={item[3]}
-                  onChange={() => toggleHomeworkCompletion(item[0])}
-                />,
-                ,
-              ]),
-              [
-                '',
-                <input
-                  className="input_text"
-                  type="text"
-                  value={newHomeworkName}
-                  onChange={(e) => setNewHomeworkName(e.target.value)}
-                  placeholder="숙제 내용"
-                />,
-                <input
-                  className="input_num"
-                  type="text"
-                  value={newHomeworkAssignment}
-                  onChange={(e) => setNewHomeworkAssignment(e.target.value)}
-                  placeholder="기간 (예:24.10.31)"
-                />,
-                <button onClick={addHomeworkRow}>추가</button>,
-              ],
-            ]}
-            columns={homeworkColumns}
+        {/* Student Modal for adding new students */}
+        {isModalOpen && (
+          <StudentModal
+            onClose={() => setIsModalOpen(false)}
+            onSave={addStudent}
           />
-        </div>
+        )}
       </div>
-
-      {/* Supplement Section */}
-      <div className="classSupplement-container">
-        <p className="classSupplement">수업 준비물</p>
-        <div className="supplement_table">
-          <Table
-            title=""
-            data={[
-              ...supplementData.map((item) => [
-                ...item,
-                <button onClick={() => removeSupplementRow(item[0])}>
-                  삭제
-                </button>,
-              ]),
-              [
-                '',
-                <input
-                  className="input_text"
-                  type="text"
-                  value={newSupplementItem}
-                  onChange={(e) => setNewSupplementItem(e.target.value)}
-                  placeholder="준비물"
-                />,
-                <button className="Sub_button" onClick={addSupplementRow}>
-                  추가
-                </button>,
-              ],
-            ]}
-            columns={supplementColumns}
-          />
-        </div>
-      </div>
-
-      <div className="Score-container">
-        <p className="Score">성적결과</p>
-        <ScoreCharts barTitle="미적분 성적" lineTitle="쪽지시험 성적" />
-      </div>
-
-      <div className="Comment-container">
-        <div className="Comment_box1"></div>
-        <p className="Comment">메모</p>
-        <Memo />
-      </div>
-
-      {/* Student List Section */}
-      <div className="StudentList">
-        <Box text={'학생 목록'} type={'gray'} />
-        {students.map((student, index) => (
-          <StudentItem
-            key={index}
-            name={student.name}
-            sch={student.sch}
-            grade={student.grade}
-            sub={student.subject}
-          />
-        ))}
-        <Button
-          onClick={() => setIsModalOpen(true)}
-          className="add-student-button"
-          text={'등록'}
-          style={{ backgroundColor: '#40B3DE', color: 'white' }}
-        />
-      </div>
-
-      {/* Student Modal for adding new students */}
-      {isModalOpen && (
-        <StudentModal
-          onClose={() => setIsModalOpen(false)}
-          onSave={addStudent}
-        />
-      )}
-    </div>
+    </>
   );
 };
 

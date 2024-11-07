@@ -1,4 +1,4 @@
-.modal {
+.studentmodal {
   position: fixed;
   top: 0;
   left: 0;
@@ -20,7 +20,7 @@
   padding: 4px 0;
 }
 
-.modal-content {
+.studentmodal-content {
   background-color: #e9eff0;
   padding: 20px;
   width: 300px;
@@ -31,18 +31,18 @@
   text-align: center;
 }
 
-.modal-content h2 {
+.studentmodal-content h2 {
   margin-top: 0;
 }
 
-.modal-content label {
+.studentmodal-content label {
   display: block;
   margin-top: 10px;
   font-weight: bold;
   font-size: 14px;
 }
 
-.modal-content input {
+.studentmodal-content input {
   width: calc(100% - 10px);
   padding: 8px;
   margin-top: 5px;
@@ -88,7 +88,7 @@
   color: #333;
 }
 
-.modal-content button {
+.studentmodal-content button {
   padding: 8px 16px;
   border: none;
   border-radius: 4px;
@@ -96,18 +96,18 @@
   background-color: #40b3de;
 }
 
-.modal-content button:first-of-type {
+.studentmodal-content button:first-of-type {
   background-color: #40b3de;
   color: #fff;
 }
 
-.modal-content button:last-of-type {
+.studentmodal-content button:last-of-type {
   background-color: #fff;
   color: #333;
   margin-left: 10px;
 }
 
-.modal-content button:hover {
+.studentmodal-content button:hover {
   opacity: 0.9;
 }
 .remove-schedule-button {
