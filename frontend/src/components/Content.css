@@ -1,0 +1,40 @@
+.Content {
+  background-color: #e9eff0;
+  width: 111px;
+  height: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Inter';
+  position: relative;
+  margin-top: 10px;
+  padding: 5px;
+  overflow: hidden;
+}
+
+.time {
+  font-size: 12px;
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  color: black;
+}
+
+.name-subject-container {
+  display: flex;
+  gap: 5px; /* 이름과 과목 사이의 간격 */
+  margin-top: 1px; /* 시간과의 간격 */
+}
+
+.name,
+.subject {
+  font-size: 14px;
+  color: black;
+  text-align: center;
+}
+
+.Content_blue {
+  background-color: #94d2e4;
+  color: #94d2e4;
+}

@@ -1,0 +1,19 @@
+.Box {
+  background-color: #40b3de;
+  color: white;
+  font-size: 16px;
+  font-weight: 500;
+  width: 174px;
+  height: 35px;
+  border-radius: 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-family: 'Inter';
+  white-space: nowrap;
+}
+.Box_gray {
+  background-color: #e9eff0;
+  color: #759097;
+}
