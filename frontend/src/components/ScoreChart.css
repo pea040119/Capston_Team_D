@@ -47,14 +47,23 @@
 }
 
 .edit_button {
+  display: flex;
   position: absolute;
+  left: 200px;
+  gap: 10px;
   top: 70px;
+  padding: -10px auto;
+  margin: auto 10px;
 }
 .modal {
-  left: 800px;
+  position: absolute;
+  left: 750px;
   top: 300px;
   gap: 15px;
-  width: 200px;
+  width: 350px;
   height: 20px;
-  padding: 40px 180px;
+  align-items: center;
+  display: flex;
+  padding: 40px 100px;
+  background-color: rgba(0, 0, 0, 0.5);
 }
