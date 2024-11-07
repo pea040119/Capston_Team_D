@@ -1,15 +1,14 @@
-import './Content.css';
+import './content.css';
+const colors = ['#94d2e4', '#e9eff0', '#f0a1a1', '#f0f1b3'];
 
-const Content = ({ time, name, subject, type, onMove }) => {
+const Content = ({ time, name, onMove, index }) => {
+  const backgroundColor = colors[index % colors.length];
+
   return (
-    <div
-      className={`Content Content_${type}`}
-      onClick={() => onMove(time, name)}
-    >
+    <div className="Content" style={{ backgroundColor }}>
       <div className="time">{time}</div>
       <div className="name-subject-container">
         <div className="name">{name}</div>
-        <div className="subject">{subject}</div>
       </div>
     </div>
   );

@@ -83,7 +83,7 @@ const Tutor = () => {
 
   return (
     <>
-      <MiniCalendar></MiniCalendar>
+      <MiniCalendar />
       <img src={logo} alt="logo" className="logo" />
       <div className="header-container">
         <Header
@@ -146,7 +146,7 @@ const Tutor = () => {
                   className="day-content"
                   style={{ position: 'relative', marginTop: '10px' }}
                 >
-                  {students.flatMap((student) =>
+                  {students.flatMap((student, studentIndex) =>
                     student.schedule
                       .filter((sch) => sch.day === day[0])
                       .map((sch) => (
@@ -160,6 +160,8 @@ const Tutor = () => {
                           <Content
                             time={sch.time}
                             name={`${student.name} ${student.subject}`}
+                            index={studentIndex} // 색상 순환을 위해 studentIndex를 전달
+                            onMove={() => {}}
                           />
                         </div>
                       ))
