@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Button from '../components/Button';
 import logo from '../img/logo.png';
@@ -19,9 +19,6 @@ const Home = () => {
     nav('/signup');
   };
 
-  // 상태 변수로 텍스트와 이미지를 관리
-  const [contentIndex, setContentIndex] = useState(0);
-
   const texts = [
     '나만의 수업을\n관리하세요.',
     '편리한 일정 공유.\n동기화 된 일정.',
@@ -31,23 +28,36 @@ const Home = () => {
 
   const images = [home1, home2, home3, home4];
 
-  // 마우스 휠 이벤트 핸들러
-  const handleWheel = (event) => {
-    if (event.deltaY > 0) {
-      // 휠을 아래로 내릴 때
-      setContentIndex((prevIndex) =>
-        prevIndex < texts.length - 1 ? prevIndex + 1 : prevIndex
-      );
-    } else {
-      // 휠을 위로 올릴 때
-      setContentIndex((prevIndex) =>
-        prevIndex > 0 ? prevIndex - 1 : prevIndex
-      );
-    }
-  };
+  // 각 텍스트와 이미지 섹션을 참조할 배열 생성
+  const sectionsRef = useRef([]);
+  const [visibleSections, setVisibleSections] = useState([]);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const index = sectionsRef.current.indexOf(entry.target);
+            setVisibleSections((prevVisibleSections) =>
+              prevVisibleSections.includes(index)
+                ? prevVisibleSections
+                : [...prevVisibleSections, index]
+            );
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: '0px' }
+    );
+
+    sectionsRef.current.forEach((section) => {
+      if (section) observer.observe(section);
+    });
+
+    return () => observer.disconnect();
+  }, []);
 
   return (
-    <div onWheel={handleWheel}>
+    <div>
       <img src={logo} alt="logo" className="logo" />
       <div className="home-container">
         <Button
@@ -61,19 +71,22 @@ const Home = () => {
           style={{ backgroundColor: '#e9eff0', color: '#40B3DE' }}
         />
       </div>
-      <div className="centered-text">
-        {texts[contentIndex].split('\n').map((line, index) => (
-          <span key={index}>
-            {line}
-            <br />
-          </span>
+
+      <div className="scroll-container">
+        {texts.map((text, index) => (
+          <div
+            key={index}
+            ref={(el) => (sectionsRef.current[index] = el)}
+            className={`scroll-item ${visibleSections.includes(index) ? 'visible' : ''}`}
+          >
+            <div className="left-text">
+              {text}
+            </div>
+
+            <img src={images[index]} alt={`home${index + 1}`} className="center-left-image" />
+          </div>
         ))}
       </div>
-      <img
-        src={images[contentIndex]}
-        alt="home"
-        className="center-left-image"
-      />
     </div>
   );
 };

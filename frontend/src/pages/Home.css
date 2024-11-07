@@ -5,37 +5,77 @@
   width: 140px;
   height: 68px;
 }
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
 .home-container {
-  position: relative;
-  width: 100%;
-  height: 100vh;
   display: flex;
-  justify-content: flex-end;
-  align-items: flex-start;
-  padding: 27px 26px;
-  gap: 20px;
+  justify-content: right;
+  gap: 20px; 
+  margin-top: 20px; 
 }
 .home-container button {
-  width: 160px;
-  height: 50px;
+  width: 120px;
+  height: 40px;
   font-size: 18px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.centered-text {
-  position: absolute;
-  top: 368px;
-  right: 103px;
+
+.right-text {
+  white-space: pre-line; 
+  text-align: right;  
   font-size: 50px;
-  color: #333;
   font-weight: bold;
 }
 
+
+.left-text {
+  white-space: pre-line;  
+  text-align: left;  
+  font-size: 50px;
+  font-weight: bold;
+}
+
+
 .center-left-image {
-  position: absolute;
-  top: 158px;
-  left: 66px;
-  width: 768px;
-  height: 468px;
+  position: relative; 
+  width: 100%;
+  max-width: 768px; 
+  height: auto; 
+  margin: 20px 0;
+  right: 0; 
+}
+
+.scroll-container {
+  display: flex;
+  flex-direction: column; 
+  align-items: center; 
+  justify-content: center; 
+  min-height: 100vh;
+  gap: 20px;
+}
+
+.scroll-item {
+  display: flex;
+  align-items: center;
+  justify-content: right; 
+  gap: 50px;
+  padding: 0px; 
+}
+
+.scroll-item.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
