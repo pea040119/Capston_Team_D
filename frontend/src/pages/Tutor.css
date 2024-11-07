@@ -5,11 +5,6 @@
   margin-top: 80px;
 }
 
-.mini-calendar {
-  position: absolute;
-  top: 141px;
-  left: 71px;
-}
 .calendar {
   display: flex;
   gap: 0;
@@ -22,7 +17,6 @@
   font-size: 18px;
   font-weight: 400;
   color: #333;
-  margin-left: 5px;
 }
 .box-container {
   position: absolute;
