@@ -45,12 +45,12 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
     'allauth.socialaccount.providers.naver',
-    #'allauth.socialaccount.providers.kakao'
     'corsheaders',
     # 'app',
     # 'restframework',
-    
+    'providers.kakao',
 ]
+
 
 CORS_ALLOW_ALL_ORIGINS = True
 
@@ -125,6 +125,17 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+SOCIALACCOUNT_PROVIDERS = {
+    'kakao': {
+        'APP': {
+            'client_id': 'a37ff044348e804d96e313c69f3eacc2',
+            'secret': '',
+            'key': ''
+        },
+        'ADAPTER': 'allauth.socialaccount.providers.kakao.adapter.KakaoOAuth2Adapter',  # 어댑터 클래스 추가
+    }
+}
 
 
 # Internationalization
