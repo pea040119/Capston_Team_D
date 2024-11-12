@@ -172,7 +172,7 @@ const StudentHome = () => {
           })}
         </div>
         <div className="StudentList">
-          <Box text={'학생 목록'} type={'gray'} />
+          <Box text={'과외 목록 | 상점 '} type={'gray'} />
           {students.map((student, index) => (
             <StudentItem
               key={index}
