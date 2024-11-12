@@ -6,12 +6,14 @@ import Box from '../components/Box';
 import rarrow from '../img/rightarrow.png';
 import larrow from '../img/leftarrow.png';
 import logo from '../img/logo.png';
-import StudentItem from '../components/StudentItem';
-import StudentModal from '../components/StudentModal';
-import won from '../img/won.png';
+import TutorItem from '../components/TutorItem';
+import TutorModal from '../components/TutorModal';
+// import StudentModal from '../components/StudentModal';
+// import won from '../img/won.png';
 import Button from '../components/Button';
 import Content from '../components/Content';
 import MiniCalendar from '../components/MiniCalendar';
+// import TutorItem from '../components/TutorItem';
 
 const StudentHome = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -184,7 +186,7 @@ const StudentHome = () => {
         <div className="StudentList">
           <Box text={'과외 목록 | 상점 '} type={'gray'} />
           {students.map((student, index) => (
-            <StudentItem
+            <TutorItem
               key={index}
               name={student.name}
               sch={(student.formattedSchedule || []).join(', ')}
@@ -206,10 +208,7 @@ const StudentHome = () => {
         </div>
       </div>
       {isModalOpen && (
-        <StudentModal
-          onClose={() => setIsModalOpen(false)}
-          onSave={addStudent}
-        />
+        <TutorModal onClose={() => setIsModalOpen(false)} onSave={addStudent} />
       )}
     </>
   );

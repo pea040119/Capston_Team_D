@@ -22,7 +22,7 @@ const TutorModal = ({ onClose, onSave }) => {
         <input value={tutorsch} onChange={(e) => setTime(e.target.value)} />
         <label>과목</label>
         <input value={tutorsub} onChange={(e) => setSubject(e.target.value)} />
-        <label>과외비</label>
+        <label>상점</label>
         <input
           type="number"
           value={fee}
