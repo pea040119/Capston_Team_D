@@ -5,12 +5,36 @@ const TutorModal = ({ onClose, onSave }) => {
   const [tutorname, setName] = useState('');
   const [tutorsch, setTime] = useState('');
   const [tutorsub, setSubject] = useState('');
-  const [fee, setFee] = useState('');
+  const [reward, setreward] = useState('');
 
   const handleSave = () => {
-    onSave({ tutorname, tutorsch, tutorsub, fee: parseInt(fee) || 0 });
+    onSave({
+      tutorname,
+      tutorsub,
+      tutorsch,
+      reward,
+    });
     onClose();
   };
+
+  // const handleSave = () => {
+  //   const newTutor = {
+  //     tutorname,
+  //     tutorsub,
+  //     tutorsch,
+  //     reward,
+  //     schedule: [],
+  //   };
+  //   onSave(newTutor);
+  //   onClose();
+  // };
+
+  // const isSaveDisabled = !tutorname || !tutorsch || !tutorsub || !reward;
+
+  // const handleSave = () => {
+  //   onSave({ tutorname, tutorsch, tutorsub, reward: parseInt(reward) || 0 });
+  //   onClose();
+  // };
 
   return (
     <div className="tutormodal">
@@ -23,11 +47,11 @@ const TutorModal = ({ onClose, onSave }) => {
         <label>과목</label>
         <input value={tutorsub} onChange={(e) => setSubject(e.target.value)} />
         <label>상점</label>
-        <input
-          type="number"
-          value={fee}
-          onChange={(e) => setFee(e.target.value)}
-        />
+        <input value={reward} onChange={(e) => setreward(e.target.value)} />
+
+        {/* <button onClick={handleSave} disabled={isSaveDisabled}>
+          저장
+        </button> */}
         <button onClick={handleSave}>저장</button>
         <button onClick={onClose}>닫기</button>
       </div>

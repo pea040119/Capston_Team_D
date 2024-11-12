@@ -17,14 +17,15 @@
 // export default TutorItem;
 
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import './TutorItem.css';
 
 const TutorItem = ({ tutorname, tutorsch, reward, tutorsub }) => {
-  const navigate = useNavigate();
-  const handleClick = () => {
-    navigate(`/TutorManager/${id}`);
-  };
+  // const navigate = useNavigate();
+
+  // const handleClick = () => {
+  //   navigate(`/TutorManager/${id}`);
+  // };
   return (
     <div
       className="TutorItem"
