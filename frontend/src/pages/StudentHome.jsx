@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Cbutton from '../components/Cbutton';
-import './Tutor.css';
+import './StudentHome.css';
 import Header from '../components/Header';
 import Box from '../components/Box';
 import rarrow from '../img/rightarrow.png';
@@ -109,12 +109,22 @@ const StudentHome = () => {
         />
       </div>
       <div className="box-container">
+        <Box text={'이번주 진도'} />
+        <div className="week-progress"></div>
+      </div>
+
+      <div className="box-container">
+        <div className="week-homework">
+          <Box text={'이번주 숙제 '} />
+        </div>
+      </div>
+      {/* <div className="box-container">
         <Box text={'이달의 수입'} />
         <div className="total-fee">
           <img src={won} alt="won" className="won" />
           <div>{totalFee.toLocaleString()}원</div>
         </div>
-      </div>
+      </div> */}
 
       <div className="calendar-container">
         <div className="calendar">

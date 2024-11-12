@@ -13,13 +13,13 @@
 }
 /* Tutor.css */
 .day-section {
-  border-bottom: 1px solid #c8e2e9; 
+  border-bottom: 1px solid #c8e2e9;
   padding-bottom: 280px;
   margin-bottom: 10px;
   border-left: 1px solid #c8e2e9;
 }
 .day-section:last-child {
-  border-right: 1px solid #c8e2e9; 
+  border-right: 1px solid #c8e2e9;
 }
 .day-content {
   margin-top: 10px;
@@ -27,11 +27,18 @@
   font-weight: 400;
   color: #333;
 }
-.box-container {
+
+.week-progress {
   position: absolute;
   top: 505px;
   left: 340px;
 }
+
+.week-homework {
+  position: relative;
+  left: 430px;
+}
+
 .small-text {
   font-size: 15px;
 }
