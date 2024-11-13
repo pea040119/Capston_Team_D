@@ -50,12 +50,12 @@
 }
 .logo {
   position: absolute;
-  top: 50px;
+  /* top: 50px; */
   left: 82px;
   width: 100px;
   height: 40px;
 }
-.StudentList {
+.TutorList {
   position: absolute;
   display: flex;
   flex-direction: column;
@@ -65,12 +65,12 @@
   left: 55px;
 }
 
-.total-fee img {
+.total-reward img {
   width: 30px;
   height: 30px;
   vertical-align: middle;
 }
-.total-fee {
+.total-reward {
   display: flex;
   margin-top: 29px;
   align-items: center;
@@ -98,4 +98,9 @@
 
 .content-item {
   margin: 4px 0;
+}
+
+.box-container {
+  display: flex;
+  gap: 250px;
 }
