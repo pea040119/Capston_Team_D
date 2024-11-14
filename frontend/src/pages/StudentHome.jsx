@@ -39,15 +39,28 @@ const Student = () => {
   }, []);
 
   const addTutor = (tutor) => {
-    setTutors([...tutors, tutor]);
+    const newSchedule = tutor.schedule.reduce((acc, sch) => {
+      const key = sch.time;
+      if (acc[key]) {
+        acc[key].push(sch.day);
+      } else {
+        acc[key] = [sch.day];
+      }
+      return acc;
+    }, {});
+
+    const formattedSchedule = Object.entries(newSchedule).map(
+      ([time, days]) => `${days.join(', ')} ${time}`
+    );
+
+    const updatedTutor = {
+      ...tutor,
+      formattedSchedule,
+    };
+
+    setTutors([...tutors, updatedTutor]);
   };
 
-  const calculateTopPosition = (time) => {
-    const [hour, minute] = time.split(':').map(Number);
-    const hourOffset = (hour - 9) * 20;
-    const minuteOffset = (minute / 60) * 20;
-    return hourOffset + minuteOffset;
-  };
   const changeWeek = (direction) => {
     const newDate = new Date(currentWeek);
     newDate.setDate(currentWeek.getDate() + direction * 7);
@@ -154,9 +167,8 @@ const Student = () => {
             <TutorItem
               key={index}
               tutorname={tutor.tutorname}
-              tutorsch={tutor.tutorsch}
+              tutorsch={(tutor.formattedSchedule || []).join(', ')}
               tutorsub={tutor.tutorsub}
-              reward={tutor.reward}
             />
           ))}
           <Button

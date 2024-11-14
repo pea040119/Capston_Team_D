@@ -1,5 +1,5 @@
 import './TutorItem.css';
-const TutorItem = ({ tutorname, tutorsch, reward, tutorsub }) => {
+const TutorItem = ({ tutorname, tutorsch, tutorsub }) => {
   return (
     <div className="TutorItem">
       <div className="tutorsub">{tutorsub}</div>
@@ -7,7 +7,6 @@ const TutorItem = ({ tutorname, tutorsch, reward, tutorsub }) => {
         <div className="tutorname">{tutorname}</div>
         <div className="tutorsch">{tutorsch}</div>
       </div>
-      <div className="reward">{reward}</div>
     </div>
   );
 };

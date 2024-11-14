@@ -8,7 +8,7 @@
   color: #40b3d2;
   font-size: 13px;
   font-family: Inter;
-  font-weight: 400;
+  font-weight: 700;
   word-wrap: break-word;
 }
 .info1 {
@@ -18,25 +18,16 @@
 
 .tutorname {
   color: black;
-  font-size: 16px;
+  font-size: 13px;
   font-family: Inter;
   font-weight: 500;
   word-wrap: break-word;
 }
 
 .tutorsch {
-  font-size: 14px;
   color: #94d2e4;
   font-size: 10px;
   font-family: Inter;
   font-weight: 500;
-  word-wrap: break-word;
-}
-
-.reward {
-  color: #40b3d2;
-  font-size: 13px;
-  font-family: Inter;
-  font-weight: 400;
   word-wrap: break-word;
 }
