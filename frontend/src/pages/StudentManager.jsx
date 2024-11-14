@@ -6,7 +6,7 @@ import Button from '../components/Button';
 import MiniCalendar from '../components/MiniCalendar';
 import TutorItem from '../components/TutorItem';
 import TutorModal from '../components/TutorModal';
-import './StudentManager.css';
+//import './StudentManager.css';
 
 const StudentManager = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);

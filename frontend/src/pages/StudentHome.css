@@ -100,7 +100,17 @@
   margin: 4px 0;
 }
 
-.box-container {
+.student-box-container {
   display: flex;
   gap: 250px;
+}
+.WeekProgress {
+  position: absolute;
+  top: 505px;
+  left: 340px;
+}
+.WeekAssignment {
+  position: absolute;
+  top: 505px;
+  left: 804px;
 }

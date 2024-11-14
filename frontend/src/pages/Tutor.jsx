@@ -108,7 +108,7 @@ const Tutor = () => {
           }
         />
       </div>
-      <div className="box-container">
+      <div className="fee-box-container">
         <Box text={'이달의 수입'} />
         <div className="total-fee">
           <img src={won} alt="won" className="won" />

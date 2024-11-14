@@ -85,9 +85,11 @@ const Student = () => {
           }
         />
       </div>
-      <div className="box-container">
-        <Box text={'이번주 진도'} />
-        <Box text={'이번주 과제'} />
+      <div className="WeekProgress">
+        <Box text={'이번 주 진도'} />
+      </div>
+      <div className="WeekAssignment">
+        <Box text={'이번 주 과제'} />
       </div>
 
       <div className="calendar-container">
@@ -161,8 +163,11 @@ const Student = () => {
             onClick={() => setIsModalOpen(true)}
             className="add-tutor-button"
             text={'등록'}
-            style={{ backgroundColor: '#6ac665', color: 'white' }}
+            style={{ backgroundColor: '#6ac665', color: 'white', left: 130 }}
           />
+          <div className="StudentAchievement">
+            <Box text={'이 달의 주요 성과'} />
+          </div>
         </div>
         {/* </div> */}
       </div>

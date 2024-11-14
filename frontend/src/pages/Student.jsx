@@ -8,7 +8,7 @@ import Header from '../components/Header';
 import logo from '../img/logo.png';
 import rarrow from '../img/rightarrow.png';
 import larrow from '../img/leftarrow.png';
-import './Student.css';
+//import './Student.css';
 import Cbutton from '../components/Cbutton';
 import DivBox from '../components/DivBox';
 

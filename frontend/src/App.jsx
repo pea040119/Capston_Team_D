@@ -4,7 +4,7 @@ import { Routes, Route, useNavigate } from 'react-router-dom';
 import Home from './pages/Home.jsx';
 import Login from './pages/Login.jsx';
 import Tutor from './pages/Tutor.jsx';
-// import Student from './pages/Student.jsx';
+//import Student from './pages/Student.jsx';
 import Parents from './pages/Parents.jsx';
 import Header from './components/Header.jsx';
 import TutorManager from './pages/TutorManager.jsx';
