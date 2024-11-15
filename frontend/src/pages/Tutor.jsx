@@ -12,6 +12,7 @@ import won from '../img/won.png';
 import Button from '../components/Button';
 import Content from '../components/Content';
 import MiniCalendar from '../components/MiniCalendar';
+import LogoutButton from '../components/LogoutButton';
 
 const Tutor = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -83,6 +84,7 @@ const Tutor = () => {
 
   return (
     <>
+      <LogoutButton />
       <MiniCalendar />
       <img src={logo} alt="logo" className="logo" />
       <div className="header-container">

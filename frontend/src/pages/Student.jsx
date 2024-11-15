@@ -11,6 +11,7 @@ import larrow from '../img/leftarrow.png';
 //import './Student.css';
 import Cbutton from '../components/Cbutton';
 import DivBox from '../components/DivBox';
+import LogoutButton from '../components/LogoutButton';
 
 const Student = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -45,6 +46,7 @@ const Student = () => {
   };
   return (
     <>
+      <LogoutButton />
       <div className="CalendarHeader">
         <Header
           title="11월 1주차"

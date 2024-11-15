@@ -11,6 +11,7 @@ import MiniCalendar from '../components/MiniCalendar';
 import TutorItem from '../components/TutorItem';
 import TutorModal from '../components/TutorModal';
 import './StudentHome.css';
+import LogoutButton from '../components/LogoutButton';
 
 const Student = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -73,6 +74,7 @@ const Student = () => {
   };
   return (
     <>
+      <LogoutButton />
       <MiniCalendar />
       <img src={logo} alt="logo" className="logo" />
       <div className="header-container">
