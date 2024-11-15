@@ -1,4 +1,4 @@
-import './content.css';
+import './Content.css';
 const colors = ['#94d2e4', '#e9eff0', '#f0a1a1', '#f0f1b3'];
 
 const Content = ({ time, name, onMove, index }) => {
