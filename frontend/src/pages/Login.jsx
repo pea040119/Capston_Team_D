@@ -20,38 +20,47 @@ const Login = () => {
     navigate('/signup');
   };
 
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-
-  //   console.log('아이디:', username);
-  //   console.log('비밀번호:', password);
-  //   // API 호출
-
-  //   if (role === 'teacher') {
-  //     navigate('/tutor'); // 선생님 역할일 때
-  //   } else if (role === 'student') {
-  //     navigate('/student'); // 학생 역할일 때
-  //   } else if (role === 'parent') {
-  //     navigate('/parents'); // 학부모 역할일 때
-  //   }
-  // };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('role:', role);
+    console.log("로그인 요청 시작")
 
-    // 임시로 로그인 성공
-    if (role === 'teacher') {
-      console.log('Navigating to /tutor');
-      navigate('/tutor');
-    } else if (role === 'student') {
-      console.log('Navigating to /student');
-      navigate('/student');
-    } else if (role === 'parent') {
-      console.log('Navigating to /parents');
-      navigate('/parents');
+    const payload = {
+      login_id: username,
+      login_pw: password,
+    }
+    // console.log('아이디:', username);
+    // console.log('비밀번호:', password);
+    try {
+      const response = await axios.post('http://127.0.0.1:8000/login/', payload);
+      console.log('로그인 성공:', response.data);  // 성공 로그
+      if (role === 'teacher') {
+        navigate('/tutor'); // 선생님 역할일 때
+      } else if (role === 'student') {
+        navigate('/student'); // 학생 역할일 때
+      } else if (role === 'parent') {
+        navigate('/parents'); // 학부모 역할일 때
+      }
+    } catch (error) {
+      console.error('로그인 실패:', error.response ? error.response.data : error.message);
     }
   };
+
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   console.log('role:', role);
+
+  //   // 임시로 로그인 성공
+  //   if (role === 'teacher') {
+  //     console.log('Navigating to /tutor');
+  //     navigate('/tutor');
+  //   } else if (role === 'student') {
+  //     console.log('Navigating to /student');
+  //     navigate('/student');
+  //   } else if (role === 'parent') {
+  //     console.log('Navigating to /parents');
+  //     navigate('/parents');
+  //   }
+  // };
 
   //   try {
   //     // 로그인 API 호출

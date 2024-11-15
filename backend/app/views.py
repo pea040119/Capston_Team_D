@@ -20,7 +20,7 @@ def signup_view(request):
     valid_roles = ['STUDENT', 'TEACHER', 'PARENT', 'student', 'teacher', 'parent']
     if role not in valid_roles:
         print("invalid role")
-        return Response({'message': '잘못된 역할입니다.'}, status=status.HTTP_400_BAD_REQUEST)
+        return Response({'message': '지정되지 않은 역할입니다.'}, status=status.HTTP_400_BAD_REQUEST)
 
     if UserAccount.objects.filter(login_id=login_id).exists():
         return Response({'message': '이미 존재하는 아이디입니다.'}, status=status.HTTP_400_BAD_REQUEST)
