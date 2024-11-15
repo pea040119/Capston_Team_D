@@ -7,6 +7,8 @@
 
 from django.db import models
 from datetime import datetime
+from django.utils import timezone
+
 
 
 
@@ -50,9 +52,9 @@ class UserAccount(models.Model):
     user_id = models.AutoField(primary_key=True)
     login_id = models.CharField(max_length=32, unique=True)
     login_pw = models.CharField(max_length=32)
-    name = models.CharField(max_length=20, unique=True)
+    name = models.CharField(max_length=20)
     role = models.CharField(max_length=10, choices=Role.choices, default=Role.STUDENT)
-    created_at = models.DateTimeField(auto_created=True)
+    created_at = models.DateTimeField(auto_now_add=True)
 
 
 class Parent(models.Model):
@@ -63,7 +65,7 @@ class Parent(models.Model):
 class Student(models.Model):
     student_id = models.AutoField(primary_key=True)
     user_id = models.ForeignKey(UserAccount, on_delete=models.CASCADE)
-    parent_id = models.ForeignKey(Parent, on_delete=models.SET_NULL)
+    parent_id = models.ForeignKey(Parent, on_delete=models.SET_NULL, null=True)
     grade = models.CharField(max_length=2, choices=Grade.choices, default=Grade.A)
     
     
@@ -79,19 +81,19 @@ class D_Day(models.Model):
     d_day_id = models.AutoField(primary_key=True)
     user_id = models.ForeignKey(UserAccount, on_delete=models.CASCADE)
     name = models.CharField(max_length=20)
-    date = models.DateTimeField(default=datetime.now())
+    date = models.DateTimeField(default=timezone.now)
 
 
 class Class(models.Model):
     class_id = models.AutoField(primary_key=True) 
-    tutor = models.ForeignKey(Tutor, on_delete=models.SET_NULL) 
-    student = models.ForeignKey(Student, on_delete=models.SET_NULL)
-    parent = models.ForeignKey(Parent, on_delete=models.SET_NULL)  
+    tutor = models.ForeignKey(Tutor, on_delete=models.SET_NULL, null=True) 
+    student = models.ForeignKey(Student, on_delete=models.SET_NULL, null=True)
+    parent = models.ForeignKey(Parent, on_delete=models.SET_NULL, null=True)  
     subject = models.CharField(max_length=50) 
     created_at = models.DateField(auto_now_add=True)  
-    point = models.IntegerField(dafault=0) 
+    point = models.IntegerField(default=0) 
     scheduled_classes = models.IntegerField(default=0)  
-    start_date = models.DateTimeField(default=datetime.now()) 
+    start_date = models.DateTimeField(default=timezone.now)
     payment_status = models.JSONField() 
     tuition = models.IntegerField(default=0)  
     
@@ -99,17 +101,17 @@ class Class(models.Model):
 class Daily(models.Model):
     daily_id = models.AutoField(primary_key=True)
     class_id = models.ForeignKey(Class, on_delete=models.CASCADE)
-    date = models.DateTimeField(default=datetime.now())
+    date = models.DateTimeField(default=timezone.now)
     contents = models.TextField()
     memo = models.TextField()
     
     
 class Assignment(models.Model):
     assignment_id = models.AutoField(primary_key=True)
-    tutor_id = models.ForeignKey(Tutor, on_delete=models.SET_NULL)
-    daily_id = models.ForeignKey(Daily, on_delete=models.SET_NULL)
+    tutor_id = models.ForeignKey(Tutor, on_delete=models.SET_NULL, null=True)
+    daily_id = models.ForeignKey(Daily, on_delete=models.SET_NULL, null=True)
     date = models.DateTimeField(auto_created=True)
-    due = models.DateTimeField(default=datetime.now())
+    due = models.DateTimeField(default=timezone.now) 
     contents = models.TextField()
     state = models.BooleanField(default=False)
     
