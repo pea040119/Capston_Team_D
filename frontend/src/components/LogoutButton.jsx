@@ -6,11 +6,9 @@ const LogoutButton = () => {
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    // 세션 데이터 초기화
-    localStorage.removeItem('authToken'); // 토큰 제거
+    localStorage.removeItem('authToken');
     console.log('로그아웃 성공');
 
-    // 로그인 페이지로 이동
     navigate('/login');
   };
 
