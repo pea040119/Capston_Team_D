@@ -18,7 +18,6 @@ function MiniCalendar() {
 
   return (
     <div className="minicalendar">
-      '
       <Calendar
         onChange={setDate}
         value={date}
