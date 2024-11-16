@@ -70,7 +70,7 @@ const StudentManager = () => {
         <Box text={'시험 성적표'} />
       </div>
 
-      <div className="Score-container">
+      <div className="StudentManager_Score-container">
         {/* 꺾은선 그래프만  */}
         <ScoreCharts lineTitle="" />
         <style>

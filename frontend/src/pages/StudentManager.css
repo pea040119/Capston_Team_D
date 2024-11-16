@@ -46,5 +46,14 @@
   position: absolute;
   top: 606px;
   left: 64px;
-  left: 54px;
+}
+.StudentManager_Score-container {
+  position: absolute;
+  top: 0px;
+  left: -480px;
+  width: 80px;
+}
+
+.StudentManager_Score-container .Bar_chart {
+  display: none;
 }

@@ -127,7 +127,7 @@ const ScoreCharts = ({ barTitle, lineTitle }) => {
       <div className="Line_chart">
         {/* Line Chart */}
         <h3>{lineTitle}</h3>
-        <ResponsiveContainer width="100%" height={185}>
+        <ResponsiveContainer width="100%" height="100%">
           <LineChart
             data={lineData}
             // margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
