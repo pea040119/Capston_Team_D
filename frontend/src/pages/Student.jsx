@@ -1,107 +1,190 @@
 import React, { useState, useEffect } from 'react';
-import Box from '../components/Box';
-import TutorItem from '../components/TutorItem';
-import TutorModal from '../components/TutorModal';
-import Button from '../components/Button';
-import Content from '../components/Content';
+import Cbutton from '../components/Cbutton';
 import Header from '../components/Header';
-import logo from '../img/logo.png';
+import Box from '../components/Box';
 import rarrow from '../img/rightarrow.png';
 import larrow from '../img/leftarrow.png';
-//import './Student.css';
-import Cbutton from '../components/Cbutton';
-import DivBox from '../components/DivBox';
+import logo from '../img/logo.png';
+import Button from '../components/Button';
+import Content from '../components/Content';
+import MiniCalendar from '../components/MiniCalendar';
+import TutorItem from '../components/TutorItem';
+import TutorModal from '../components/TutorModal';
+import './Student.css';
 import LogoutButton from '../components/LogoutButton';
 
 const Student = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [tutors, setTutors] = useState([]);
-  const [today, setToday] = useState(null);
+  const [students, setStudents] = useState([]);
+  const [currentWeek, setCurrentWeek] = useState(new Date());
+  const [today, setToday] = useState({ formattedDate: '', formattedDay: '' });
+
   const days = [
-    '일요일',
     '월요일',
     '화요일',
     '수요일',
     '목요일',
     '금요일',
     '토요일',
+    '일요일',
   ];
 
   useEffect(() => {
-    const todayIndex = new Date().getDay();
-    setToday(days[todayIndex]);
+    const date = new Date();
+    const dayIndex = date.getDay();
+    const dayName = days[(dayIndex + 6) % 7];
+    const formattedDate = `${date.getDate()}일`;
+    const formattedDay = `(${dayName[0]})`;
+    setToday({ formattedDate, formattedDay });
   }, []);
 
   const addTutor = (tutor) => {
-    setTutors([...tutors, tutor]);
+    const newSchedule = tutor.schedule.reduce((acc, sch) => {
+      const key = sch.time;
+      if (acc[key]) {
+        acc[key].push(sch.day);
+      } else {
+        acc[key] = [sch.day];
+      }
+      return acc;
+    }, {});
+
+    const formattedSchedule = Object.entries(newSchedule).map(
+      ([time, days]) => `${days.join(', ')} ${time}`
+    );
+
+    const updatedTutor = {
+      ...tutor,
+      formattedSchedule,
+    };
+
+    setTutors([...tutors, updatedTutor]);
   };
 
-  const studentschedule = {
-    월요일: [
-      { time: '09:00', name: '영어' },
-      { time: '11:00', name: '수학' },
-    ],
-    금요일: [{ time: '9:00', name: '과학' }],
-    // 다른 요일에 맞는 스케줄 추가
+  const changeWeek = (direction) => {
+    const newDate = new Date(currentWeek);
+    newDate.setDate(currentWeek.getDate() + direction * 7);
+    setCurrentWeek(newDate);
+  };
+
+  const getWeekOfMonth = (date) => {
+    const firstDay = new Date(date.getFullYear(), date.getMonth(), 1).getDay();
+    return Math.ceil((date.getDate() + firstDay) / 7);
   };
   return (
     <>
       <LogoutButton />
-      <div className="CalendarHeader">
+      <MiniCalendar />
+      <img src={logo} alt="logo" className="logo" />
+      <div className="header-container">
         <Header
-          title="11월 1주차"
-          leftchild={<img src={larrow} alt="Left" className="header-image" />}
-          rightchild={<img src={rarrow} alt="Right" className="header-image" />}
+          title={`${currentWeek.getMonth() + 1}월 ${getWeekOfMonth(
+            currentWeek
+          )}주차`}
+          leftchild={
+            <img
+              src={larrow}
+              alt="Left"
+              className="header-image"
+              onClick={() => changeWeek(-1)}
+            />
+          }
+          rightchild={
+            <img
+              src={rarrow}
+              alt="Right"
+              className="header-image"
+              onClick={() => changeWeek(1)}
+            />
+          }
         />
       </div>
-      <div className="calendar-container">
-        <div className="calendar">
-          {days.map((day) => (
-            <div key={day} className="day-section">
-              <Cbutton
-                text={day}
-                type={today === day ? 'selected' : 'default'}
-                onClick={() => {}}
-              />
-              <div className="day-content">
-                {studentschedule[day] &&
-                  studentschedule[day].map((item, index) => (
-                    <Content key={index} time={item.time} name={item.name} />
-                  ))}
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      <img src={logo} alt="logo" className="logo" />
       <div className="WeekProgress">
         <Box text={'이번 주 진도'} />
       </div>
       <div className="WeekAssignment">
         <Box text={'이번 주 과제'} />
       </div>
-      <div className="StudentAchievement">
-        <Box text={'이 달의 주요 성과'} />
-      </div>
-      <div className="TutorList">
-        <DivBox leftText={'과외 목록'} rightText={'상점'} type={'gray'} />
-        {tutors.map((tutor, index) => (
-          <TutorItem
-            key={index}
-            tutorname={tutor.tutorname}
-            tutorsch={tutor.tutorsch}
-            tutorsub={tutor.tutorsub}
-          />
-        ))}
-        <Button
-          onClick={() => setIsModalOpen(true)}
-          className="add-tutor-button"
-          text={'등록'}
-          style={{ backgroundColor: '#6ac995', color: 'white', left: 130 }}
-        />
-      </div>
 
+      <div className="calendar-container">
+        <div className="calendar">
+          {days.map((day, index) => {
+            const date = new Date(currentWeek);
+            date.setDate(
+              currentWeek.getDate() - ((date.getDay() + 6) % 7) + index
+            );
+            const formattedDate = `${date.getDate()}일`;
+            const formattedDay = `(${day[0]})`;
+
+            return (
+              <div key={day} className="day-section">
+                <Cbutton
+                  text={
+                    <>
+                      {formattedDate}
+                      <span className="small-text">{formattedDay}</span>
+                    </>
+                  }
+                  type={
+                    today?.formattedDate === formattedDate
+                      ? 'selected'
+                      : 'default'
+                  }
+                  onClick={() => {}}
+                />
+                <div
+                  className="day-content"
+                  style={{ position: 'relative', marginTop: '10px' }}
+                >
+                  {students.flatMap((student, studentIndex) =>
+                    student.schedule
+                      .filter((sch) => sch.day === day[0])
+                      .map((sch) => (
+                        <div
+                          key={`${student.name}-${sch.time}`}
+                          style={{
+                            position: 'absolute',
+                            top: `${calculateTopPosition(sch.time)}px`,
+                          }}
+                        >
+                          <Content
+                            time={sch.time}
+                            name={`${student.name} ${student.subject}`}
+                            index={studentIndex} // 색상 순환을 위해 studentIndex를 전달
+                            onMove={() => {}}
+                          />
+                        </div>
+                      ))
+                  )}
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+        <div className="TutorList">
+          <Box text={'과외 목록 | 상점'} type={'gray'} />
+          {tutors.map((tutor, index) => (
+            <TutorItem
+              key={index}
+              tutorname={tutor.tutorname}
+              tutorsch={(tutor.formattedSchedule || []).join(', ')}
+              tutorsub={tutor.tutorsub}
+            />
+          ))}
+          <Button
+            onClick={() => setIsModalOpen(true)}
+            className="add-tutor-button"
+            text={'등록'}
+            style={{ backgroundColor: '#6ac665', color: 'white', left: 130 }}
+          />
+          <div className="StudentAchievement">
+            <Box text={'이 달의 주요 성과'} />
+          </div>
+        </div>
+        {/* </div> */}
+      </div>
       {isModalOpen && (
         <TutorModal onClose={() => setIsModalOpen(false)} onSave={addTutor} />
       )}

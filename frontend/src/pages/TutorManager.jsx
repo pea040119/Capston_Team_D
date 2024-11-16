@@ -10,6 +10,7 @@ import StudentModal from '../components/StudentModal';
 import Box from '../components/Box';
 import Button from '../components/Button';
 import MiniCalendar from '../components/MiniCalendar.jsx';
+import LogoutButton from '../components/LogoutButton.jsx';
 
 const TutorManager = () => {
   const [progressData, setProgressData] = useState([]);
@@ -89,6 +90,7 @@ const TutorManager = () => {
 
   return (
     <>
+      <LogoutButton />
       <MiniCalendar />
       <div className="Progress-container" style={{ padding: '20px' }}>
         {/* Progress Section */}
