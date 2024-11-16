@@ -1,0 +1,69 @@
+.Bar_chart {
+  width: 529px;
+  height: 185px;
+  position: absolute;
+  top: 160px;
+  left: 555px;
+}
+/* 
+.edit {
+  position: absolute;
+
+  top: 750px;
+  left: 755px;
+} */
+.Line_chart {
+  width: 829px;
+  height: 185px;
+  position: absolute;
+  top: 450px;
+  left: 355px;
+}
+
+.exam_text {
+  font-size: 10px;
+  padding: 5px;
+  margin: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 60px;
+  position: relative;
+  left: 150px;
+}
+
+.exam_num {
+  font-size: 10px;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 60px;
+  position: relative;
+  left: 150px;
+}
+
+.exam_button {
+  left: 160px;
+  top: 2px;
+}
+
+.edit_button {
+  display: flex;
+  position: absolute;
+  left: 200px;
+  gap: 10px;
+  top: 70px;
+  padding: -10px auto;
+  margin: auto 10px;
+}
+.modal {
+  position: absolute;
+  left: 750px;
+  top: 300px;
+  gap: 15px;
+  width: 350px;
+  height: 20px;
+  align-items: center;
+  display: flex;
+  padding: 40px 100px;
+  background-color: rgba(0, 0, 0, 0.5);
+}

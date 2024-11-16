@@ -6,7 +6,9 @@ import Button from '../components/Button';
 import MiniCalendar from '../components/MiniCalendar';
 import TutorItem from '../components/TutorItem';
 import TutorModal from '../components/TutorModal';
+import ScoreCharts from '../components/ScoreChart.jsx';
 import './StudentManager.css';
+import '../components/ScoreChart_student.css';
 
 const StudentManager = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -69,6 +71,18 @@ const StudentManager = () => {
 
       <div className="StudentAchievement">
         <Box text={'이 달의 주요 성과'} />
+      </div>
+
+      <div className="Score-container">
+        {/* 꺾은선 그래프만  */}
+        <ScoreCharts lineTitle="" />
+        <style>
+          {`
+          .Score-container .Bar_chart {
+            display: none;
+          }
+        `}
+        </style>
       </div>
 
       <div>
