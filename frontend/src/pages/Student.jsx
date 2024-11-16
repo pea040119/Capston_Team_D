@@ -188,9 +188,8 @@ const Student = () => {
             text={'등록'}
             style={{ backgroundColor: '#6ac665', color: 'white', left: 130 }}
           />
-          <div className="StudentAchievement">
-            <StudentAch />
-          </div>
+
+          <StudentAch />
         </div>
         {/* </div> */}
       </div>

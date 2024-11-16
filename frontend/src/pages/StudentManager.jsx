@@ -9,6 +9,7 @@ import TutorModal from '../components/TutorModal';
 import ScoreCharts from '../components/ScoreChart.jsx';
 import './StudentManager.css';
 import '../components/ScoreChart_student.css';
+import StudentAch from '../components/StudentAch.jsx';
 
 const StudentManager = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -69,10 +70,6 @@ const StudentManager = () => {
         <Box text={'시험 성적표'} />
       </div>
 
-      <div className="StudentAchievement">
-        <Box text={'이 달의 주요 성과'} />
-      </div>
-
       <div className="Score-container">
         {/* 꺾은선 그래프만  */}
         <ScoreCharts lineTitle="" />
@@ -101,8 +98,9 @@ const StudentManager = () => {
             onClick={() => setIsModalOpen(true)}
             className="add-tutor-button"
             text={'등록'}
-            style={{ backgroundColor: '#6ac665', color: 'white' }}
+            style={{ backgroundColor: '#6ac665', color: 'white', left: 130 }}
           />
+          <StudentAch />
         </div>
         {/* </div> */}
       </div>

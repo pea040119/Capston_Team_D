@@ -1,5 +1,6 @@
 .student-ach {
   width: 200px;
+  margin-left: -10px;
 
   border: 2px solid #a6dcef;
   border-radius: 10px;
@@ -21,7 +22,7 @@
 }
 
 .input-section {
-  margin-top: 9px;
+  margin-top: 20px;
   display: flex;
   gap: 5px;
 
