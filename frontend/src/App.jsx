@@ -10,6 +10,7 @@ import Header from './components/Header.jsx';
 import TutorManager from './pages/TutorManager.jsx';
 import Signup from './pages/Signup.jsx';
 import StudentManager from './pages/StudentManager.jsx';
+import TutorCalendar from './pages/TutorCalendar.jsx';
 function App() {
   return (
     <>
@@ -24,6 +25,7 @@ function App() {
         <Route path="/studentmanager/:id" element={<StudentManager />} />
         <Route path="/parents" element={<Parents />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="tutorcalendar" element={<TutorCalendar />} />
       </Routes>
     </>
   );

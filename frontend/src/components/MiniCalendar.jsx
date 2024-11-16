@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import './MiniCalendar.css';
-
 function MiniCalendar() {
   const [date, setDate] = useState(new Date());
 
@@ -18,7 +17,8 @@ function MiniCalendar() {
   };
 
   return (
-    <div className="mini-calendar">
+    <div className="minicalendar">
+      '
       <Calendar
         onChange={setDate}
         value={date}

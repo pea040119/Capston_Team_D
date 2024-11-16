@@ -1,11 +1,7 @@
 /* 메인 달력 컨테이너 */
-.mainCalendar {
-  width: 100%;
-  max-width: 500px;
-}
 
 /* 개별 날짜 타일 스타일 */
-.tutorcalendarTile {
+.maincalendarTile {
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
@@ -26,22 +22,68 @@
   color: #555;
 }
 
-/* 월/연도 네비게이션 버튼 스타일 */
-.reactCalendarNavigationButton {
-  font-size: 1rem;
-  padding: 0.5rem;
-  font-weight: bold;
+.mainclendar.react-calendar {
+  position: absolute;
+  width: 2000px;
+  height: 1800px;
+  top: 120px;
+  left: 369px;
+
+  background: white;
+  border: none;
+  font-family: Arial, sans-serif;
+  text-align: center;
 }
-.tutorcalendar {
-  width: 850px;
-  height: 10px;
-  display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
-  position: relative;
-  height: 60px; /* 날짜 타일 높이 */
-  width: 60px; /* 날짜 타일 너비 */
-  border: 1px solid #e0e0e0; /* 각 날짜 경계 구분 */
-  box-sizing: border-box;
-  padding: 5px;
+.maincalender.react-calendar__navigation__label {
+  color: #40b3d2;
+  font-weight: bold;
+  font-size: 20px;
+  margin: 0 10px;
+}
+
+/* 요일 헤더 */
+.react-calendar__month-view__weekdays__weekday {
+  font-weight: bold;
+  color: #666;
+  border: none; /* 요일 밑줄 제거 */
+}
+
+/* 일요일 (S) 스타일 */
+.react-calendar__month-view__weekdays__weekday:nth-child(7) {
+  color: #ef7476; /* 일요일은 빨간색 */
+  border-bottom: none; /* 요일 줄 전체의 밑줄 제거 */
+}
+
+/* 토요일 (S) 스타일 */
+.react-calendar__month-view__weekdays__weekday:nth-child(6) {
+  color: #40b3d2; /* 토요일은 파란색 */
+}
+
+/* 날짜 스타일 */
+.react-calendar__tile {
+  padding: 10px;
+  color: #bbb;
+  text-align: center;
+  border-radius: 15px;
+  font-size: 12px;
+}
+.minicalendar .react-calendar__tile {
+  padding: 0.2em 0; /* 위아래 여백을 줄이고 좌우 여백을 조절 */
+  margin: 0; /* 날짜 타일의 바깥 여백 제거 */
+}
+
+/* 현재 주간 강조 */
+.highlight {
+  background-color: #bce0ff;
+  color: #40b3d2;
+  font-weight: bold;
+  border-radius: 15px;
+}
+
+/* 비활성화된 날짜 (이전/다음 달) 숨기기 */
+.react-calendar__tile--neighboringMonth {
+  visibility: hidden;
+}
+.react-calendar__month-view__weekdays__weekday abbr {
+  text-decoration: none;
 }

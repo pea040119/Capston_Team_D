@@ -3,9 +3,11 @@
   margin-left: -10px;
 
   border: 2px solid #a6dcef;
+
   border-radius: 10px;
   padding: 10px;
   background-color: #f8fcff;
+  position: relative; /* 위치 조정을 위해 추가 */
 }
 
 .ach-list {
