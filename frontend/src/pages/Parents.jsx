@@ -81,8 +81,14 @@ const Parents = () => {
       <div className="Parents_Progress">
         <Box text={'수업 진도'} />
       </div>
-      <div className="WeekAssignment">
-        <Box text={'이번 주 과제'} />
+      <div className="Parents_Memo">
+        <Box text={'메모'} />
+      </div>
+      <div className="Parents_fee">
+        <Box text={'수업료 지불'} />
+      </div>
+      <div className="Parents_Score">
+        <Box text={'성적'} />
       </div>
 
       <div className="calendar-container">
