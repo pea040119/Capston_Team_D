@@ -1,0 +1,57 @@
+.student-ach {
+  width: 200px;
+
+  border: 2px solid #a6dcef;
+  border-radius: 10px;
+  padding: 10px;
+  background-color: #f8fcff;
+}
+
+.ach-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+  font-weight: 500;
+}
+
+.ach-item {
+  font-size: 16px;
+  margin: 5px 0;
+}
+
+.input-section {
+  margin-top: 9px;
+  display: flex;
+  gap: 5px;
+
+  height: 30px;
+}
+
+.ach-input {
+  flex: 1;
+  width: 100px;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.ach-add-button {
+  background-color: #40b3de;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.ach-add-button:hover {
+  background-color: #40b3d2;
+}
+.delete-button {
+  border: none;
+  font-size: 12px;
+  cursor: pointer;
+  padding: 0;
+  margin-left: 10px;
+}

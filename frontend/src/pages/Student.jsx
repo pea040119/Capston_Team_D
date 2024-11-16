@@ -12,6 +12,7 @@ import TutorItem from '../components/TutorItem';
 import TutorModal from '../components/TutorModal';
 import './Student.css';
 import LogoutButton from '../components/LogoutButton';
+import StudentAch from '../components/StudentAch';
 
 const Student = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -72,6 +73,14 @@ const Student = () => {
     const firstDay = new Date(date.getFullYear(), date.getMonth(), 1).getDay();
     return Math.ceil((date.getDate() + firstDay) / 7);
   };
+
+  const calculateTopPosition = (time) => {
+    const [hour, minute] = time.split(':').map(Number);
+    const hourOffset = (hour - 9) * 20;
+    const minuteOffset = (minute / 60) * 20;
+    return hourOffset + minuteOffset;
+  };
+
   return (
     <>
       <LogoutButton />
@@ -137,12 +146,12 @@ const Student = () => {
                   className="day-content"
                   style={{ position: 'relative', marginTop: '10px' }}
                 >
-                  {students.flatMap((student, studentIndex) =>
-                    student.schedule
+                  {tutors.flatMap((tutor, tutorIndex) =>
+                    tutor.schedule
                       .filter((sch) => sch.day === day[0])
                       .map((sch) => (
                         <div
-                          key={`${student.name}-${sch.time}`}
+                          key={`${tutor.name}-${tutor.time}`}
                           style={{
                             position: 'absolute',
                             top: `${calculateTopPosition(sch.time)}px`,
@@ -150,8 +159,8 @@ const Student = () => {
                         >
                           <Content
                             time={sch.time}
-                            name={`${student.name} ${student.subject}`}
-                            index={studentIndex} // 색상 순환을 위해 studentIndex를 전달
+                            name={tutor.tutorsub}
+                            index={tutorIndex}
                             onMove={() => {}}
                           />
                         </div>
@@ -180,7 +189,7 @@ const Student = () => {
             style={{ backgroundColor: '#6ac665', color: 'white', left: 130 }}
           />
           <div className="StudentAchievement">
-            <Box text={'이 달의 주요 성과'} />
+            <StudentAch />
           </div>
         </div>
         {/* </div> */}
