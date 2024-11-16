@@ -6,7 +6,7 @@ import Button from '../components/Button';
 import MiniCalendar from '../components/MiniCalendar';
 import TutorItem from '../components/TutorItem';
 import TutorModal from '../components/TutorModal';
-//import './StudentManager.css';
+import './StudentManager.css';
 
 const StudentManager = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -59,13 +59,18 @@ const StudentManager = () => {
       <MiniCalendar />
       <img src={logo} alt="logo" className="logo" />
 
-      <div className="box-container">
+      <div className="StudentManager_box-container">
         <Box text={'이번주 진도'} />
         <Box text={'이번주 과제'} />
       </div>
       <div className="exam_result">
         <Box text={'시험 성적표'} />
       </div>
+
+      <div className="StudentAchievement">
+        <Box text={'이 달의 주요 성과'} />
+      </div>
+
       <div>
         <div className="TutorList">
           <Box text={'과외 목록 | 상점'} type={'gray'} />
