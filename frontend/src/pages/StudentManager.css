@@ -37,5 +37,13 @@
 .StudentAchievement {
   position: absolute;
   top: 606px;
-  left: 64px;
+  left: 54px;
+}
+
+.StudentManager_box-container {
+  position: absolute;
+  top: 80px;
+  left: 330px;
+  display: flex;
+  gap: 350px;
 }

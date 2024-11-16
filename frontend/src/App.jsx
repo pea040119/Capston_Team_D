@@ -21,7 +21,7 @@ function App() {
         <Route path="/tutor" element={<Tutor />} />
         {/* <Route path="/student" element={<Student />} /> */}
         <Route path="/student" element={<Student />} />
-        <Route path="/studentmanager" element={<StudentManager />} />
+        <Route path="/studentmanager/:id" element={<StudentManager />} />
         <Route path="/parents" element={<Parents />} />
         <Route path="/signup" element={<Signup />} />
       </Routes>
