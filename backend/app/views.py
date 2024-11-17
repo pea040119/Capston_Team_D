@@ -54,8 +54,8 @@ def login_view(request):
         return Response({'message': '아이디 또는 비밀번호가 올바르지 않습니다.'}, status=status.HTTP_400_BAD_REQUEST)
 
 
-@api_view(['POST'])
-def student(user):
+@api_view(['GET'])
+def student_schedule(user):
     student = table.Student.objects.get(user_id=user.user_id)
     try:
         classes = table.Class.objects.filter(student=student.student_id)
@@ -68,3 +68,41 @@ def student(user):
     d_days = [d_day.data for d_day in table.D_Day.objects.filter(user_id=user.user_id)]
     
     return Response({'message': '학생 페이지입니다.', 'time': times, 'd_day': d_days})
+
+
+@api_view(['POST'])
+def class_register(request):
+    subject = request.data.get('subject')
+    tutor_id = request.data.get("tutor_id")
+    _class = table.Class.objects.create(subject=subject, tutor_id=tutor_id)
+    return Response({'message': '수업 등록 성공!', 'class': _class.class_id}, status)
+
+
+@api_view(['POST'])
+def class_time_set(request):
+    class_id = request.data.get('class_id')
+    try:
+        _class = table.Class.objects.get(class_id=class_id)
+    except table.Class.DoesNotExist:
+        return Response({'message': '수업 정보가 없습니다.'}, status=status.HTTP_400_BAD_REQUEST)
+    day = request.data.get('day')
+    time = request.data.get('time')
+    daily = table.Classtime.objects.create(class_id=class_id, day=day, time=time)
+    
+
+@api_view(['POST'])
+def class_student_set(request):
+    class_id = request.data.get('class_id')
+    student_id = request.data.get('student_id')
+    try:
+        student = table.Student.objects.get(student_id=student_id)
+    except table.Student.DoesNotExist:
+        return Response({'message': '학생 정보가 없습니다.'}, status=status.HTTP_400_BAD_REQUEST)
+    try:
+        _class = table.Class.objects.get(class_id=class_id)
+    except table.Class.DoesNotExist:
+        return Response({'message': '수업 정보가 없습니다.'}, status=status.HTTP_400_BAD_REQUEST)
+    _class.student.add(student)
+    return Response({'message': '학생 등록 성공!'}, status)
+
+
