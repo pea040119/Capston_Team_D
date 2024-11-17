@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Button from '../components/Button';
-import logo from '../img/logo.png';
+import logo from '../img/new_logo.png';
 import home1 from '../img/home1.png';
 import home2 from '../img/home2.png';
 import home3 from '../img/home3.png';
@@ -91,18 +91,18 @@ const Home = () => {
             />
           </div>
         ))}
+      </div>
 
-        <div className="start-button-container">
-          <Button
-            text="시작하기!"
-            onClick={onClickStart}
-            style={{
-              backgroundColor: '#40B3DE',
-              color: 'white',
-              marginTop: '20px',
-            }}
-          />
-        </div>
+      <div className="start-button-container">
+        <Button
+          text="시작하기!"
+          onClick={onClickStart}
+          style={{
+            backgroundColor: '#40B3DE',
+            color: 'white',
+            marginTop: '20px',
+          }}
+        />
       </div>
     </div>
   );
