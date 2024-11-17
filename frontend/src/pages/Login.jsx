@@ -11,7 +11,7 @@ const Login = () => {
   const [role, setRole] = useState('teacher');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [error, setError] = useState(null);
+  const [errorMessage, setErrorMessage] = useState('');
   const isButtonDisabled = username === '' || password === '';
 
   const navigate = useNavigate();
@@ -22,24 +22,27 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("로그인 요청 시작")
 
     const payload = {
       login_id: username,
       login_pw: password,
-    }
+    };
+
     try {
       const response = await axios.post('http://127.0.0.1:8000/login/', payload);
-      console.log('로그인 성공:', response.data); 
+      console.log('로그인 성공:', response.data);
+      setErrorMessage('');
+
       if (role === 'teacher') {
-        navigate('/tutor'); 
+        navigate('/tutor');
       } else if (role === 'student') {
-        navigate('/student'); 
+        navigate('/student');
       } else if (role === 'parent') {
         navigate('/parents');
       }
     } catch (error) {
       console.error('로그인 실패:', error.response ? error.response.data : error.message);
+      setErrorMessage(error.response?.data.message || '로그인 실패: 아이디 또는 비밀번호가 올바르지 않습니다.');
     }
   };
 
@@ -114,12 +117,17 @@ const Login = () => {
             로그인
           </button>
         </div>
+
+        {/* 에러 메시지 부분에 className 추가 */}
+        {errorMessage && <p className="error-message">{errorMessage}</p>}
       </form>
+
 
       <div className="alternative-login">
         <p>다음으로 로그인하기</p>
-        <ImageGallery handleImageClick={handleImageClick} /> {}
+        <ImageGallery handleImageClick={handleImageClick} />
       </div>
+
       <div className="login-gosignup">
         <p onClick={onClickSignup} style={{ cursor: 'pointer' }}>
           회원가입
