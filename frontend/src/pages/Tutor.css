@@ -42,11 +42,10 @@
   left: 340px;
 }
 .logo {
-  position: absolute;
-  top: 50px;
-  left: 82px;
-  width: 100px;
-  height: 40px;
+  width: 200px !important;
+  height: auto !important;
+  object-fit: contain !important;
+  overflow: visible !important;
 }
 .StudentList {
   position: absolute;
@@ -92,4 +91,7 @@
 
 .content-item {
   margin: 4px 0;
+}
+.header-container {
+  position: absolute;
 }

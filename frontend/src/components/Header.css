@@ -7,7 +7,6 @@
   font-family: Inter;
   font-weight: 700;
   word-wrap: break-word;
-  gap: 20px;
 }
 .Header > div {
   display: flex;
@@ -16,24 +15,23 @@
 
 .Header .header_center {
   font-size: 35px;
-  word-wrap: break-word;
+
   white-space: nowrap;
 }
 
 .Header .header_left {
-  width: 25%;
+  width: 15%;
   cursor: pointer;
   background-color: white;
   border: none;
 }
 
 .Header .header_right {
-  width: 25%;
+  width: 15%;
   cursor: pointer;
   background-color: white;
   border: none;
 }
 .header-image {
-  width: 25px; 
-  height: auto;
+  width: 25px;
 }

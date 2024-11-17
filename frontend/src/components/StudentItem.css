@@ -2,6 +2,7 @@
   display: flex;
   align-items: center;
   gap: 18px;
+
   border-bottom: 2px solid #c8e2e9;
 }
 
@@ -21,7 +22,7 @@
   font-size: 16px;
   font-family: Inter;
   font-weight: 500;
-  word-wrap: break-word;
+  white-space: nowrap;
 }
 
 .sch {
@@ -30,7 +31,7 @@
   font-size: 10px;
   font-family: Inter;
   font-weight: 500;
-  word-wrap: break-word;
+  white-space: nowrap;
 }
 
 .info2 {
@@ -38,6 +39,7 @@
   font-size: 13px;
   font-family: Inter;
   font-weight: 400;
-  word-wrap: break-word;
+  white-space: nowrap;
+
   margin-left: auto;
 }

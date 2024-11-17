@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import Cbutton from '../components/Cbutton';
-import './Tutor.css';
+//import './Tutor.css';
 import Header from '../components/Header';
 import Box from '../components/Box';
 import rarrow from '../img/rightarrow.png';
 import larrow from '../img/leftarrow.png';
-import logo from '../img/logo.png';
+import logo from '../img/new_logo.png';
 import StudentItem from '../components/StudentItem';
 import StudentModal from '../components/StudentModal';
 import won from '../img/won.png';

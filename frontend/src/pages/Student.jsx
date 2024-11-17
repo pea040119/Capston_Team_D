@@ -10,7 +10,7 @@ import Content from '../components/Content';
 import MiniCalendar from '../components/MiniCalendar';
 import TutorItem from '../components/TutorItem';
 import TutorModal from '../components/TutorModal';
-import './Student.css';
+//import './Student.css';
 import LogoutButton from '../components/LogoutButton';
 import StudentAch from '../components/StudentAch';
 
@@ -86,7 +86,7 @@ const Student = () => {
       <LogoutButton />
       <MiniCalendar />
       <img src={logo} alt="logo" className="logo" />
-      <div className="header-container">
+      <div className="student-header-container">
         <Header
           title={`${currentWeek.getMonth() + 1}월 ${getWeekOfMonth(
             currentWeek

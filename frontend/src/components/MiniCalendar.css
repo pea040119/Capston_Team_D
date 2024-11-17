@@ -1,8 +1,6 @@
 /* 캘린더 기본 스타일 */
 .minicalendar {
-  position: absolute;
-  top: 141px;
-  left: 53px;
+  position: flex;
 }
 .react-calendar {
   width: 200px;
@@ -13,7 +11,7 @@
   font-family: Arial, sans-serif;
   text-align: center;
 }
-.minicalendar.react-calendar__navigation {
+.react-calendar__navigation {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -22,13 +20,13 @@
   color: #40b3d2;
   margin-bottom: 10px;
 }
-.minicalendar.react-calendar__navigation__label {
+.react-calendar__navigation__label {
   color: #40bed2 !important;
   font-weight: bold;
   font-size: 18px;
 }
 
-.minicalendar.react-calendar__navigation button {
+.react-calendar__navigation button {
   background: none;
   border: none;
   color: #40b3d2 !important;
