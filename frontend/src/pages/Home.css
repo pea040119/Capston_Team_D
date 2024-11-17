@@ -44,6 +44,16 @@
   right: 0;
 }
 
+/* 짝수번째 (index % 2 === 0) 아이템 텍스트 왼쪽, 이미지 오른쪽 */
+.left-text-right-image {
+  flex-direction: row;
+}
+
+/* 홀수번째 (index % 2 !== 0) 아이템 텍스트 오른쪽, 이미지 왼쪽 */
+.right-text-left-image {
+  flex-direction: row-reverse;
+}
+
 .scroll-container {
   display: flex;
   flex-direction: column;

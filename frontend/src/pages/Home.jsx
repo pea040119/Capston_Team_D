@@ -80,9 +80,8 @@ const Home = () => {
           <div
             key={index}
             ref={(el) => (sectionsRef.current[index] = el)}
-            className={`scroll-item ${
-              visibleSections.includes(index) ? 'visible' : ''
-            }`}
+            className={`scroll-item ${visibleSections.includes(index) ? 'visible' : ''
+              } ${index % 2 === 0 ? 'left-text-right-image' : 'right-text-left-image'}`}
           >
             <div className="left-text">{text}</div>
             <img
