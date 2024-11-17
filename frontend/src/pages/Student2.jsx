@@ -199,6 +199,7 @@ const Student2 = () => {
         {isModalOpen && (
           <TutorModal onClose={() => setIsModalOpen(false)} onSave={addTutor} />
         )}
+        <LogoutButton />
       </div>
     </>
   );
