@@ -4,31 +4,29 @@ html, body {
   width: 100%;
   height: 100%;
   display: flex;
-  justify-content: center;  /* 수평 중앙 정렬 */
-  align-items: flex-start;  /* 수직 시작 정렬 (필요 시 수정 가능) */
-  
+  justify-content: center; 
+  align-items: flex-start;
 }
 
-/* 로고 이미지 스타일 */
 .logo {
   width: 200px !important;
   height: auto !important;
   object-fit: contain !important;
-  overflow: visible !important;  /* 사용자 에이전트 스타일시트의 overflow 속성 제거 */
+  overflow: visible !important; 
 }
 
 .home-container {
   display: flex;
-  justify-content: flex-end; /* 버튼들을 오른쪽에 배치 */
-  align-items: center; /* 수직 중앙 정렬 */
+  justify-content: flex-end; 
+  align-items: center;
   gap: 20px;
   margin-top: 20px;
-  width: 100%;
+  width: 120%;
 }
 
 .home-container button {
-  width: 160px;
-  height: 50px;
+  width: 140px;
+  height: 45px;
   font-size: 18px;
   display: flex;
   align-items: center;
@@ -78,10 +76,10 @@ html, body {
 .scroll-item {
   display: flex;
   align-items: center;
-  justify-content: center; /* 아이템 중앙 정렬 */
-  gap: 50px;
+  justify-content: center; 
+  gap: 100px;
   padding: 0px;
-  width: 100%; /* 아이템이 가로로 화면을 꽉 채우도록 */
+  width: 130%; 
 }
 
 .scroll-item.visible {
