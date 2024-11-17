@@ -83,7 +83,7 @@ const StudentManager = () => {
       </div>
 
       <div>
-        <div className="TutorList">
+        <div className="M_TutorList">
           <Box text={'과외 목록 | 상점'} type={'gray'} />
           {tutors.map((tutor, index) => (
             <TutorItem
