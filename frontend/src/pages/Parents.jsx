@@ -4,7 +4,7 @@ import Header from '../components/Header';
 import Box from '../components/Box';
 import rarrow from '../img/rightarrow.png';
 import larrow from '../img/leftarrow.png';
-import logo from '../img/logo.png';
+import logo from '../img/new_logo.png';
 import Button from '../components/Button';
 import Content from '../components/Content';
 import MiniCalendar from '../components/MiniCalendar';
@@ -73,25 +73,10 @@ const Parents = () => {
     return Math.ceil((date.getDate() + firstDay) / 7);
   };
   return (
-    <>
-      <LogoutButton />
-      <MiniCalendar />
-      <img src={logo} alt="logo" className="logo" />
-
-      <div className="Parents_Progress">
-        <Box text={'수업 진도'} />
-      </div>
-      <div className="Parents_Memo">
-        <Box text={'메모'} />
-      </div>
-      <div className="Parents_fee">
-        <Box text={'수업료 지불'} />
-      </div>
-      <div className="Parents_Score">
-        <Box text={'성적'} />
-      </div>
-
-      <div className="calendar-container">
+    <div className="parents_container">
+      <div className="parents-left-section">
+        <img src={logo} alt="homelogo" className="homelogo" />
+        <MiniCalendar />
         <div className="TutorList">
           <Box text={'과외 목록 '} type={'gray'} />
           {/* 이부분도 학생 과외 목록에서 불러와야할 것 같아요 */}
@@ -104,12 +89,32 @@ const Parents = () => {
             />
           ))} */}
         </div>
-        {/* </div> */}
       </div>
+      <div className="parents-right-section">
+        <div className="Parents_Progress">
+          <Box text={'수업 진도'} />
+        </div>
+        <div className="Parents_Memo">
+          <Box text={'메모'} />
+        </div>
+      </div>
+      <div className="parents-right-section2">
+        <div className="Parents_fee">
+          <Box text={'수업료 지불'} />
+        </div>
+        <div className="Parents_Score">
+          <Box text={'성적'} />
+        </div>
+      </div>
+      <div className="phlogout">
+        <LogoutButton />
+      </div>
+
+      <div className="calendar-container">{/* </div> */}</div>
       {isModalOpen && (
         <TutorModal onClose={() => setIsModalOpen(false)} onSave={addTutor} />
       )}
-    </>
+    </div>
   );
 };
 

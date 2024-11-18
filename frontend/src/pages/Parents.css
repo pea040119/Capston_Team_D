@@ -1,25 +1,47 @@
-.Parents_Progress {
-  position: absolute;
-  background-color: var(--First-Blue, #40b3d2);
-  width: 174px;
-  height: 35px;
-  border-radius: 10px;
-  left: 315px;
-  top: 99px;
+.parents_container {
+  display: flex;
+  height: 100%;
+  justify-content: center;
 }
-.Parents_Memo {
-  position: absolute;
-  left: 315px;
-  top: 600px;
-}
+.parents-left-section {
+  flex: 1;
+  padding: 10px;
+  margin-left: -250px;
 
-.Parents_fee {
-  position: absolute;
-  left: 815px;
-  top: 99px;
+  flex-direction: column;
 }
-.Parents_Score {
-  position: absolute;
-  left: 815px;
-  top: 250px;
+.parents-right-section {
+  flex: 1;
+  margin-top: 50px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  margin-left: 140px;
+  gap: 400px;
+}
+.parents-right-section2 {
+  flex: 1;
+  margin-top: 50px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  margin-left: 180px;
+  gap: 120px;
+}
+.homelogo {
+  width: 180px;
+  margin-left: 20px;
+}
+.minicalendar {
+  margin-top: 40px;
+}
+.TutorList {
+  margin-top: 78px;
+  display: flex;
+  flex-direction: column;
+  gap: 19px;
+  position: relative;
+}
+.phlogout {
+  margin-left: 40px;
 }
