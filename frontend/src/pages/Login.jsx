@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import './Login.css';
+//import './Login.css';
 import kakaoLogo from '../img/kakao.png';
 import naverLogo from '../img/naver.png';
 import googleLogo from '../img/google.png';
@@ -29,7 +29,10 @@ const Login = () => {
     };
 
     try {
-      const response = await axios.post('http://127.0.0.1:8000/login/', payload);
+      const response = await axios.post(
+        'http://127.0.0.1:8000/login/',
+        payload
+      );
       console.log('로그인 성공:', response.data);
       setErrorMessage('');
 
@@ -41,8 +44,14 @@ const Login = () => {
         navigate('/parents');
       }
     } catch (error) {
-      console.error('로그인 실패:', error.response ? error.response.data : error.message);
-      setErrorMessage(error.response?.data.message || '로그인 실패: 아이디 또는 비밀번호가 올바르지 않습니다.');
+      console.error(
+        '로그인 실패:',
+        error.response ? error.response.data : error.message
+      );
+      setErrorMessage(
+        error.response?.data.message ||
+          '로그인 실패: 아이디 또는 비밀번호가 올바르지 않습니다.'
+      );
     }
   };
 
@@ -121,7 +130,6 @@ const Login = () => {
         {/* 에러 메시지 부분에 className 추가 */}
         {errorMessage && <p className="error-message">{errorMessage}</p>}
       </form>
-
 
       <div className="alternative-login">
         <p>다음으로 로그인하기</p>

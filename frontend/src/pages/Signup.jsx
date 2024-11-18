@@ -5,13 +5,13 @@ import kakaoLogo from '../img/kakao.png';
 import naverLogo from '../img/naver.png';
 import googleLogo from '../img/google.png';
 import logo from '../img/logo.png';
-import axios from 'axios'; 
+import axios from 'axios';
 
 const Signup = () => {
   const [role, setRole] = useState('teacher');
-  const [loginId, setLoginId] = useState(''); 
-  const [loginPw, setLoginPw] = useState(''); 
-  const [name, setName] = useState(''); 
+  const [loginId, setLoginId] = useState('');
+  const [loginPw, setLoginPw] = useState('');
+  const [name, setName] = useState('');
 
   const isButtonDisabled = loginId === '' || loginPw === '' || name === '';
 
@@ -23,26 +23,31 @@ const Signup = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("회원가입 요청 시작");
-  
+    console.log('회원가입 요청 시작');
+
     const payload = {
       login_id: loginId,
       login_pw: loginPw,
-      name: name,  
+      name: name,
       role: role,
     };
-  
-    console.log("회원가입 요청 데이터:", payload);  
-  
+
+    console.log('회원가입 요청 데이터:', payload);
+
     try {
-      const response = await axios.post('http://127.0.0.1:8000/signup/', payload);
-      console.log('회원가입 성공:', response.data);  
-      navigate('/login');  
+      const response = await axios.post(
+        'http://127.0.0.1:8000/signup/',
+        payload
+      );
+      console.log('회원가입 성공:', response.data);
+      navigate('/login');
     } catch (error) {
-      console.error('회원가입 실패:', error.response ? error.response.data : error.message);
+      console.error(
+        '회원가입 실패:',
+        error.response ? error.response.data : error.message
+      );
     }
   };
-  
 
   const handleImageClick = (platform) => {
     console.log(`${platform} 회원가입 클릭!`);
@@ -51,8 +56,8 @@ const Signup = () => {
   return (
     <div className="signup-container">
       <header className="signup-header">
+        <img src={logo} alt="signup-logo" className="signup-logo" />
         <h1 className="signup-header-title">올인과외</h1>
-        <img src={logo} alt="로고" className="signup-logo" />
       </header>
 
       <div className="signup-role-tabs">
