@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-//import './Login.css';
+import './Login.css';
 import kakaoLogo from '../img/kakao.png';
 import naverLogo from '../img/naver.png';
 import googleLogo from '../img/google.png';
@@ -77,8 +77,8 @@ const Login = () => {
   return (
     <div className="login-container">
       <header className="header">
+        <img src={logo} alt="login-logo" className="login-logo" />
         <h1 className="header-title">올인과외</h1>
-        <img src={logo} alt="로고" className="login-logo" />
       </header>
 
       <div className="role-tabs">
@@ -103,20 +103,24 @@ const Login = () => {
       </div>
 
       <form className="login-form" onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="아이디"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-          required
-        />
-        <input
-          type="password"
-          placeholder="비밀번호"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
+        <div className="idpw">
+          <input
+            type="text"
+            placeholder="아이디"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            required
+          />
+          <input
+            type="password"
+            placeholder="비밀번호"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+            className="login-password"
+          />
+        </div>
+
         <div className="button-container">
           <button
             type="submit"
@@ -134,12 +138,11 @@ const Login = () => {
       <div className="alternative-login">
         <p>다음으로 로그인하기</p>
         <ImageGallery handleImageClick={handleImageClick} />
-      </div>
-
-      <div className="login-gosignup">
-        <p onClick={onClickSignup} style={{ cursor: 'pointer' }}>
-          회원가입
-        </p>
+        <div className="login-gosignup">
+          <p onClick={onClickSignup} style={{ cursor: 'pointer' }}>
+            회원가입
+          </p>
+        </div>
       </div>
     </div>
   );
