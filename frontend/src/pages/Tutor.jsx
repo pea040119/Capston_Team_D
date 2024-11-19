@@ -173,6 +173,7 @@ const Tutor = () => {
             );
           })}
         </div>
+
         <div className="StudentList">
           <Box text={'학생 목록'} type={'gray'} />
           {students.map((student, index) => (
@@ -197,6 +198,7 @@ const Tutor = () => {
           </div>
         </div>
       </div>
+
       {isModalOpen && (
         <StudentModal
           onClose={() => setIsModalOpen(false)}

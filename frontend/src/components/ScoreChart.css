@@ -1,13 +1,18 @@
+.chart {
+  display: flex;
+  flex-direction: column; /* Stack elements vertically */
+  gap: 150px; /* Space between each chart */
+}
 .Bar_chart {
   width: 529px;
   height: 185px;
-  position: absolute;
-  top: 160px;
-  left: 755px;
+
+  /* top: 160px;
+  left: 755px; */
 }
 /* 
 .edit {
-  position: absolute;
+  position: flex;
 
   top: 750px;
   left: 755px;
@@ -15,55 +20,59 @@
 .Line_chart {
   width: 529px;
   height: 185px;
-  position: absolute;
-  top: 450px;
-  left: 755px;
+  /* position: flex; */
+  /* top: 450px;
+  left: 755px; */
 }
 
 .exam_text {
   font-size: 10px;
-  padding: 5px;
+  padding: 15px;
   margin: 10px;
   border: 1px solid #ccc;
   border-radius: 4px;
   width: 60px;
-  position: relative;
-  left: 150px;
+  /* position: relative; */
+  /* left: 150px; */
 }
 
 .exam_num {
   font-size: 10px;
-  padding: 5px;
+  padding: 15px;
   border: 1px solid #ccc;
   border-radius: 4px;
   width: 60px;
-  position: relative;
-  left: 150px;
+  /* position: relative; */
+  /* left: 150px; */
 }
 
-.exam_button {
+/* .exam_button {
   left: 160px;
   top: 2px;
+} */
+.input_box {
+  display: flex; /* Make it a flex container */
+  gap: 10px; /* Adds space between the inputs and button */
+  align-items: center; /* Align items vertically in the center */
 }
-
 .edit_button {
   display: flex;
-  position: absolute;
-  left: 200px;
-  gap: 10px;
-  top: 70px;
-  padding: -10px auto;
-  margin: auto 10px;
+  /* position: absolute; */
+  /* left: 200px; */
+  gap: 40px;
+  /* top: 70px; */
+  padding: 10px;
+  margin: 10px;
 }
 .modal {
-  position: absolute;
+  /* position: absolute;
   left: 750px;
-  top: 300px;
+  top: 300px; */
   gap: 15px;
   width: 350px;
   height: 20px;
-  align-items: center;
-  display: flex;
+  /* align-items: center; */
+  /* display: flex; */
   padding: 40px 100px;
   background-color: rgba(0, 0, 0, 0.5);
 }

@@ -1,59 +1,37 @@
-.add-tutor-button {
-  margin-top: 10px;
-  padding: 8px 12px;
-  font-size: 14px;
-  cursor: pointer;
-}
-.M_TutorList {
-  position: absolute;
+.StudentLayout {
   display: flex;
-  flex-direction: column;
-  gap: 19px;
-  top: 380px;
-  left: 55px;
-}
-.box-container {
-  position: absolute;
-  top: 30px;
-}
-.exam_result {
-  position: absolute;
-  top: 380px;
-  left: 330px;
-}
-
-.logo {
-  position: absolute;
-  top: 44px;
-  left: 94px;
-  width: 100px;
-  height: 40px;
-}
-.CalendarHeader {
-  position: absolute;
-  top: 42px;
-  left: 340px;
-}
-
-.StudentManager_box-container {
-  position: absolute;
-  top: 80px;
-  left: 330px;
-  display: flex;
-  gap: 350px;
-}
-.StudentAchievement {
-  position: absolute;
-  top: 606px;
-  left: 64px;
-}
-.StudentManager_Score-container {
-  position: absolute;
-  top: 0px;
-  left: -480px;
-  width: 80px;
+  gap: 60px;
 }
 
 .StudentManager_Score-container .Bar_chart {
   display: none;
+}
+.studentrow {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+
+  gap: 70px;
+}
+.weeknoti {
+  display: flex;
+  flex-direction: row;
+  gap: 500px;
+}
+
+.studentonerow {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+.studenttworow {
+  display: flex;
+  flex-direction: column;
+  gap: 100px;
+}
+
+.M_TutorList {
+  display: flex;
+  flex-direction: column;
+  gap: 19px;
 }

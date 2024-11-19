@@ -80,132 +80,135 @@ const ScoreCharts = ({ barTitle, lineTitle }) => {
 
   return (
     <div>
-      <div className="Bar_chart">
-        <div className="ScoreCharts">
-          {/* Bar Chart */}
-          <h3>{barTitle}</h3>
-          <ResponsiveContainer width="100%" height={185}>
-            <BarChart
-              data={barData}
-              //   margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
+      <div className="chart">
+        <div className="Bar_chart">
+          <div className="ScoreCharts">
+            {/* Bar Chart */}
+            <h3>{barTitle}</h3>
+            <ResponsiveContainer width="100%" height={185}>
+              <BarChart
+                data={barData}
+                //   margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
+              >
+                <CartesianGrid strokeDasharray="3 3" />
+                <XAxis dataKey="name" />
+                <YAxis />
+                <Tooltip />
+                <Legend />
+                <Bar
+                  dataKey="score"
+                  fill="#82ca9d"
+                  onClick={(e, index) => handleItemClick(e, index, 'bar')}
+                />
+              </BarChart>
+            </ResponsiveContainer>
+            <div className="input_box">
+              <div>
+                <input
+                  type="text"
+                  className="exam_text"
+                  value={newBarName}
+                  onChange={(e) => setNewBarName(e.target.value)}
+                  placeholder="시험 입력"
+                />
+                <input
+                  type="number"
+                  className="exam_num"
+                  value={newBarScore}
+                  onChange={(e) => setNewBarScore(e.target.value)}
+                  placeholder="점수 입력"
+                />
+                <button className="exam_button" onClick={addBarData}>
+                  성적 추가
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="Line_chart">
+          {/* Line Chart */}
+          <h3>{lineTitle}</h3>
+          <ResponsiveContainer width="100%" height="100%">
+            <LineChart
+              data={lineData}
+              // margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
+              onClick={(e) =>
+                e &&
+                handleItemClick(
+                  e.activePayload[0].payload,
+                  e.activeTooltipIndex,
+                  'line'
+                )
+              }
             >
               <CartesianGrid strokeDasharray="3 3" />
               <XAxis dataKey="name" />
               <YAxis />
               <Tooltip />
               <Legend />
-              <Bar
-                dataKey="score"
-                fill="#82ca9d"
-                onClick={(e, index) => handleItemClick(e, index, 'bar')}
-              />
-            </BarChart>
+              <Line type="monotone" dataKey="score" stroke="#ff7300" />
+            </LineChart>
           </ResponsiveContainer>
 
           <div>
             <input
               type="text"
               className="exam_text"
-              value={newBarName}
-              onChange={(e) => setNewBarName(e.target.value)}
+              value={newLineName}
+              onChange={(e) => setNewLineName(e.target.value)}
               placeholder="시험 입력"
             />
             <input
               type="number"
               className="exam_num"
-              value={newBarScore}
-              onChange={(e) => setNewBarScore(e.target.value)}
+              value={newLineScore}
+              onChange={(e) => setNewLineScore(e.target.value)}
               placeholder="점수 입력"
             />
-            <button className="exam_button" onClick={addBarData}>
+            <button className="exam_button" onClick={addLineData}>
               성적 추가
             </button>
           </div>
         </div>
-      </div>
 
-      <div className="Line_chart">
-        {/* Line Chart */}
-        <h3>{lineTitle}</h3>
-        <ResponsiveContainer width="100%" height="100%">
-          <LineChart
-            data={lineData}
-            // margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
-            onClick={(e) =>
-              e &&
-              handleItemClick(
-                e.activePayload[0].payload,
-                e.activeTooltipIndex,
-                'line'
-              )
-            }
-          >
-            <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="name" />
-            <YAxis />
-            <Tooltip />
-            <Legend />
-            <Line type="monotone" dataKey="score" stroke="#ff7300" />
-          </LineChart>
-        </ResponsiveContainer>
-
-        <div>
-          <input
-            type="text"
-            className="exam_text"
-            value={newLineName}
-            onChange={(e) => setNewLineName(e.target.value)}
-            placeholder="시험 입력"
-          />
-          <input
-            type="number"
-            className="exam_num"
-            value={newLineScore}
-            onChange={(e) => setNewLineScore(e.target.value)}
-            placeholder="점수 입력"
-          />
-          <button className="exam_button" onClick={addLineData}>
-            성적 추가
-          </button>
-        </div>
-      </div>
-
-      <div className="edit">
-        {/* Edit Modal */}
-        {editMode && (
-          <div className="modal">
-            {/* <h4>데이터 수정</h4> */}
-            <input
-              className="edit_text"
-              type="text"
-              value={currentItem.data.name}
-              onChange={(e) =>
-                setCurrentItem({
-                  ...currentItem,
-                  data: { ...currentItem.data, name: e.target.value },
-                })
-              }
-            />
-            <input
-              type="number"
-              value={currentItem.data.score}
-              onChange={(e) =>
-                setCurrentItem({
-                  ...currentItem,
-                  data: {
-                    ...currentItem.data,
-                    score: parseInt(e.target.value),
-                  },
-                })
-              }
-            />
-            <div className="edit_button">
-              <button onClick={saveChanges}>저장</button>
-              <button onClick={deleteItem}>삭제</button>
-              <button onClick={() => setEditMode(false)}>취소</button>
+        <div className="edit">
+          {/* Edit Modal */}
+          {editMode && (
+            <div className="modal">
+              {/* <h4>데이터 수정</h4> */}
+              <input
+                className="edit_text"
+                type="text"
+                value={currentItem.data.name}
+                onChange={(e) =>
+                  setCurrentItem({
+                    ...currentItem,
+                    data: { ...currentItem.data, name: e.target.value },
+                  })
+                }
+              />
+              <input
+                type="number"
+                value={currentItem.data.score}
+                onChange={(e) =>
+                  setCurrentItem({
+                    ...currentItem,
+                    data: {
+                      ...currentItem.data,
+                      score: parseInt(e.target.value),
+                    },
+                  })
+                }
+              />
+              <div className="edit_button">
+                <button onClick={saveChanges}>저장</button>
+                <button onClick={deleteItem}>삭제</button>
+                <button onClick={() => setEditMode(false)}>취소</button>
+              </div>
             </div>
-          </div>
-        )}
+          )}
+        </div>
       </div>
     </div>
   );
