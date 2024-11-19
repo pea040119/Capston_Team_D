@@ -1,82 +1,50 @@
-.calendar-container {
-  flex-direction: column;
+.studentcontainer {
+  display: flex;
+  height: 100%; /* 화면 전체 높이 */
   justify-content: center;
+}
+.homelogo {
+  width: 180px;
+  margin-left: 20px;
+}
+.left-section {
+  flex: 1;
+  padding: 10px;
 
-  margin-top: 80px;
+  flex-direction: column;
+}
+.right-section {
+  flex: 3;
+  margin-top: 20px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  margin-left: 15%;
+}
+.header-container {
+  margin-left: -60px;
+  margin-bottom: 15px;
+}
+.excalendar {
+  margin-top: 40px;
+}
+.TutorList {
+  margin-top: 48px !important;
+  display: flex;
+  flex-direction: column;
+  gap: 19px;
+  position: relative;
+}
+.calendar-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
 }
 
 .calendar {
   display: flex;
   gap: 0;
   padding: 0;
-  margin-right: 93px;
-}
-/* Tutor.css */
-.day-section {
-  border-bottom: 1px solid #c8e2e9;
-  padding-bottom: 280px;
-  margin-bottom: 10px;
-  border-left: 1px solid #c8e2e9;
-}
-.day-section:last-child {
-  border-right: 1px solid #c8e2e9;
-}
-.day-content {
-  margin-top: 10px;
-  font-size: 18px;
-  font-weight: 400;
-  color: #333;
-}
-
-.week-progress {
-  top: 505px;
-  left: 340px;
-}
-
-.week-homework {
-  position: relative;
-  left: 430px;
-}
-
-.small-text {
-  font-size: 15px;
-}
-
-.student-header-container {
-  position: absolute;
-  top: 42px;
-  left: 340px;
-}
-.logo {
-  position: absolute;
-  /* top: 50px; */
-  left: 82px;
-  width: 100px;
-  height: 40px;
-}
-.TutorList {
-  position: absolute;
-  display: flex;
-  flex-direction: column;
-  gap: 19px;
-  top: 377px;
-
-  left: 55px;
-}
-
-.total-reward img {
-  width: 30px;
-  height: 30px;
-  vertical-align: middle;
-}
-.total-reward {
-  display: flex;
-  margin-top: 29px;
-  align-items: center;
-  gap: 8px;
-  font-size: 30px;
-  font-family: Inter;
-  font-weight: 500;
 }
 
 .day-content {
@@ -98,18 +66,29 @@
 .content-item {
   margin: 4px 0;
 }
-
-.student-box-container {
+.small-text {
+  font-size: 15px;
+}
+.day-section {
+  border-bottom: 1px solid #c8e2e9;
+  padding-bottom: 300px;
+  margin-bottom: 10px;
+  border-left: 1px solid #c8e2e9;
+}
+.day-section:last-child {
+  border-right: 1px solid #c8e2e9;
+}
+.day-content {
+  margin-top: 10px;
+  font-size: 18px;
+  font-weight: 400;
+  color: #333;
+}
+.boxes {
   display: flex;
-  gap: 250px;
+  gap: 290px;
+  margin-top: 10px;
 }
-.WeekProgress {
-  position: absolute;
-  top: 505px;
-  left: 340px;
-}
-.WeekAssignment {
-  position: absolute;
-  top: 505px;
-  left: 804px;
+.studentach {
+  margin-top: 120px !important;
 }

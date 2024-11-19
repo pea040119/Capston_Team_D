@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Cbutton from '../components/Cbutton';
-//import './Tutor.css';
+import './Tutor.css';
 import Header from '../components/Header';
 import Box from '../components/Box';
 import rarrow from '../img/rightarrow.png';
@@ -11,9 +11,8 @@ import StudentModal from '../components/StudentModal';
 import won from '../img/won.png';
 import Button from '../components/Button';
 import Content from '../components/Content';
-import MiniCalendar from '../components/MiniCalendar';
 import LogoutButton from '../components/LogoutButton';
-
+import ExCalendar from '../components/Excalendar';
 const Tutor = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [students, setStudents] = useState([]);
@@ -84,127 +83,134 @@ const Tutor = () => {
 
   return (
     <>
-      <LogoutButton />
-      <MiniCalendar />
-      <img src={logo} alt="logo" className="logo" />
-      <div className="header-container">
-        <Header
-          title={`${currentWeek.getMonth() + 1}월 ${getWeekOfMonth(
-            currentWeek
-          )}주차`}
-          leftchild={
-            <img
-              src={larrow}
-              alt="Left"
-              className="header-image"
-              onClick={() => changeWeek(-1)}
-            />
-          }
-          rightchild={
-            <img
-              src={rarrow}
-              alt="Right"
-              className="header-image"
-              onClick={() => changeWeek(1)}
-            />
-          }
-        />
-      </div>
-      <div className="fee-box-container">
-        <Box text={'이달의 수입'} />
-        <div className="total-fee">
-          <img src={won} alt="won" className="won" />
-          <div>{totalFee.toLocaleString()}원</div>
-        </div>
-      </div>
+      <div className="tutorcontainer">
+        <div className="left-section">
+          <img src={logo} alt="homelogo" className="homelogo" />
 
-      <div className="calendar-container">
-        <div className="calendar">
-          {days.map((day, index) => {
-            const date = new Date(currentWeek);
-            date.setDate(
-              currentWeek.getDate() - ((date.getDay() + 6) % 7) + index
-            );
-            const formattedDate = `${date.getDate()}일`;
-            const formattedDay = `(${day[0]})`;
-
-            return (
-              <div key={day} className="day-section">
-                <Cbutton
-                  text={
-                    <>
-                      {formattedDate}
-                      <span className="small-text">{formattedDay}</span>
-                    </>
-                  }
-                  type={
-                    today?.formattedDate === formattedDate
-                      ? 'selected'
-                      : 'default'
-                  }
-                  onClick={() => {}}
-                />
-                <div
-                  className="day-content"
-                  style={{ position: 'relative', marginTop: '10px' }}
-                >
-                  {students.flatMap((student, studentIndex) =>
-                    student.schedule
-                      .filter((sch) => sch.day === day[0])
-                      .map((sch) => (
-                        <div
-                          key={`${student.name}-${sch.time}`}
-                          style={{
-                            position: 'absolute',
-                            top: `${calculateTopPosition(sch.time)}px`,
-                          }}
-                        >
-                          <Content
-                            time={sch.time}
-                            name={`${student.name} ${student.subject}`}
-                            index={studentIndex} // 색상 순환을 위해 studentIndex를 전달
-                            onMove={() => {}}
-                          />
-                        </div>
-                      ))
-                  )}
-                </div>
-              </div>
-            );
-          })}
-        </div>
-
-        <div className="StudentList">
-          <Box text={'학생 목록'} type={'gray'} />
-          {students.map((student, index) => (
-            <StudentItem
-              key={index}
-              name={student.name}
-              sch={(student.formattedSchedule || []).join(', ')}
-              grade={student.grade}
-              sub={student.subject}
-            />
-          ))}
-          <div className="ButtonContainer">
-            <Button
-              onClick={() => setIsModalOpen(true)}
-              text={'등록'}
-              style={{
-                backgroundColor: '#6ac665',
-                color: 'white',
-                left: 130,
-              }}
-            />
+          <div className="excalendar">
+            <ExCalendar />
+          </div>
+          <div className="StudentList">
+            <Box text={'학생 목록'} type={'gray'} />
+            {students.map((student, index) => (
+              <StudentItem
+                key={index}
+                name={student.name}
+                sch={(student.formattedSchedule || []).join(', ')}
+                grade={student.grade}
+                sub={student.subject}
+              />
+            ))}
+            <div className="ButtonContainer">
+              <Button
+                onClick={() => setIsModalOpen(true)}
+                text={'등록'}
+                style={{
+                  backgroundColor: '#6ac665',
+                  color: 'white',
+                  left: 130,
+                }}
+              />
+            </div>
           </div>
         </div>
-      </div>
+        <div className="right-section">
+          <div className="header-container">
+            <Header
+              title={`${currentWeek.getMonth() + 1}월 ${getWeekOfMonth(
+                currentWeek
+              )}주차`}
+              leftchild={
+                <img
+                  src={larrow}
+                  alt="Left"
+                  className="header-image"
+                  onClick={() => changeWeek(-1)}
+                />
+              }
+              rightchild={
+                <img
+                  src={rarrow}
+                  alt="Right"
+                  className="header-image"
+                  onClick={() => changeWeek(1)}
+                />
+              }
+            />
+          </div>
+          <div className="weekcalendar-container">
+            <div className="weekcalendar">
+              {days.map((day, index) => {
+                const date = new Date(currentWeek);
+                date.setDate(
+                  currentWeek.getDate() - ((date.getDay() + 6) % 7) + index
+                );
+                const formattedDate = `${date.getDate()}일`;
+                const formattedDay = `(${day[0]})`;
 
-      {isModalOpen && (
-        <StudentModal
-          onClose={() => setIsModalOpen(false)}
-          onSave={addStudent}
-        />
-      )}
+                return (
+                  <div key={day} className="weekday-section">
+                    <Cbutton
+                      text={
+                        <>
+                          {formattedDate}
+                          <span className="small-text">{formattedDay}</span>
+                        </>
+                      }
+                      type={
+                        today?.formattedDate === formattedDate
+                          ? 'selected'
+                          : 'default'
+                      }
+                      onClick={() => {}}
+                    />
+                    <div
+                      className="weekday-content"
+                      style={{ position: 'relative', marginTop: '10px' }}
+                    >
+                      {students.flatMap((student, studentIndex) =>
+                        student.schedule
+                          .filter((sch) => sch.day === day[0])
+                          .map((sch) => (
+                            <div
+                              key={`${student.name}-${sch.time}`}
+                              style={{
+                                position: 'absolute',
+                                top: `${calculateTopPosition(sch.time)}px`,
+                              }}
+                            >
+                              <Content
+                                time={sch.time}
+                                name={`${student.name} ${student.subject}`}
+                                index={studentIndex} // 색상 순환을 위해 studentIndex를 전달
+                                onMove={() => {}}
+                              />
+                            </div>
+                          ))
+                      )}
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+          <div className="fee-box-container">
+            <Box text={'이달의 수입'} />
+            <div className="total-fee">
+              <img src={won} alt="won" className="won" />
+              <div>{totalFee.toLocaleString()}원</div>
+            </div>
+          </div>
+        </div>
+        <LogoutButton />
+
+        {isModalOpen && (
+          <StudentModal
+            onClose={() => setIsModalOpen(false)}
+            onSave={addStudent}
+          />
+        )}
+      </div>
     </>
   );
 };

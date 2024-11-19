@@ -10,7 +10,7 @@ import Content from '../components/Content';
 import MiniCalendar from '../components/MiniCalendar';
 import TutorItem from '../components/TutorItem';
 import TutorModal from '../components/TutorModal';
-import './Parents.css';
+//import './Parents.css';
 import LogoutButton from '../components/LogoutButton';
 
 const Parents = () => {

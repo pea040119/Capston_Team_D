@@ -1,79 +1,56 @@
-.calendar-container {
+.tutorcontainer {
+  display: flex;
+  height: 100%; /* 화면 전체 높이 */
+  justify-content: center;
+}
+.homelogo {
+  width: 180px;
+  margin-left: 20px;
+}
+.left-section {
+  flex: 1;
+  padding: 10px;
+
+  flex-direction: column;
+}
+.right-section {
+  flex: 3;
+
+  margin-top: 20px;
+  padding: 10px;
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
-  margin-top: 80px;
+  margin-left: 15%;
 }
-
-.calendar {
-  display: flex;
-  gap: 0;
-  padding: 0;
-  margin-right: 93px;
-}
-/* Tutor.css */
-.day-section {
-  border-bottom: 1px solid #c8e2e9;
-  padding-bottom: 280px;
-  margin-bottom: 10px;
-  border-left: 1px solid #c8e2e9;
-}
-.day-section:last-child {
-  border-right: 1px solid #c8e2e9;
-}
-.day-content {
-  margin-top: 10px;
-  font-size: 18px;
-  font-weight: 400;
-  color: #333;
-}
-.fee-box-container {
-  position: absolute;
-  top: 505px;
-  left: 340px;
-}
-.small-text {
-  font-size: 15px;
-}
-
 .header-container {
-  position: absolute;
-  top: 42px;
-  left: 340px;
+  margin-left: -60px;
+  margin-bottom: 15px;
 }
-.logo {
-  width: 200px !important;
-  height: auto !important;
-  object-fit: contain !important;
-  overflow: visible !important;
+.excalendar {
+  margin-top: 40px;
 }
 .StudentList {
-  position: absolute;
+  margin-top: 48px !important;
   display: flex;
   flex-direction: column;
   gap: 19px;
-  top: 377px;
-
-  left: 55px;
+  position: relative;
 }
-
-.total-fee img {
-  width: 30px;
-  height: 30px;
-  vertical-align: middle;
-}
-.total-fee {
+.weekcalendar-container {
   display: flex;
-  margin-top: 29px;
-  align-items: center;
-  gap: 8px;
-  font-size: 30px;
-  font-family: Inter;
-  font-weight: 500;
-  margin-left: 30px;
+  flex-direction: column;
+  align-items: flex-end;
 }
 
-.day-content {
+.weekcalendar {
+  display: flex;
+  gap: 0;
+  padding: 0;
+}
+.fee-box-container {
+  margin-top: 20px;
+}
+.weekday-content {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
@@ -92,6 +69,36 @@
 .content-item {
   margin: 4px 0;
 }
-.header-container {
-  position: absolute;
+.small-text {
+  font-size: 15px;
+}
+.weekday-section {
+  border-bottom: 1px solid #c8e2e9;
+  padding-bottom: 300px;
+  margin-bottom: 10px;
+  border-left: 1px solid #c8e2e9;
+}
+.weekday-section:last-child {
+  border-right: 1px solid #c8e2e9;
+}
+.weekday-content {
+  margin-top: 10px;
+  font-size: 18px;
+  font-weight: 400;
+  color: #333;
+}
+.total-fee img {
+  width: 30px;
+  height: 30px;
+  vertical-align: middle;
+}
+.total-fee {
+  display: flex;
+  margin-top: 29px;
+  align-items: center;
+  gap: 8px;
+  font-size: 30px;
+  font-family: Inter;
+  font-weight: 500;
+  margin-left: 30px;
 }

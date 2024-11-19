@@ -9,7 +9,6 @@ import LogoutButton from '../components/LogoutButton';
 import Maincalendar from '../components/Maincalendar';
 
 const TutorCalendar = () => {
-  const [students, setStudents] = useState([]);
   return (
     <div className="tutorcalendar">
       <div className="tutor-calendar-left">
@@ -19,15 +18,6 @@ const TutorCalendar = () => {
         </div>
         <div className="StudentList">
           <Box text={'학생 목록'} type={'gray'} />
-          {students.map((student, index) => (
-            <StudentItem
-              key={index}
-              name={student.name}
-              sch={(student.formattedSchedule || []).join(', ')}
-              grade={student.grade}
-              sub={student.subject}
-            />
-          ))}
         </div>
       </div>
       <div className="tutormaincalendar">

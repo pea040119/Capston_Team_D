@@ -27,7 +27,7 @@ const Memo = () => {
         value={isEditing ? memo : savedMemo}
         onChange={(e) => setMemo(e.target.value)}
       />
-      <div className="button">
+      <div className="memobutton">
         {!isEditing && savedMemo && <button onClick={handleEdit}>수정</button>}{' '}
         {/* 수정 버튼 */}
         {isEditing ? (
