@@ -138,8 +138,8 @@ const Tutor2 = () => {
               }
             />
           </div>
-          <div className="calendar-container">
-            <div className="calendar">
+          <div className="weekcalendar-container">
+            <div className="weekcalendar">
               {days.map((day, index) => {
                 const date = new Date(currentWeek);
                 date.setDate(
@@ -149,7 +149,7 @@ const Tutor2 = () => {
                 const formattedDay = `(${day[0]})`;
 
                 return (
-                  <div key={day} className="day-section">
+                  <div key={day} className="weekday-section">
                     <Cbutton
                       text={
                         <>
@@ -165,7 +165,7 @@ const Tutor2 = () => {
                       onClick={() => {}}
                     />
                     <div
-                      className="day-content"
+                      className="weekday-content"
                       style={{ position: 'relative', marginTop: '10px' }}
                     >
                       {students.flatMap((student, studentIndex) =>

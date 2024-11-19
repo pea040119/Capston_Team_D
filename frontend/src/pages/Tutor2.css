@@ -36,13 +36,13 @@
   gap: 19px;
   position: relative;
 }
-.calendar-container {
+.weekcalendar-container {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
 }
 
-.calendar {
+.weekcalendar {
   display: flex;
   gap: 0;
   padding: 0;
@@ -50,7 +50,7 @@
 .fee-box-container {
   margin-top: 20px;
 }
-.day-content {
+.weekday-content {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
@@ -72,16 +72,16 @@
 .small-text {
   font-size: 15px;
 }
-.day-section {
+.weekday-section {
   border-bottom: 1px solid #c8e2e9;
   padding-bottom: 300px;
   margin-bottom: 10px;
   border-left: 1px solid #c8e2e9;
 }
-.day-section:last-child {
+.weekday-section:last-child {
   border-right: 1px solid #c8e2e9;
 }
-.day-content {
+.weekday-content {
   margin-top: 10px;
   font-size: 18px;
   font-weight: 400;
