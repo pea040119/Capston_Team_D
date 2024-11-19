@@ -10,7 +10,7 @@
   justify-content: space-between;
   align-items: center;
   font-size: 1.5em;
-  color: #00aaff;
+  color: #759097;
   margin-bottom: 10px;
 }
 
@@ -52,6 +52,6 @@
 
 .selected {
   background-color: #e0f7fa;
-  color: #00aaff;
+  color: #759097;
   font-weight: bold;
 }

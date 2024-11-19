@@ -1,0 +1,32 @@
+.tutorcalendar {
+  display: flex;
+  height: 100%; /* 화면 전체 높이 */
+  justify-content: center;
+}
+.homelogo {
+  width: 180px;
+  margin-left: 20px;
+}
+.left-section {
+  flex: 1;
+  padding: 10px;
+
+  flex-direction: column;
+}
+.weeksummary {
+  margin-top: 50px;
+}
+.StudentList {
+  margin-top: 188px;
+  display: flex;
+  flex-direction: column;
+  gap: 19px;
+  position: relative;
+}
+.tutormaincalendar {
+  margin-left: 60px;
+}
+.tutorcalendar_logout {
+  margin-left: -140px;
+  margin-top: -30px;
+}

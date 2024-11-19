@@ -11,9 +11,8 @@ import StudentModal from '../components/StudentModal';
 import won from '../img/won.png';
 import Button from '../components/Button';
 import Content from '../components/Content';
-import MiniCalendar from '../components/MiniCalendar';
 import LogoutButton from '../components/LogoutButton';
-
+import ExCalendar from '../components/Excalendar';
 const Tutor2 = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [students, setStudents] = useState([]);
@@ -87,7 +86,10 @@ const Tutor2 = () => {
       <div className="tutorcontainer">
         <div className="left-section">
           <img src={logo} alt="homelogo" className="homelogo" />
-          <MiniCalendar className="minicalendar" />
+
+          <div className="excalendar">
+            <ExCalendar />
+          </div>
           <div className="StudentList">
             <Box text={'학생 목록'} type={'gray'} />
             {students.map((student, index) => (
