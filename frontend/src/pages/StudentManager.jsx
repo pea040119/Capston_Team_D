@@ -10,6 +10,7 @@ import ScoreCharts from '../components/ScoreChart.jsx';
 import './StudentManager.css';
 import '../components/ScoreChart_student.css';
 import StudentAch from '../components/StudentAch.jsx';
+import ExCalendar from '../components/Excalendar.jsx';
 
 const StudentManager = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -63,7 +64,8 @@ const StudentManager = () => {
       <div div className="StudentLayout">
         <div className="studentrow">
           <div className="studentonerow">
-            <MiniCalendar />
+            <ExCalendar />
+            {/* <MiniCalendar/> */}
 
             <div>
               <div className="M_TutorList">
