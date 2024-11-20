@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Table from '../components/Table.jsx';
-import './TutorManager.css';
+//import './TutorManager.css';
 import '../components/ScoreChart.css';
 import '../components/Memo.css';
 import ScoreCharts from '../components/ScoreChart.jsx';

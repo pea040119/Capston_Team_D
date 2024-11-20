@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Cbutton from '../components/Cbutton';
 import Header from '../components/Header';
 import Box from '../components/Box';
@@ -17,7 +18,7 @@ import ExCalendar from '../components/Excalendar.jsx';
 const Student = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [tutors, setTutors] = useState([]);
-
+  const navigate = useNavigate();
   const [currentWeek, setCurrentWeek] = useState(new Date());
   const [today, setToday] = useState({ formattedDate: '', formattedDay: '' });
 
@@ -86,7 +87,10 @@ const Student = () => {
       <div className="studentcontainer">
         <div className="left-section">
           <img src={logo} alt="homelogo" className="homelogo" />
-          <div className="excalendar">
+          <div
+            className="excalendar"
+            onClick={() => navigate('/studentcalendar')}
+          >
             <ExCalendar />
           </div>
           <div className="TutorList">
