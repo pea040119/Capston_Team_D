@@ -12,6 +12,7 @@ const Signup = () => {
   const [loginId, setLoginId] = useState('');
   const [loginPw, setLoginPw] = useState('');
   const [name, setName] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
 
   const isButtonDisabled = loginId === '' || loginPw === '' || name === '';
 
@@ -45,6 +46,10 @@ const Signup = () => {
       console.error(
         '회원가입 실패:',
         error.response ? error.response.data : error.message
+      );
+      setErrorMessage(
+        error.response?.data.message ||
+        '회원가입 실패: 이미 존재하는 아이디입니다.'
       );
     }
   };
@@ -113,6 +118,10 @@ const Signup = () => {
           </button>
         </div>
       </form>
+
+      <div className="error-container">
+        {errorMessage && <p className="error-message">{errorMessage}</p>}
+      </div>
 
       <div className="signup-gologin">
         <p onClick={onClickLogin} style={{ cursor: 'pointer' }}>

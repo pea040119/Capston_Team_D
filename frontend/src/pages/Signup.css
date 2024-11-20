@@ -131,3 +131,16 @@
   height: 30px;
   cursor: pointer;
 }
+
+.error-container {
+  width: 30%;
+  height: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.error-message {
+  color: red;
+  font-size: 13px;
+}
