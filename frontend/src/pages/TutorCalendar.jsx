@@ -6,7 +6,7 @@ import TutorItem from '../components/TutorItem';
 import TutorModal from '../components/TutorModal';
 import './TutorCalendar.css';
 import LogoutButton from '../components/LogoutButton';
-import Maincalendar from '../components/Maincalendar';
+import Maincalendar from '../components/MainCalendar';
 
 const TutorCalendar = () => {
   return (

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './ExCalendar.css';
+import './Excalendar.css';
 
 const ExCalendar = () => {
   const [currentDate, setCurrentDate] = useState(new Date());
