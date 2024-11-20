@@ -90,8 +90,27 @@ const Tutor = () => {
           <div className="excalendar">
             <ExCalendar />
           </div>
+
+          <div className="ButtonContainer">
+            <Button
+              onClick={() => setIsModalOpen(true)}
+              text={'학생 등록'}
+              style={{
+                backgroundColor: '#94D2E4',
+                color: 'white',
+                width: '90px', // 원하는 너비 설정
+                fontSize: '15px', // 텍스트 크기 조정
+              }}
+            />
+          </div>
+
+          <div className='student-list-view'>
+            <p>학생 목록</p>
+          </div>
+
+
+
           <div className="StudentList">
-            <Box text={'학생 목록'} type={'gray'} />
             {students.map((student, index) => (
               <StudentItem
                 key={index}
@@ -101,17 +120,7 @@ const Tutor = () => {
                 sub={student.subject}
               />
             ))}
-            <div className="ButtonContainer">
-              <Button
-                onClick={() => setIsModalOpen(true)}
-                text={'등록'}
-                style={{
-                  backgroundColor: '#6ac665',
-                  color: 'white',
-                  left: 130,
-                }}
-              />
-            </div>
+
           </div>
         </div>
         <div className="right-section">
@@ -162,7 +171,7 @@ const Tutor = () => {
                           ? 'selected'
                           : 'default'
                       }
-                      onClick={() => {}}
+                      onClick={() => { }}
                     />
                     <div
                       className="weekday-content"
@@ -183,7 +192,7 @@ const Tutor = () => {
                                 time={sch.time}
                                 name={`${student.name} ${student.subject}`}
                                 index={studentIndex} // 색상 순환을 위해 studentIndex를 전달
-                                onMove={() => {}}
+                                onMove={() => { }}
                               />
                             </div>
                           ))
