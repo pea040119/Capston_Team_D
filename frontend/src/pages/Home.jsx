@@ -61,32 +61,34 @@ const Home = () => {
 
   return (
     <div>
-      <img src={logo} alt="logo" className="logo" />
+
       <div className="home-container">
-        <Button
-          text={'로그인'}
-          onClick={onClickLogin}
-          style={{ backgroundColor: '#40B3DE', color: 'white' }}
-        />
-        <Button
-          text={'회원가입'}
-          onClick={onClickSignup}
-          style={{ backgroundColor: '#e9eff0', color: '#40B3DE' }}
-        />
+        <img src={logo} alt="logo" className="logo" />
+        <div className="button-group">
+          <Button
+            text={'로그인'}
+            onClick={onClickLogin}
+            style={{ backgroundColor: '#40B3DE', color: 'white' }}
+          />
+          <Button
+            text={'회원가입'}
+            onClick={onClickSignup}
+            style={{ backgroundColor: '#e9eff0', color: '#40B3DE' }}
+          />
+        </div>
       </div>
+
 
       <div className="scroll-container">
         {texts.map((text, index) => (
           <div
             key={index}
             ref={(el) => (sectionsRef.current[index] = el)}
-            className={`scroll-item ${
-              visibleSections.includes(index) ? 'visible' : ''
-            } ${
-              index % 2 === 0
+            className={`scroll-item ${visibleSections.includes(index) ? 'visible' : ''
+              } ${index % 2 === 0
                 ? 'left-text-right-image'
                 : 'right-text-left-image'
-            }`}
+              }`}
           >
             <div className="left-text">{text}</div>
             <img
