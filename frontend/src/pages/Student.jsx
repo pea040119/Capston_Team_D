@@ -17,7 +17,7 @@ import ExCalendar from '../components/Excalendar.jsx';
 const Student = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [tutors, setTutors] = useState([]);
-  const [students, setStudents] = useState([]);
+
   const [currentWeek, setCurrentWeek] = useState(new Date());
   const [today, setToday] = useState({ formattedDate: '', formattedDay: '' });
 
