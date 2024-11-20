@@ -21,7 +21,7 @@
 }
 
 .studentmodal-content {
-  background-color: #e9eff0;
+  background-color: white;
   padding: 20px;
   width: 300px;
   height: 600px;
@@ -75,7 +75,7 @@
 }
 
 .schedule-input button:hover {
-  background-color: #35a1c8;
+  background-color: #94d2e4;
 }
 
 .schedule-list {
@@ -97,7 +97,7 @@
 }
 
 .studentmodal-content button:first-of-type {
-  background-color: #40b3de;
+  background-color: #94d2e4;
   color: #fff;
 }
 

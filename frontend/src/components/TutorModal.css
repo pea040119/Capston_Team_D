@@ -14,7 +14,7 @@
 }
 
 .tutormodal-content {
-  background-color: #e9eff0;
+  background-color: white;
   padding: 20px;
   width: 300px;
   height: 500px;
@@ -49,7 +49,7 @@
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  background-color: #40b3d2;
+  background-color: #94d2e4;
   color: white;
 }
 
@@ -59,8 +59,8 @@
   margin-left: 10px;
 }
 .add-tschedule-button {
-  background-color: #c8e2e9 !important;
-  color: #40b3d2;
+  background-color: #94d2e4 !important;
+  color: white !important;
   border: none;
   margin-bottom: 15px;
 
@@ -68,5 +68,5 @@
   cursor: pointer;
 }
 .t-save {
-  background-color: #40b3d2;
+  background-color: #94d2e4;
 }

@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
-import './MainCalendar.css';
-const MainCalendar = () => {
+import './BigCalendar.css';
+const BigCalendar = () => {
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [events, setEvents] = useState({});
   const [isAddingEvent, setIsAddingEvent] = useState(false);
@@ -63,14 +63,17 @@ const MainCalendar = () => {
       return { ...prevEvents, [dateKey]: updatedEvents };
     });
   };
-
   const formatTileContent = ({ date, view }) => {
     const dateKey = date.toISOString().split('T')[0];
+
+    // Check if there are events for this date
     if (view === 'month' && events[dateKey]) {
       return (
         <ul className="event-list">
           {events[dateKey].map((event, index) => (
-            <li key={index}>{event}</li>
+            <li key={index} className="calendar-event-item">
+              {event}
+            </li>
           ))}
         </ul>
       );
@@ -78,13 +81,23 @@ const MainCalendar = () => {
     return null;
   };
   const tileClassName = ({ date, view }) => {
+    const dateKey = date.toISOString().split('T')[0];
+
+    if (view === 'month' && events[dateKey] && date.getDay() === 6) {
+      return 'saturday-event';
+    }
+    // Check if there are events on this date
+    if (view === 'month' && events[dateKey]) {
+      return 'has-event'; // Add a custom CSS class
+    }
+
+    // Check if the day is Saturday
     if (view === 'month' && date.getDay() === 6) {
-      // Check if the day is Saturday
       return 'saturday-tile';
     }
+
     return null;
   };
-
   return (
     <div className="Maincalendar">
       <div className="main-calendar-container">
@@ -157,4 +170,4 @@ const MainCalendar = () => {
   );
 };
 
-export default MainCalendar;
+export default BigCalendar;

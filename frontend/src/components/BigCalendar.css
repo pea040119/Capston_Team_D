@@ -48,7 +48,9 @@
   box-shadow: 0 0 0 0.7px #ddd;
   border-radius: 0; /* 완전한 사각형 */
 }
-
+.react-calendar__tile--active {
+  background-color: #e9eff0 !important; /* 원하는 배경색 */
+}
 .react-calendar__month-view__days__day {
   text-align: center;
   vertical-align: middle;
@@ -120,6 +122,7 @@
   border-radius: 15px;
   cursor: pointer;
   margin-left: -180px;
+  font-weight: bold;
 }
 
 .add-event-form {
@@ -144,7 +147,7 @@
 .add-event-form button {
   padding: 10px 15px;
   font-size: 12px;
-  background-color: #40b2d2;
+  background-color: #94d2e4;
   color: white;
   border: none;
   border-radius: 5px;
@@ -152,7 +155,7 @@
 }
 
 .add-event-form button:hover {
-  background-color: #1976d2;
+  background-color: #40b3d2;
 }
 
 .event-list {
@@ -161,6 +164,7 @@
   margin: 0;
   font-size: 10px;
   color: #333;
+  font-weight: bold;
 }
 .event-list-container {
   width: 300px;
@@ -175,4 +179,22 @@
   font-size: 16px;
   gap: 10px;
   background-color: white;
+}
+.has-event {
+  font-weight: bold; /* 굵은 텍스트 */
+  position: relative; /* 추가 콘텐츠를 표시하기 위한 위치 설정 */
+}
+
+/* 일정이 있는 날짜 hover 효과 */
+
+.saturday-event {
+  color: #40b3d2;
+}
+.calendar-event-item {
+  background-color: #f0f1b3; /* Highlight color for events */
+  border-radius: 10px;
+  padding: 1px 2px;
+  margin-bottom: 2px;
+  font-size: 10px;
+  color: #333;
 }

@@ -9,7 +9,7 @@ import StudentItem from '../components/StudentItem';
 import StudentModal from '../components/StudentModal';
 import Box from '../components/Box';
 import Button from '../components/Button';
-import MiniCalendar from '../components/MiniCalendar.jsx';
+import ExCalendar from '../components/Excalendar.jsx';
 import LogoutButton from '../components/LogoutButton.jsx';
 import logo from '../img/new_logo.png';
 
@@ -97,7 +97,7 @@ const TutorManager = () => {
       <img src={logo} alt="logo" className="logo" />
       <div className="MainLayout">
         <div className="leftoption">
-          <MiniCalendar />
+          <ExCalendar />
           <div className="StudentList">
             <Box text={'학생 목록'} type={'gray'} />
             {students.map((student, index) => (
