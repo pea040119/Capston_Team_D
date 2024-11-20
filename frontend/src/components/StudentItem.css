@@ -1,45 +1,48 @@
 .StudentItem {
-  width: 85%;
+  width: 100%;
   display: flex;
   align-items: center;
   gap: 18px;
+  margin-top: 0px !important;
 
   border-bottom: 2px solid #c8e2e9;
 }
 
 .img_section img {
-  width: 30px;
-  height: 30px;
+  width: 45px;
+  height: 45px;
   border-radius: 50%;
 }
-.info1 {
+
+.info1 { 
   display: flex;
   flex-direction: column;
+  gap: 5px;
 }
 
 .name {
   align-self: start;
   color: black;
-  font-size: 16px;
+  font-size: 21px !important;
   font-family: Inter;
-  font-weight: 500;
+  font-weight: 400;
   white-space: nowrap;
 }
 
 .sch {
-  font-size: 14px;
+  font-size: 14px !important;
   color: #94d2e4;
   font-size: 10px;
   font-family: Inter;
-  font-weight: 500;
+  font-weight: 400;
   white-space: nowrap;
 }
 
 .info2 {
   color: #40b3d2;
-  font-size: 13px;
+  font-size: 18px !important;
   font-family: Inter;
-  font-weight: 400;
+  font-weight: 350;
   white-space: nowrap;
 
   margin-left: auto;

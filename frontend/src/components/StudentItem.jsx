@@ -9,7 +9,7 @@ const StudentItem = ({ id, name, sch, grade, sub }) => {
   const handleClick = () => {
     navigate(`/TutorManager/${id}`);
   };
-
+ 
   return (
     <div
       className="StudentItem"
