@@ -1,31 +1,36 @@
 .signup-container {
+  display: flex;
+  justify-content: center;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   padding: 2px;
   margin-top: 80px;
 }
 .signup-header {
   display: flex;
-  gap: 40px;
+  justify-content: center;
+  gap: 20px;
 }
 
 .signup-header-title {
   width: 199px;
   height: 61px;
+
   color: var(--First-Blue, #40b3d2);
   font-family: Inter;
   font-size: 50px;
   font-weight: 700;
   line-height: 60.51px;
-
+  letter-spacing: 0.1em;
+  text-align: left;
   white-space: nowrap;
 }
 
 .signup-logo {
-  width: 100px;
-  height: 50px;
-  margin-top: 45px;
+  width: 15%;
+  height: auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .signup-role-tabs {
@@ -42,7 +47,7 @@
   background: var(--Fourth-Blue, #e9eff0);
   border: none;
   cursor: pointer;
-  font-size: 14px;
+  font-size: 15px;
   color: #5f7a7f;
   transition: background-color 0.3s ease;
 }
@@ -51,7 +56,7 @@
   background: var(--Second-Blue, #94d2e4);
   color: #fff;
   font-family: Inter;
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 400;
 }
 
@@ -61,7 +66,7 @@
   flex-direction: column;
 
   gap: 10px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   border-radius: 5px;
   color: #759097;
 }
@@ -97,16 +102,20 @@
 .signup-button:disabled {
   background-color: #ccc;
 }
+
 .signup-gologin p {
-  font-size: 14px;
+  font-size: 15px;
   color: #40b3d2;
-  margin-left: 155px;
+  justify-content: center;
 }
 
 .signup-alternative-login p {
-  font-size: 12px;
+  font-size: 15px;
   color: #40b3d2;
-  margin-left: 110px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 
 .signup-icons {
@@ -114,7 +123,7 @@
   display: flex;
   justify-content: center;
 
-  gap: 30px;
+  gap: 50px;
 }
 
 .signup-icon {

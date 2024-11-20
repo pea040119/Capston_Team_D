@@ -137,14 +137,15 @@ const Login = () => {
       </div>
 
       <div className="alternative-login">
-        <p>다음으로 로그인하기</p>
-        <ImageGallery handleImageClick={handleImageClick} />
         <div className="login-gosignup">
           <p onClick={onClickSignup} style={{ cursor: 'pointer' }}>
             회원가입
           </p>
         </div>
+        <p>다음으로 로그인하기</p>
+        <ImageGallery handleImageClick={handleImageClick} />
       </div>
+
     </div>
   );
 };
@@ -152,13 +153,13 @@ const Login = () => {
 const ImageGallery = ({ handleImageClick }) => {
   return (
     <div className="icons">
-      <img
+      {/* <img
         src={kakaoLogo}
         alt="Kakao"
         className="icon"
         onClick={() => handleImageClick('Kakao')}
         style={{ cursor: 'pointer' }}
-      />
+      /> */}
       <img
         src={naverLogo}
         alt="Naver"

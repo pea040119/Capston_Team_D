@@ -4,7 +4,7 @@ import './Signup.css';
 import kakaoLogo from '../img/kakao.png';
 import naverLogo from '../img/naver.png';
 import googleLogo from '../img/google.png';
-import logo from '../img/logo.png';
+import logo from '../img/new_logo.png';
 import axios from 'axios';
 
 const Signup = () => {
@@ -116,7 +116,7 @@ const Signup = () => {
 
       <div className="signup-gologin">
         <p onClick={onClickLogin} style={{ cursor: 'pointer' }}>
-          Login
+          로그인으로 돌아가기
         </p>
       </div>
       <div className="signup-alternative-login">
@@ -130,13 +130,13 @@ const Signup = () => {
 const SignupImageGallery = ({ handleImageClick }) => {
   return (
     <div className="signup-icons">
-      <img
+      {/* <img
         src={kakaoLogo}
         alt="Kakao"
         className="signup-icon"
         onClick={() => handleImageClick('Kakao')}
         style={{ cursor: 'pointer' }}
-      />
+      /> */}
       <img
         src={naverLogo}
         alt="Naver"
