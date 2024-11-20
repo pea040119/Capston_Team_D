@@ -8,7 +8,8 @@
 }
 .header {
   display: flex;
-  gap: 40px;
+  justify-content: center;
+  gap: 20px;
 }
 .header-title {
   width: 199px;
@@ -25,9 +26,10 @@
 }
 
 .login-logo {
-  width: 100px;
-  height: 50px;
-  margin-top: 45px;
+  width: 15%;
+  height: auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .role-tabs {
@@ -44,7 +46,7 @@
   background: var(--Fourth-Blue, #e9eff0);
   border: none;
   cursor: pointer;
-  font-size: 14px;
+  font-size: 15px;
   color: #5f7a7f;
   transition: background-color 0.3s ease;
 }
@@ -57,7 +59,7 @@
   background: var(--Second-Blue, #94d2e4);
   color: #fff;
   font-family: Inter;
-  font-size: 14px;
+  font-size: 15px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
@@ -128,18 +130,21 @@
   width: 30px;
   height: 30px;
 }
+
 .login-gosignup p {
   font-size: 12px;
   color: #40b3d2;
   margin-left: 30px;
 }
+.error-container {
+  width: 30%;
+  height: 10px; /* 에러 메시지가 표시될 고정된 높이 */
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
 
-/* 에러 메시지 스타일 */
 .error-message {
   color: red;
-  font-size: 14px;
-  /*margin-top: 10px;  /* 상단 여백 추가 */
-  margin-bottom: 10px;
-  padding: 5px;
-  text-align: center;
+  font-size: 13px;
 }

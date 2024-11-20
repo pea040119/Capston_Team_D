@@ -5,7 +5,7 @@ import './Login.css';
 import kakaoLogo from '../img/kakao.png';
 import naverLogo from '../img/naver.png';
 import googleLogo from '../img/google.png';
-import logo from '../img/logo.png';
+import logo from '../img/new_logo.png';
 
 const Login = () => {
   const [role, setRole] = useState('teacher');
@@ -33,7 +33,7 @@ const Login = () => {
         'http://127.0.0.1:8000/login/',
         payload
       );
-      console.log('로그인 성공:', response.data);
+      //console.log('로그인 성공:', response.data);
       setErrorMessage('');
 
       if (role === 'teacher') {
@@ -50,13 +50,13 @@ const Login = () => {
       );
       setErrorMessage(
         error.response?.data.message ||
-          '로그인 실패: 아이디 또는 비밀번호가 올바르지 않습니다.'
+        '로그인 실패: 아이디 또는 비밀번호가 올바르지 않습니다.'
       );
     }
   };
 
   const handleImageClick = (platform) => {
-    console.log(`${platform} 로그인 클릭!`);
+    //console.log(`${platform} 로그인 클릭!`);
     if (platform === 'Naver') {
       const clientId = 'JeOy14JJKcJ6zoekf8XT';
       const redirectUri = 'http://localhost:3000/naver/callback';
@@ -130,10 +130,11 @@ const Login = () => {
             로그인
           </button>
         </div>
-
-        {/* 에러 메시지 부분에 className 추가 */}
-        {errorMessage && <p className="error-message">{errorMessage}</p>}
       </form>
+
+      <div className="error-container">
+        {errorMessage && <p className="error-message">{errorMessage}</p>}
+      </div>
 
       <div className="alternative-login">
         <p>다음으로 로그인하기</p>
