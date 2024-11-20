@@ -3,9 +3,9 @@
   height: 100%; /* 화면 전체 높이 */
   justify-content: center;
 }
-.homelogo {
+.schomelogo {
   width: 180px;
-  margin-left: 45px;
+  margin-left: 35px;
 }
 .studentcalendar-left {
   flex: 1;

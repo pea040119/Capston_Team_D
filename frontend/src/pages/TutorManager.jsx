@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Table from '../components/Table.jsx';
-//import './TutorManager.css';
+import './TutorManager.css';
 import '../components/ScoreChart.css';
 import '../components/Memo.css';
 import ScoreCharts from '../components/ScoreChart.jsx';
@@ -97,7 +97,7 @@ const TutorManager = () => {
 
       <div className="MainLayout">
         <div className="leftoption">
-          <img src={logo} alt="logo" className="logo" />
+          <img src={logo} alt="homelogo" className="homelogo" />
 
           <div className="excalendar">
             <ExCalendar />

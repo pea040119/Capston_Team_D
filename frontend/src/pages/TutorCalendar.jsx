@@ -38,7 +38,7 @@ const TutorCalendar = () => {
   return (
     <div className="tutorcalendar">
       <div className="tutor-calendar-left">
-        <img src={logo} alt="homelogo" className="homelogo" />
+        <img src={logo} alt="tchomelogo" className="tchomelogo" />
         <div className="weeksummary">
           <p>주간 요약</p>
         </div>

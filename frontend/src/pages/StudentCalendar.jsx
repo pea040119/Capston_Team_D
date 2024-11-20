@@ -158,7 +158,7 @@ const StudentCalendar = () => {
   return (
     <div className="studentcalendar">
       <div className="studentcalendar-left">
-        <img src={logo} alt="homelogo" className="homelogo" />
+        <img src={logo} alt="schomelogo" className="schomelogo" />
         <div className="d-day">
           <p>D-Day</p>
           <ul className="d-day-list">

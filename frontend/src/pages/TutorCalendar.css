@@ -3,9 +3,9 @@
   height: 100%; /* 화면 전체 높이 */
   justify-content: center;
 }
-.homelogo {
+.tchomelogo {
   width: 180px;
-  margin-left: 20px !important;
+  margin-left: 25px !important;
 }
 .left-section {
   flex: 1;
