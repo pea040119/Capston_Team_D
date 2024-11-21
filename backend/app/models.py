@@ -86,6 +86,7 @@ class Class(models.Model):
     class_id = models.AutoField(primary_key=True) 
     tutor_id = models.ForeignKey(Tutor, on_delete=models.SET_NULL, null=True) 
     student_id = models.ForeignKey(Student, on_delete=models.SET_NULL, null=True)
+    student_name = models.CharField(max_length=10, null=True)
     parent_id = models.ForeignKey(Parent, on_delete=models.SET_NULL, null=True)  
     subject = models.CharField(max_length=50) 
     grade = models.CharField(max_length=2, choices=Grade.choices, default=Grade.A)

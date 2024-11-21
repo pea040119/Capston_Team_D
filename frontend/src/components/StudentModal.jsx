@@ -45,6 +45,7 @@ const StudentModal = ({ onClose, onSave, tutorId }) => {
         tutor_id: tutorId,
         fee,
         grade,
+        name,
         schedule,
       });
       console.log("수업 등록 응답:", response.data); 
