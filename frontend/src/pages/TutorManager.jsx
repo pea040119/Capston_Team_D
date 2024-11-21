@@ -333,9 +333,10 @@ const TutorManager = () => {
             </div>
           </div>
         </div>
+        <LogoutButton />
       </div>
       {/* Student List Section */}
-      <LogoutButton />
+      
 
       {isModalOpen && (
         <StudentModal
