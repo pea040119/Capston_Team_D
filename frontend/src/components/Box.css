@@ -1,18 +1,19 @@
 .Box {
-  background-color: #40b3de;
+  background-color: #40B3D2;
   color: white;
-  font-size: 16px;
-  font-weight: 500;
-  width: 190px;
+  font-size: 17px;
+  font-weight: 400;
+  width: 120px;
   height: 35px;
-  border-radius: 10px;
+  border-radius: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
-  cursor: pointer;
+  cursor: default;
   font-family: 'Inter';
   white-space: nowrap;
 }
+
 .Box_gray {
   background-color: #e9eff0;
   color: #759097;

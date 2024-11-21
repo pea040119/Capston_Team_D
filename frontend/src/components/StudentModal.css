@@ -6,10 +6,11 @@
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
   display: flex;
-
   justify-content: center;
+  align-items: center;
   z-index: 1000;
 }
+
 .schedule-list li {
   display: flex;
   align-items: center;
@@ -23,9 +24,9 @@
 .studentmodal-content {
   background-color: white;
   padding: 20px;
-  width: 300px;
-  height: 600px;
-  max-width: 90%;
+  width: 40%;
+  height: 80%;
+  max-width: 100%;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   text-align: center;
@@ -33,17 +34,21 @@
 
 .studentmodal-content h2 {
   margin-top: 0;
+  color: #40b3d2;
+  font-size: 30px;
+  font-weight: 600;
 }
 
 .studentmodal-content label {
   display: block;
   margin-top: 10px;
-  font-weight: bold;
-  font-size: 14px;
+  font-weight: 400;
+  font-size: 20px;
+  color: #759097;
 }
 
 .studentmodal-content input {
-  width: calc(100% - 10px);
+  width: calc(100% - 40px);
   padding: 8px;
   margin-top: 5px;
   border-radius: 4px;
@@ -52,10 +57,11 @@
 }
 
 .schedule-input {
+  margin-top: 10px;
   display: flex;
   align-items: center;
-  gap: 10px;
-  margin-bottom: 10px;
+  justify-content: center;
+  gap: 5%;
 }
 
 .schedule-input select {
@@ -63,6 +69,10 @@
   border-radius: 4px;
   border: 1px solid #ccc;
   font-size: 14px;
+  width: 30%; 
+  padding: 10px; 
+  margin-right: 10px; 
+  justify-content: center;
 }
 
 .add-schedule-button {
@@ -79,14 +89,41 @@
 }
 
 .schedule-list {
-  list-style-type: none;
-  padding: 0;
-  margin: 10px 0;
-  max-height: 100px;
+  display: grid; 
+  grid-template-columns: 1fr auto 1fr auto; 
+  row-gap: 5px; 
+  column-gap: 15px;
+  max-height: 10%; 
   overflow-y: auto;
-  font-size: 14px;
-  color: #333;
+  padding: 5px 30px; 
+  font-size: 15px;
+  height:10%;
+  margin-left: 40px;
 }
+
+.schedule-list li {
+  display: contents;
+  gap: 16px;
+}
+
+.schedule-list li span {
+  text-align: left; 
+  white-space: nowrap; 
+}
+
+.remove-schedule-button {
+  margin-right: 70px;
+  cursor: pointer;
+  font-size: 12px;
+  color: #EF7476 !important;
+  width: 14%;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+}
+
 
 .studentmodal-content button {
   padding: 8px 16px;
@@ -110,18 +147,4 @@
 .studentmodal-content button:hover {
   opacity: 0.9;
 }
-.remove-schedule-button {
-  background-color: #ff5c5c;
-  border: none;
-  color: white;
-  margin-left: 8px;
-  cursor: pointer;
-  border-radius: 4px;
-  font-size: 12px;
-  width: 50px;
-  height: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  white-space: nowrap;
-}
+

@@ -1,12 +1,14 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import './LogoutButton.css';
+import { useUser } from '../context/UserContext'; 
 
 const LogoutButton = () => {
   const navigate = useNavigate();
+  const { logout } = useUser();
 
   const handleLogout = () => {
-    localStorage.removeItem('authToken');
+    logout();
     console.log('로그아웃 성공');
 
     navigate('/login');

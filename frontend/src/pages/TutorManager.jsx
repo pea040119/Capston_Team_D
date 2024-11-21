@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Table from '../components/Table.jsx';
 import './TutorManager.css';
 import '../components/ScoreChart.css';
@@ -12,6 +12,8 @@ import Button from '../components/Button';
 import ExCalendar from '../components/Excalendar.jsx';
 import LogoutButton from '../components/LogoutButton.jsx';
 import logo from '../img/new_logo.png';
+import { useUser } from '../context/UserContext';
+import axios from 'axios';
 
 const TutorManager = () => {
   const [progressData, setProgressData] = useState([]);
@@ -23,12 +25,55 @@ const TutorManager = () => {
   const [newHomeworkAssignment, setNewHomeworkAssignment] = useState('');
   const [newSupplementItem, setNewSupplementItem] = useState('');
 
-  const [students, setStudents] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const progressColumns = ['#', '내용', '진도', ''];
   const homeworkColumns = ['#', '숙제', '기간', ''];
   const supplementColumns = ['#', '준비물', ''];
+
+  const { user } = useUser();
+  const [tutorId, setTutorId] = useState(null);
+  const [students, setStudents] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    if (user) {
+      console.log('로그인된 유저:', user);
+      setTutorId(user.user_id);
+    } else {
+      console.log('로그인된 유저가 없습니다.');
+    }
+  }, [user]);
+
+  useEffect(() => {
+    if (tutorId) {
+      loadStudents(); // tutorId가 설정되면 학생 목록 로드
+    }
+  }, [tutorId]); // tutorId가 변경될 때마다 실행
+
+  const loadStudents = async () => {
+    try {
+      console.log('튜터 ID:', tutorId);
+      const response = await axios.get(`http://127.0.0.1:8000/tutor/student_list/${tutorId}/`);
+
+      console.log(response.data);
+      console.log(response.data.classes);
+
+
+      setStudents(response.data.classes);
+
+    } catch (error) {
+      console.error('학생 목록 로딩 실패:', error);
+    } finally {
+      setLoading(false);  // 데이터 로딩 완료
+    }
+  };
+
+  useEffect(() => {
+    if (students.length > 0) {
+      console.log("students:", students);  // students 값이 업데이트된 후 실행
+    }
+  }, [students]);
 
   const addProgressRow = () => {
     if (newProgressName && newProgressPeriod) {
@@ -85,16 +130,12 @@ const TutorManager = () => {
     setSupplementData(supplementData.filter((row) => row[0] !== id));
   };
 
-  const addStudent = (newStudent) => {
-    setStudents([...students, newStudent]);
-  };
+  // const addStudent = (newStudent) => {
+  //   setStudents([...students, newStudent]);
+  // };
 
   return (
     <>
-      <div className="LogoutContainer">
-        <LogoutButton />
-      </div>
-
       <div className="MainLayout">
         <div className="leftoption">
           <img src={logo} alt="homelogo" className="homelogo" />
@@ -120,15 +161,27 @@ const TutorManager = () => {
           </div>
 
           <div className="StudentList">
-            {students.map((student, index) => (
-              <StudentItem
-                key={index}
-                name={student.name}
-                sch={(student.formattedSchedule || []).join(', ')}
-                grade={student.grade}
-                sub={student.subject}
-              />
-            ))}
+            {loading ? (
+              <p>학생 목록을 불러오는 중입니다...</p>
+            ) : students.length > 0 ? (
+              students.map((student, index) => {
+                const formattedSchedule = student.scheduled_classes
+                  .map(({ day, time }) => `${day} ${time}`)
+                  .join(', ');
+
+                return (
+                  <StudentItem
+                    key={index}
+                    name={student.student_name}
+                    sch={formattedSchedule}
+                    grade={student.grade}
+                    sub={student.subject}
+                  />
+                );
+              })
+            ) : (
+              <p>학생 목록이 없습니다.</p>
+            )}
           </div>
           {/* 
             <div className="ButtonContainer"> */}
@@ -136,7 +189,7 @@ const TutorManager = () => {
           {/* </div> */}
         </div>
 
-        <div className="ContentArea">
+        <div className="right-section">
           <div className="row">
             <div className="onerow">
               <div className="Progress-container">
@@ -280,8 +333,10 @@ const TutorManager = () => {
             </div>
           </div>
         </div>
+        <LogoutButton />
       </div>
       {/* Student List Section */}
+      
 
       {isModalOpen && (
         <StudentModal

@@ -3,23 +3,55 @@ from django.shortcuts import redirect
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
-from app import models as table\
+from app import models as table
+from datetime import datetime
+
+DAY = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun']
     
     
 @api_view(['GET'])
-def week_schedule(user):
-    student = table.Student.objects.get(user_id=user.user_id)
+def week_schedule(request):
+    user_id = request.data.get('user_id')
     try:
-        classes = table.Class.objects.filter(student=student.student_id)
-    except table.Class.DoesNotExist:
-        classes = []
+        tutor = table.Tutor.objects.get(user_id=user_id)
+    except table.Student.DoesNotExist:
+        return Response({'message': '튜터 정보가 없습니다.'}, status=status.HTTP_400_BAD_REQUEST)
     
-    times = {}
+    classes = table.Class.objects.filter(tutor=tutor.tutor_id)
+    
+    
+    today = datetime.today()
+    day_of_week = today.weekday()
+    
+    today_classes = []
+    _classes = []
+    supply_classes = []
     for _class in classes:
-        times.update({_class.class_id: [(time.day, time.time) for time in table.Daily.objects.filter(class_id=_class.class_id)]})
-    d_days = [d_day.data for d_day in table.D_Day.objects.filter(user_id=user.user_id)]
+        class_times = table.Classtime.objects.filter(class_id=_class.class_id)
+        for class_time in class_times:
+            _class_data = {
+                'class_id': _class.class_id,
+                'subject': _class.subject,
+                'day': class_time.day,
+                'time': class_time.time,
+            }
+            student = table.Student.objects.get(student_id=_class.student_id)
+            _class_data['student'] = student.name
+            daily_entries = table.Daily.objects.filter(class_id=_class.class_id, date__date=today.date())
+            if daily_entries.exists():
+                _class_data['daily_id'] = daily_entries[0].daily_id
+            else:
+                _class_data['daily_id'] = None
+            
+            if class_time.day == DAY[day_of_week]:
+                today_classes.append(_class_data)
+            elif class_time.is_supply_class:
+                supply_classes.append(_class_data)
+            else:
+                _classes.append(_class)
+        
     
-    return Response({'message': '주간 시간표', 'time': times, 'd_day': d_days})
+    return Response({'message': '주간 수업 조회 성공!', 'today_classes': today_classes, 'classes': _classes, 'supply_classes': supply_classes})
 
 
 @api_view(['POST'])
@@ -74,3 +106,58 @@ def class_list(request):
     else:
         return Response({'message': '역할 정보가 없습니다.'}, status=status.HTTP_400_BAD_REQUEST)
     return Response({'message': '수업 리스트 조회 성공!', 'classes': classes})
+
+
+@api_view(['GET'])
+def class_get_assignment(request):
+    class_id = request.data.get('class_id')
+    try:
+        _class = table.Class.objects.get(class_id=class_id)
+    except table.Class.DoesNotExist:
+        return Response({'message': '수업 정보가 없습니다.'}, status=status.HTTP_400_BAD_REQUEST)
+    assignments = table.Assignment.objects.filter(class_id=class_id)
+    assignments_data = []
+    for assignment in assignments:
+        assignment_data = {
+            "assignment_id": assignment.assignment_id,
+            "date": assignment.date,
+            "due": assignment.due,
+            "contents": assignment.contents,
+            "state": assignment.state
+        }
+        assignments_data.append(assignment_data)
+    return Response({'message': '과제 조회 성공!', 'assignments': assignments})
+
+@api_view(["GET"])
+def class_get_score(request):
+    class_id = request.data.get('class_id')
+    try:
+        _class = table.Class.objects.get(class_id=class_id)
+    except table.Class.DoesNotExist:
+        return Response({'message': '수업 정보가 없습니다.'}, status=status.HTTP_400_BAD_REQUEST)
+    scores = table.Score.objects.filter(class_id=class_id)
+    scores_data = []
+    for score in scores:
+        score_data = {
+            "type": score.type,
+            "grade": score.grade
+        }
+        scores_data.append(score_data)
+    return Response({'message': '성적 조회 성공!', 'scores': scores_data})
+
+
+@api_view(['GET'])
+def class_get_progress(request):
+    class_id = request.data.get('class_id')
+    try:
+        _class = table.Class.objects.get(class_id=class_id)
+    except table.Class.DoesNotExist:
+        return Response({'message': '수업 정보가 없습니다.'}, status=status.HTTP_400_BAD_REQUEST)
+    progress = table.Progress.objects.filter(class_id=class_id)
+    progress_data = []
+    for _progress in progress:
+        progress_data.append({
+            "subject": _progress.subject,
+            "unit": _progress.unit
+        })
+    return Response({'message': '진도 조회 성공!', 'progress': progress_data})
