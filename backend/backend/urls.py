@@ -15,5 +15,6 @@ urlpatterns = [
     path("tutor/class_time_set", views.class_set_time, name='class_time_set'),
     path("tutor/class_student_set", views.class_set_student, name='class_student_set'),
     # path("tutor/week_schedule", views.week_schedule, name='week_schedule'),
+    path("tutor/daily", views.daily_create, name='daily'),
 ]
  

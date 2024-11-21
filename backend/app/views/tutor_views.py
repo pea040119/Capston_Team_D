@@ -14,7 +14,18 @@ def class_create(request):
     print(request.data)
     subject = request.data.get('subject')
     tutor_id = request.data.get("tutor_id")
-    _class = table.Class.objects.create(subject=subject, tutor_id=tutor_id)
+    fee = request.data.get('fee')
+    grade = request.data.get('grade')
+    name = request.data.get('name')
+    try:
+        tutor = table.Tutor.objects.get(tutor_id=tutor_id)
+    except table.Tutor.DoesNotExist:
+        return Response({'message': '튜터 정보가 없습니다.'}, status=status.HTTP_400_BAD_REQUEST)
+    try:
+        student_id = table.Student.objects.get(name=name)
+    except table.Student.DoesNotExist:
+        return Response({'message': '학생 정보가 없습니다.'}, status=status.HTTP_400_BAD_REQUEST)
+    _class = table.Class.objects.create(subject=subject, tutor_id=tutor_id, tutation=fee, grade = grade, student_id=student_id)
     return Response({'message': '수업 등록 성공!', 'class': _class.class_id}, status)
 
 # 수업 시간 설정 API
@@ -28,6 +39,7 @@ def class_set_time(request):
     day = request.data.get('day')
     time = request.data.get('time')
     daily = table.Classtime.objects.create(class_id=class_id, day=day, time=time)
+    return Response({'message': '수업 시간 설정 성공!'}, status)
 
     
 # 수업 - 학생 연결 API
@@ -43,7 +55,8 @@ def class_set_student(request):
         _class = table.Class.objects.get(class_id=class_id)
     except table.Class.DoesNotExist:
         return Response({'message': '수업 정보가 없습니다.'}, status=status.HTTP_400_BAD_REQUEST)
-    _class.student.add(student)
+    _class.student = student
+    _class.save()
     return Response({'message': '학생 등록 성공!'}, status)
 
 
@@ -59,7 +72,8 @@ def class_set_parent(request):
         _class = table.Class.objects.get(class_id=class_id)
     except table.Class.DoesNotExist:
         return Response({'message': '수업 정보가 없습니다.'}, status=status.HTTP_400_BAD_REQUEST)
-    _class.parent.add(parent)
+    _class.parent = parent
+    _class.save()
     return Response({'message': '부모 등록 성공!'}, status)
 
 
@@ -81,11 +95,15 @@ def daily_create(request):
     class_id = request.data.get('class_id')
     contents = request.data.get('contents')
     memo = request.data.get('memo')
+    assignment = request.data.get('assignment')
     try:
         _class = table.Class.objects.get(class_id=class_id)
     except table.Class.DoesNotExist:
         return Response({'message': '수업 정보가 없습니다.'}, status=status.HTTP_400_BAD_REQUEST)
     daily = table.Daily.objects.create(class_id=class_id, contents=contents, memo=memo)
+    if assignment == None or assignment == '':
+        table.Assignment.objects.create(tutor_id=_class.tutor_id, daily_id=daily.daily_id, contents=assignment, state=False)
+        
     return Response({'message': '일일 수업 생성 성공!'}, status)
 
 

@@ -66,7 +66,6 @@ class Student(models.Model):
     student_id = models.AutoField(primary_key=True)
     user_id = models.ForeignKey(UserAccount, on_delete=models.CASCADE)
     parent_id = models.ForeignKey(Parent, on_delete=models.SET_NULL, null=True)
-    grade = models.CharField(max_length=2, choices=Grade.choices, default=Grade.A)
     
     
 class Tutor(models.Model):
@@ -90,6 +89,7 @@ class Class(models.Model):
     student = models.ForeignKey(Student, on_delete=models.SET_NULL, null=True)
     parent = models.ForeignKey(Parent, on_delete=models.SET_NULL, null=True)  
     subject = models.CharField(max_length=50) 
+    grade = models.CharField(max_length=2, choices=Grade.choices, default=Grade.A)
     created_at = models.DateField(auto_now_add=True)  
     point = models.IntegerField(default=0) 
     scheduled_classes = models.IntegerField(default=0)  
