@@ -38,14 +38,13 @@ class Grade(models.TextChoices):
     
     
 class Day(models.TextChoices):
-    SUN = "sun", "Sun"
     MON = "mon", "Mon"
     TUE = "tue", "Tue"
     WED = "wed", "Wed"
     THU = "thu", "Thu"
     FRI = "fri", "Fri"
     SAT = "sat", "Sat"
-    
+    SUN = "sun", "Sun"
     
     
 class UserAccount(models.Model):
@@ -85,9 +84,9 @@ class D_Day(models.Model):
 
 class Class(models.Model):
     class_id = models.AutoField(primary_key=True) 
-    tutor = models.ForeignKey(Tutor, on_delete=models.SET_NULL, null=True) 
-    student = models.ForeignKey(Student, on_delete=models.SET_NULL, null=True)
-    parent = models.ForeignKey(Parent, on_delete=models.SET_NULL, null=True)  
+    tutor_id = models.ForeignKey(Tutor, on_delete=models.SET_NULL, null=True) 
+    student_id = models.ForeignKey(Student, on_delete=models.SET_NULL, null=True)
+    parent_id = models.ForeignKey(Parent, on_delete=models.SET_NULL, null=True)  
     subject = models.CharField(max_length=50) 
     grade = models.CharField(max_length=2, choices=Grade.choices, default=Grade.A)
     created_at = models.DateField(auto_now_add=True)  
@@ -142,6 +141,6 @@ class Supplements(models.Model):
 class Classtime(models.Model):
     classtime_id = models.AutoField(primary_key=True)
     class_id = models.ForeignKey(Class, on_delete=models.CASCADE)
-    type = models.CharField(max_length=20)
+    is_supply_class = models.BooleanField(default=False)
     day = models.CharField(max_length=3, choices=Day.choices, default=Day.MON)
     time = models.TimeField()
