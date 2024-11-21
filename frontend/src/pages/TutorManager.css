@@ -1,8 +1,40 @@
+html,
+body {
+  height: 100%;
+  overflow: hidden;
+}
+
+.MainLayout .leftoption .StudentList {
+  margin-top: 0px !important;
+}
+
 .MainLayout {
   display: flex;
-
-  gap: 60px;
+  height: 100%;
+  justify-content: center;
 }
+
+.homelogo {
+  width: 180px;
+  margin-left: 45px !important;
+}
+
+.leftoption {
+  flex: 1;
+  padding: 10px;
+  flex-direction: column;
+  margin: 0px;
+}
+
+.right-section {
+  flex: 3;
+  margin-top: 0px !important;
+  margin-left: 5% !important;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
 .Progress-section,
 .Homework-section,
 .classSupplement-container {
@@ -43,12 +75,7 @@
   gap: 80px;
 }
 
-.leftoption {
-  flex: 1;
-  padding: 10px;
-  flex-direction: column;
-  align-items: center;
-}
+
 
 button {
   position: relative;
