@@ -8,26 +8,32 @@ from app import models as table
 from app.serializers import UserAccountSerializer 
 
 
-#회원가입 API
 @api_view(['POST'])
 def signup_view(request):
+    print(request)
     login_id = request.data.get('login_id')
     login_pw = request.data.get('login_pw')
     name = request.data.get('name')
     role = request.data.get('role') 
-    
-    valid_roles = ['STUDENT', 'TEACHER', 'PARENT', 'student', 'teacher', 'parent']
-    if role not in valid_roles:
-        print("invalid role")
-        return Response({'message': '지정되지 않은 역할입니다.'}, status=status.HTTP_400_BAD_REQUEST)
 
     if table.UserAccount.objects.filter(login_id=login_id).exists():
-        print("existing id")
         return Response({'message': '이미 존재하는 아이디입니다.'}, status=status.HTTP_400_BAD_REQUEST)
-    
-    
+
     hashed_password = make_password(login_pw)
-    user = table.UserAccount.objects.create(login_id=login_id, login_pw=hashed_password, name=name, role=role)
+
+    user = table.UserAccount.objects.create(
+        login_id=login_id,
+        login_pw=hashed_password,
+        name=name,
+        role=role.upper()  
+    )
+
+    if role.upper() == 'PARENT':
+        table.Parent.objects.create(user_id=user)
+    elif role.upper() == 'STUDENT':
+        table.Student.objects.create(user_id=user)
+    elif role.upper() == 'TEACHER':  
+        table.Tutor.objects.create(user_id=user)
 
     user_data = UserAccountSerializer(user).data
     return Response({'message': '회원가입 성공!', 'user': user_data}, status=status.HTTP_201_CREATED)
@@ -47,7 +53,7 @@ def login_view(request):
 
     if check_password(login_pw, user.login_pw):
         user_data = {
-            'user_id': user.user_id,  # user_id 포함
+            'user_id': user.user_id,  
             'name': user.name,
             'role': user.role,
         }

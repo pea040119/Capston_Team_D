@@ -1,3 +1,7 @@
+/* DO NOT EDIT */
+/* DO NOT EDIT */
+/* DO NOT EDIT */
+
 html,
 body {
   margin: 0;
@@ -6,6 +10,7 @@ body {
   height: 100%;
   display: flex;
   justify-content: center; /* 수평 중앙 정렬 */
+  overflow: visible !important;
 }
 
 .logo {
