@@ -86,7 +86,6 @@ const StudentModal = ({ onClose, onSave }) => {
           ))}
         </ul>
 
-
         <label>학년</label>
         <input value={grade} onChange={(e) => setGrade(e.target.value)} />
         <label>과목</label>

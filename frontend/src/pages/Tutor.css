@@ -1,6 +1,7 @@
 html,
 body {
   height: 100%;
+  overflow: hidden;
 }
 
 .tutorcontainer {
@@ -40,10 +41,10 @@ body {
   margin-top: 0px !important;
   display: flex;
   flex-direction: column;
-  overflow-y: auto;
-  padding-right: 10px;
+  gap: 19px;
   position: relative;
-  max-height: 27%;
+  overflow-y: auto;
+  max-height: 40%;
 }
 
 .weekcalendar-container {
@@ -127,7 +128,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 20px;
+  margin-bottom: 20px !important;
 }
 
 .ButtonContainer {
