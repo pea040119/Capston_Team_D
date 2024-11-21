@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Cbutton from '../components/Cbutton';
 import Header from '../components/Header';
 import Box from '../components/Box';
@@ -17,7 +18,7 @@ import ExCalendar from '../components/Excalendar.jsx';
 const Student = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [tutors, setTutors] = useState([]);
-  const [students, setStudents] = useState([]);
+  const navigate = useNavigate();
   const [currentWeek, setCurrentWeek] = useState(new Date());
   const [today, setToday] = useState({ formattedDate: '', formattedDay: '' });
 
@@ -86,11 +87,28 @@ const Student = () => {
       <div className="studentcontainer">
         <div className="left-section">
           <img src={logo} alt="homelogo" className="homelogo" />
-          <div className="excalendar">
+          <div
+            className="excalendar"
+            onClick={() => navigate('/studentcalendar')}
+          >
             <ExCalendar />
           </div>
           <div className="TutorList">
-            <Box text={'과외 목록 | 상점'} type={'gray'} />
+            <div className="ButtonContainer">
+              <Button
+                onClick={() => setIsModalOpen(true)}
+                text={'과외 등록'}
+                style={{
+                  backgroundColor: '#94D2E4',
+                  color: 'white',
+                  width: '90px', // 원하는 너비 설정
+                  fontSize: '15px', // 텍스트 크기 조정
+                }}
+              />
+            </div>
+            <div className="tutor-list-view">
+              <p>선생님 목록 | 상점</p>
+            </div>
             {tutors.map((tutor, index) => (
               <TutorItem
                 key={index}
@@ -99,14 +117,10 @@ const Student = () => {
                 tutorsub={tutor.tutorsub}
               />
             ))}
-            <Button
-              onClick={() => setIsModalOpen(true)}
-              className="add-tutor-button"
-              text={'등록'}
-              style={{ backgroundColor: '#6ac665', color: 'white', left: 130 }}
-            />
           </div>
-          <StudentAch className="studentach" />
+          <div className="studenthomeach">
+            <StudentAch />
+          </div>
         </div>
         <div className="right-section">
           <div className="header-container">

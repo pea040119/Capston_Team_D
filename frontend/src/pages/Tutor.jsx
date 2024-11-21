@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom'; // useNavigate 추가
 import Cbutton from '../components/Cbutton';
 import './Tutor.css';
 import Header from '../components/Header';
@@ -19,6 +20,7 @@ const Tutor = () => {
   const [totalFee, setTotalFee] = useState(0);
   const [currentWeek, setCurrentWeek] = useState(new Date());
   const [today, setToday] = useState({ formattedDate: '', formattedDay: '' });
+  const navigate = useNavigate();
 
   const days = [
     '월요일',
@@ -87,7 +89,10 @@ const Tutor = () => {
         <div className="left-section">
           <img src={logo} alt="homelogo" className="homelogo" />
 
-          <div className="excalendar">
+          <div
+            className="excalendar"
+            onClick={() => navigate('/tutorcalendar')}
+          >
             <ExCalendar />
           </div>
 
@@ -104,11 +109,9 @@ const Tutor = () => {
             />
           </div>
 
-          <div className='student-list-view'>
+          <div className="student-list-view">
             <p>학생 목록</p>
           </div>
-
-
 
           <div className="StudentList">
             {students.map((student, index) => (
@@ -120,7 +123,6 @@ const Tutor = () => {
                 sub={student.subject}
               />
             ))}
-
           </div>
         </div>
         <div className="right-section">
@@ -171,7 +173,7 @@ const Tutor = () => {
                           ? 'selected'
                           : 'default'
                       }
-                      onClick={() => { }}
+                      onClick={() => {}}
                     />
                     <div
                       className="weekday-content"
@@ -192,7 +194,7 @@ const Tutor = () => {
                                 time={sch.time}
                                 name={`${student.name} ${student.subject}`}
                                 index={studentIndex} // 색상 순환을 위해 studentIndex를 전달
-                                onMove={() => { }}
+                                onMove={() => {}}
                               />
                             </div>
                           ))

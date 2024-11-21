@@ -9,7 +9,7 @@ import StudentItem from '../components/StudentItem';
 import StudentModal from '../components/StudentModal';
 import Box from '../components/Box';
 import Button from '../components/Button';
-import MiniCalendar from '../components/MiniCalendar.jsx';
+import ExCalendar from '../components/Excalendar.jsx';
 import LogoutButton from '../components/LogoutButton.jsx';
 import logo from '../img/new_logo.png';
 
@@ -94,12 +94,32 @@ const TutorManager = () => {
       <div className="LogoutContainer">
         <LogoutButton />
       </div>
-      <img src={logo} alt="logo" className="logo" />
+
       <div className="MainLayout">
         <div className="leftoption">
-          <MiniCalendar />
+          <img src={logo} alt="homelogo" className="homelogo" />
+
+          <div className="excalendar">
+            <ExCalendar />
+          </div>
+
+          <div className="ButtonContainer">
+            <Button
+              onClick={() => setIsModalOpen(true)}
+              text={'학생 등록'}
+              style={{
+                backgroundColor: '#94D2E4',
+                color: 'white',
+                width: '90px', // 원하는 너비 설정
+                fontSize: '15px', // 텍스트 크기 조정
+              }}
+            />
+          </div>
+          <div className="student-list-view">
+            <p>학생 목록</p>
+          </div>
+
           <div className="StudentList">
-            <Box text={'학생 목록'} type={'gray'} />
             {students.map((student, index) => (
               <StudentItem
                 key={index}
@@ -110,22 +130,16 @@ const TutorManager = () => {
               />
             ))}
           </div>
-          <div className="ButtonContainer">
-            <Button
-              onClick={() => setIsModalOpen(true)}
-              text={'등록'}
-              style={{
-                backgroundColor: '#6ac665',
-                color: 'white',
-                left: 130,
-              }}
-            />
-          </div>
+          {/* 
+            <div className="ButtonContainer"> */}
+
+          {/* </div> */}
         </div>
+
         <div className="ContentArea">
           <div className="row">
             <div className="onerow">
-              <div className="Progress-container" style={{ padding: '20px' }}>
+              <div className="Progress-container">
                 {/* Progress Section */}
                 <div className="Progress-section">
                   <Box text={'진도'} />
@@ -257,10 +271,11 @@ const TutorManager = () => {
               </div>
 
               <div className="Comment-container">
-                <div className="Comment_box1"></div>
-                <Box text={'메모'} />
-                {/* <p className="Comment">메모</p> */}
-                <Memo />
+                <div className="Comment_box1">
+                  <Box text={'메모'} />
+                  {/* <p className="Comment">메모</p> */}
+                  <Memo />
+                </div>
               </div>
             </div>
           </div>

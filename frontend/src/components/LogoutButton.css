@@ -19,3 +19,11 @@
 .logout-button:hover {
   background-color: #d32f2f;
 }
+.calendar-event-item {
+  background-color: #ffe4b5; /* Highlight color for events */
+  border-radius: 4px;
+  padding: 2px 5px;
+  margin-bottom: 2px;
+  font-size: 0.8em;
+  color: #333;
+}

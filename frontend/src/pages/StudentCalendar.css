@@ -1,0 +1,64 @@
+.studentcalendar {
+  display: flex;
+  height: 100%; /* 화면 전체 높이 */
+  justify-content: center;
+}
+.schomelogo {
+  width: 180px;
+  margin-left: 35px;
+}
+.studentcalendar-left {
+  flex: 1;
+  padding: 10px;
+
+  flex-direction: column;
+}
+.d-day p {
+  margin-top: 40px;
+  color: #759097;
+  font-family: Inter;
+  font-size: 18px;
+  width: 100%;
+  height: 38px;
+  border-radius: 10px;
+  background: #e9eff0;
+  border: none;
+  cursor: default;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.StudentList {
+  margin-top: 128px !important;
+  display: flex;
+  flex-direction: column;
+  gap: 19px;
+  position: relative;
+}
+.studentcalendar-right {
+  margin-left: 60px;
+}
+.tutorcalendar_logout {
+  margin-left: -140px;
+  margin-top: -30px;
+}
+.add-event-form {
+  margin-top: 20px;
+  display: flex;
+  gap: 10px;
+}
+.d-day-list {
+  color: #759097;
+  justify-content: center; /* 내용 가로 중앙 정렬 */
+  align-items: center;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+
+  margin-left: -22px;
+}
+.d-day-setting {
+  margin-left: 70px;
+  margin-top: 20px;
+}

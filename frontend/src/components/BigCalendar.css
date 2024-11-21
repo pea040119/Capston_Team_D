@@ -1,0 +1,201 @@
+.Maincalendar {
+  display: flex;
+  justify-content: center;
+}
+.main-calendar-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px;
+}
+
+.add-event-form {
+  margin-top: 20px;
+  display: flex;
+  gap: 10px;
+}
+
+.add-event-form input {
+  padding: 5px;
+  font-size: 16px;
+}
+
+.add-event-form button {
+  padding: 5px 10px;
+  font-size: 16px;
+}
+
+.events {
+  margin-top: 20px;
+  text-align: left;
+}
+.react-calendar {
+  width: 800px; /* 원하는 너비 설정 */
+  background: white;
+  border: none;
+  font-family: Arial, sans-serif;
+
+  font-size: 1.5rem; /* 텍스트 크기 조정 */
+}
+
+.react-calendar__tile {
+  display: flex; /* 플렉스박스를 사용해 위치 제어 */
+  justify-content: flex-start; /* 가로 방향: 왼쪽 정렬 */
+  align-items: flex-start; /* 세로 방향: 위쪽 정렬 */
+
+  height: 120px; /* 날짜 박스의 높이 */
+  box-shadow: none;
+  box-shadow: 0 0 0 0.7px #ddd;
+  border-radius: 0; /* 완전한 사각형 */
+}
+.react-calendar__tile--active {
+  background-color: #e9eff0 !important; /* 원하는 배경색 */
+}
+.react-calendar__month-view__days__day {
+  text-align: center;
+  vertical-align: middle;
+}
+.react-calendar__tile--now {
+  background: none; /* 강조 배경 제거 */
+  color: inherit; /* 텍스트 색상 원래대로 */
+  font-weight: normal; /* 굵기 초기화 */
+  border: none; /* 경계선 제거 */
+}
+.react-calendar__tile > abbr {
+  margin: 0; /* 날짜 텍스트 여백 초기화 */
+  font-size: 1rem; /* 텍스트 크기 조정 */
+}
+.react-calendar__navigation__label {
+  font-size: 50px; /* 글자 크기 조정 */
+  font-weight: bold; /* 글자 두께 조정 (선택 사항) */
+  color: #40bed2; /* 글자 색상 (선택 사항) */
+  background-color: white;
+}
+
+.react-calendar__month-view__weekdays abbr {
+  text-decoration: none;
+  font-weight: 800;
+}
+/* 일요일 (S) 스타일 */
+.react-calendar__month-view__weekdays__weekday:nth-child(7) {
+  color: #ef7476; /* 일요일은 빨간색 */
+  border-bottom: none; /* 요일 줄 전체의 밑줄 제거 */
+}
+
+/* 토요일 (S) 스타일 */
+.react-calendar__month-view__weekdays__weekday:nth-child(6) {
+  color: #40b3d2; /* 토요일은 파란색 */
+}
+
+.react-calendar__month-view__weekdays__weekday {
+  font-size: 40px;
+
+  color: #666; /* 요일 색 */
+  border: none; /* 요일 밑줄 제거 */
+  margin-bottom: 10px;
+}
+.react-calendar__navigation__arrow {
+  background-color: white; /* 화살표 배경색 */
+  color: #40b3d2; /* 화살표 색상 */
+  border: none; /* 기본 테두리 제거 */
+  border-radius: 5px; /* 버튼 둥글게 */
+  padding: 5px; /* 버튼 내부 여백 */
+  font-size: 40px; /* 화살표 크기 */
+  cursor: pointer;
+  margin-bottom: 15px;
+}
+/* 토요일만 스타일 지정 */
+.saturday-tile {
+  color: #40b3d2;
+}
+
+.add-event-button {
+  white-space: nowrap;
+  display: flex;
+  height: 40px;
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #e9eff0;
+  color: #40b3d2;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  margin-left: -180px;
+  font-weight: bold;
+}
+
+.add-event-form {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  white-space: nowrap;
+}
+
+.add-event-form input {
+  padding: 10px;
+  font-size: 20px;
+  margin-bottom: 10px;
+  width: 200px;
+  white-space: nowrap;
+}
+.ctext {
+  font-size: 12px !important;
+}
+
+.add-event-form button {
+  padding: 10px 15px;
+  font-size: 12px;
+  background-color: #94d2e4;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.add-event-form button:hover {
+  background-color: #40b3d2;
+}
+
+.event-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 10px;
+  color: #333;
+  font-weight: bold;
+}
+.event-list-container {
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  margin-left: 50px;
+  margin-top: 20px;
+}
+.event-item {
+  display: flex;
+  justify-content: space-between;
+
+  font-size: 16px;
+  gap: 10px;
+  background-color: white;
+}
+.has-event {
+  font-weight: bold; /* 굵은 텍스트 */
+  position: relative; /* 추가 콘텐츠를 표시하기 위한 위치 설정 */
+}
+
+/* 일정이 있는 날짜 hover 효과 */
+
+.saturday-event {
+  color: #40b3d2;
+}
+.calendar-event-item {
+  background-color: #f0f1b3; /* Highlight color for events */
+  border-radius: 10px;
+  padding: 1px 2px;
+  margin-bottom: 2px;
+  font-size: 10px;
+  color: #333;
+}

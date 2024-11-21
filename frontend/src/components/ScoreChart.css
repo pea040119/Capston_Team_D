@@ -52,8 +52,8 @@
 } */
 .input_box {
   display: flex; /* Make it a flex container */
-  gap: 10px; /* Adds space between the inputs and button */
-  align-items: center; /* Align items vertically in the center */
+  gap: 10px;
+  align-items: center;
 }
 .edit_button {
   display: flex;
@@ -63,16 +63,18 @@
   /* top: 70px; */
   padding: 10px;
   margin: 10px;
+  /* align-items: center; */
 }
-.modal {
-  /* position: absolute;
-  left: 750px;
-  top: 300px; */
+.score_modal {
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
   gap: 15px;
   width: 350px;
+  position: fixed;
   height: 20px;
   /* align-items: center; */
   /* display: flex; */
   padding: 40px 100px;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(125, 125, 125, 0.5);
 }

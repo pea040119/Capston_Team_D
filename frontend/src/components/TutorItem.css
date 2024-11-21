@@ -1,13 +1,14 @@
 .TutorItem {
-  width: 85%;
+  width: 100%;
   display: flex;
   align-items: center;
   gap: 18px;
   border-bottom: 2px solid #c8e2e9;
+  margin-top: 0px;
 }
 .tutorsub {
   color: #40b3d2;
-  font-size: 13px;
+  font-size: 18px;
   font-family: Inter;
   font-weight: 700;
   word-wrap: break-word;
@@ -19,7 +20,7 @@
 
 .tutorname {
   color: black;
-  font-size: 13px;
+  font-size: 21px;
   font-family: Inter;
   font-weight: 500;
   word-wrap: break-word;
@@ -27,7 +28,7 @@
 
 .tutorsch {
   color: #94d2e4;
-  font-size: 10px;
+  font-size: 14px;
   font-family: Inter;
   font-weight: 500;
   word-wrap: break-word;

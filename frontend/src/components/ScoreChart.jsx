@@ -172,10 +172,10 @@ const ScoreCharts = ({ barTitle, lineTitle }) => {
           </div>
         </div>
 
-        <div className="edit">
+        <div className="score_edit">
           {/* Edit Modal */}
           {editMode && (
-            <div className="modal">
+            <div className="score_modal">
               {/* <h4>데이터 수정</h4> */}
               <input
                 className="edit_text"
