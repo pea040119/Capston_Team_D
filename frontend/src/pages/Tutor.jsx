@@ -297,7 +297,6 @@ const Tutor = () => {
               loadStudents();
               setIsModalOpen(false);
             }}
-            onSave={addStudent}
             tutorId={tutorId}
           />
         )}
