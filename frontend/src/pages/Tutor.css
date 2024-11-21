@@ -44,7 +44,7 @@ body {
   gap: 19px;
   position: relative;
   overflow-y: auto;
-  max-height: 40%;
+  max-height: 27%;
 }
 
 .weekcalendar-container {
