@@ -68,11 +68,14 @@ body {
 .fee-box-container {
   margin-top: 20px;
 }
-.weekday-content {
+
+
+/* .weekday-content {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
-}
+} */
+/* 
 .time-blocks {
   display: flex;
   flex-direction: column;
@@ -82,11 +85,11 @@ body {
 .hour-block {
   padding: 8px;
   border-top: 1px solid #ddd;
-}
+} */
 
-.content-item {
+/* .content-item {
   margin: 4px 0;
-}
+} */
 .small-text {
   font-size: 15px;
 }
@@ -101,7 +104,7 @@ body {
 }
 .weekday-content {
   margin-top: 10px;
-  font-size: 18px;
+  font-size: 25px;
   font-weight: 400;
   color: #333;
 }

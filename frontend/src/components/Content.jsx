@@ -1,8 +1,12 @@
 import './Content.css';
-const colors = ['#94d2e4', '#e9eff0', '#f0a1a1', '#f0f1b3'];
 
-const Content = ({ time, name, onMove, index }) => {
-  const backgroundColor = colors[index % colors.length];
+const Content = ({ time, name, onMove, type }) => {
+  const backgroundColor = 
+  type === 'today' ? '#94D2E4' : 
+  type === 'canceled' ? '#EF74766E' : 
+  type === 'makeup' ? '#6AC995' : 
+  '#e9eff0'; // 기본값
+
 
   return (
     <div className="Content" style={{ backgroundColor }}>
@@ -13,5 +17,6 @@ const Content = ({ time, name, onMove, index }) => {
     </div>
   );
 };
+
 
 export default Content;

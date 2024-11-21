@@ -118,12 +118,12 @@ const Tutor = () => {
   //   setTotalFee(totalFee + student.fee);
   // };
 
-  // const calculateTopPosition = (time) => {
-  //   const [hour, minute] = time.split(':').map(Number);
-  //   const hourOffset = (hour - 9) * 20;
-  //   const minuteOffset = (minute / 60) * 20;
-  //   return hourOffset + minuteOffset;
-  // };
+  const calculateTopPosition = (time) => {
+    const [hour, minute] = time.split(':').map(Number);
+    const hourOffset = (hour - 9) * 20;
+    const minuteOffset = (minute / 60) * 20;
+    return hourOffset + minuteOffset;
+  };
 
   const changeWeek = (direction) => {
     const newDate = new Date(currentWeek);
@@ -173,13 +173,13 @@ const Tutor = () => {
               students.map((student, index) => {
                 const formattedSchedule = student.scheduled_classes
                   .map(({ day, time }) => `${day} ${time}`)
-                  .join(', ');  
+                  .join(', ');
 
                 return (
                   <StudentItem
                     key={index}
                     name={student.student_name}
-                    sch={formattedSchedule}  
+                    sch={formattedSchedule}
                     grade={student.grade}
                     sub={student.subject}
                   />
@@ -245,13 +245,13 @@ const Tutor = () => {
                       className="weekday-content"
                       style={{ position: 'relative', marginTop: '10px' }}
                     >
-                      {/* {students.length > 0 ? (
+                      {students.length > 0 ? (
                         students.flatMap((student, studentIndex) =>
-                          student.schedule
+                          student.scheduled_classes
                             .filter((sch) => sch.day === day[0])
                             .map((sch) => (
                               <div
-                                key={`${student.name}-${sch.time}`}
+                                key={`${student.student_name}-${sch.time}`}
                                 style={{
                                   position: 'absolute',
                                   top: `${calculateTopPosition(sch.time)}px`,
@@ -259,16 +259,22 @@ const Tutor = () => {
                               >
                                 <Content
                                   time={sch.time}
-                                  name={`${student.name} ${student.subject}`}
-                                  index={studentIndex} // 색상 순환을 위해 studentIndex를 전달
+                                  name={`${student.student_name} ${student.subject}`}
+                                  type={ // canceled, makeup 추가해야됨
+                                    today?.formattedDate === formattedDate
+                                      ? 'today' 
+                                      : 'default' 
+                                  }
                                   onMove={() => { }}
                                 />
+
                               </div>
                             ))
                         )
                       ) : (
-                        <p>학생 목록을 불러오는 중입니다...</p> // students가 비어 있을 때 표시할 메시지
-                      )} */}
+                        <p> </p>
+                      )}
+
                     </div>
                   </div>
                 );
