@@ -43,9 +43,8 @@ const StudentModal = ({ onClose, onSave, tutorId }) => {
   
   //   try {
   //     console.log("학생 데이터:", studentData); // 학생 데이터 확인
-  
   //     // 1. 수업 등록 API 호출
-  //     const classResponse = await axios.post('http://localhost:5000/api/class_create', {
+  //     const classResponse = await axios.post('http://127.0.0.1:8000/api/class_create', {
   //       subject,
   //       tutor_id: tutorId,
   //     });
@@ -61,7 +60,7 @@ const StudentModal = ({ onClose, onSave, tutorId }) => {
   //     // 2. 수업 시간 설정 API 호출
   //     for (const sch of schedule) {
   //       try {
-  //         const classTimeResponse = await axios.post('http://localhost:5000/api/class_set_time', {
+  //         const classTimeResponse = await axios.post('http://127.0.0.1:8000/api/class_set_time', {
   //           class_id: classId,
   //           day: sch.day,
   //           time: sch.time,
@@ -75,7 +74,7 @@ const StudentModal = ({ onClose, onSave, tutorId }) => {
   //     }
   
   //     // 3. 학생 등록 API 호출
-  //     const studentResponse = await axios.post('http://localhost:5000/api/students', studentData);
+  //     const studentResponse = await axios.post('http://127.0.0.1:8000/api/students', studentData);
   //     console.log("학생 등록 응답:", studentResponse.data); // 학생 등록 응답 확인
   
   //     const studentId = studentResponse.data.student_id; // 응답에서 student_id 받기
@@ -86,7 +85,7 @@ const StudentModal = ({ onClose, onSave, tutorId }) => {
   //     }
   
   //     // 4. 수업과 학생 연결 API 호출
-  //     const classStudentResponse = await axios.post('http://localhost:5000/api/class_set_student', {
+  //     const classStudentResponse = await axios.post('http://127.0.0.1:8000/api/class_set_student', {
   //       class_id: classId,
   //       student_id: studentId,
   //     });
