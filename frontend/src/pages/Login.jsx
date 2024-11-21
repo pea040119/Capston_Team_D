@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { useUser } from '../context/UserContext'; 
 import './Login.css';
 import kakaoLogo from '../img/kakao.png';
 import naverLogo from '../img/naver.png';
@@ -15,6 +16,7 @@ const Login = () => {
   const isButtonDisabled = username === '' || password === '';
 
   const navigate = useNavigate();
+  const { login } = useUser();
 
   const onClickSignup = () => {
     navigate('/signup');
@@ -33,8 +35,13 @@ const Login = () => {
         'http://127.0.0.1:8000/login/',
         payload
       );
-      //console.log('로그인 성공:', response.data);
+      console.log('로그인 성공:', response.data);
       setErrorMessage('');
+
+
+      const userData = response.data.user;
+      login(userData)
+      console.log('로그인된 tutorId:', userData.user_id);
 
       if (role === 'teacher') {
         navigate('/tutor');

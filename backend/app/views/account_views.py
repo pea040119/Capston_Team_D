@@ -46,8 +46,11 @@ def login_view(request):
         return Response({'message': '아이디 또는 비밀번호가 올바르지 않습니다.'}, status=status.HTTP_400_BAD_REQUEST)
 
     if check_password(login_pw, user.login_pw):
-        if user.role == 'Student' or user.role == 'student':
-            return redirect(user)
-        return Response({'message': '로그인 성공', 'user': user.name})
+        user_data = {
+            'user_id': user.user_id,  # user_id 포함
+            'name': user.name,
+            'role': user.role,
+        }
+        return Response({'message': '로그인 성공', 'user': user_data})
     else:
         return Response({'message': '아이디 또는 비밀번호가 올바르지 않습니다.'}, status=status.HTTP_400_BAD_REQUEST)

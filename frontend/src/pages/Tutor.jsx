@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom'; // useNavigate 추가
+import { useUser } from '../context/UserContext';
 import Cbutton from '../components/Cbutton';
 import './Tutor.css';
 import Header from '../components/Header';
@@ -15,12 +16,29 @@ import Content from '../components/Content';
 import LogoutButton from '../components/LogoutButton';
 import ExCalendar from '../components/Excalendar';
 const Tutor = () => {
+  const { user } = useUser(); // 로그인된 유저 정보 가져오기
+
+  if (user) {
+    console.log('로그인된 유저:', user);
+  } else {
+    console.log('로그인된 유저가 없습니다.');
+  }
+
+  const tutorId = user?.user_id; // 유저에서 tutorId (user_id) 가져오기
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [students, setStudents] = useState([]);
   const [totalFee, setTotalFee] = useState(0);
   const [currentWeek, setCurrentWeek] = useState(new Date());
   const [today, setToday] = useState({ formattedDate: '', formattedDay: '' });
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (user) {
+      const tutorId = user.user_id;
+      console.log('로그인된 tutorId:', user);
+    }
+  }, [user]);
+
 
   const days = [
     '월요일',
@@ -173,7 +191,7 @@ const Tutor = () => {
                           ? 'selected'
                           : 'default'
                       }
-                      onClick={() => {}}
+                      onClick={() => { }}
                     />
                     <div
                       className="weekday-content"
@@ -194,7 +212,7 @@ const Tutor = () => {
                                 time={sch.time}
                                 name={`${student.name} ${student.subject}`}
                                 index={studentIndex} // 색상 순환을 위해 studentIndex를 전달
-                                onMove={() => {}}
+                                onMove={() => { }}
                               />
                             </div>
                           ))
@@ -215,10 +233,12 @@ const Tutor = () => {
         </div>
         <LogoutButton />
 
+        console.log("tutorId in Tutor component:", tutorId);
         {isModalOpen && (
           <StudentModal
             onClose={() => setIsModalOpen(false)}
             onSave={addStudent}
+            tutorId={tutorId} // tutorId 전달
           />
         )}
       </div>

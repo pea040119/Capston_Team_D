@@ -11,6 +11,7 @@ from app.serializers import UserAccountSerializer
 # 수업 등록 API 
 @api_view(['POST'])
 def class_create(request):
+    print(request.data)
     subject = request.data.get('subject')
     tutor_id = request.data.get("tutor_id")
     _class = table.Class.objects.create(subject=subject, tutor_id=tutor_id)
