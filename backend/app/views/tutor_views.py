@@ -18,15 +18,15 @@ def class_create(request):
     grade = request.data.get('grade')
     name = request.data.get('name')
     try:
-        tutor = table.Tutor.objects.get(tutor_id=tutor_id)
+        print(grade)
+        tutor = table.Tutor.objects.get(user_id=tutor_id)
     except table.Tutor.DoesNotExist:
+        print("정보 없음")
         return Response({'message': '튜터 정보가 없습니다.'}, status=status.HTTP_400_BAD_REQUEST)
-    try:
-        student_id = table.Student.objects.get(name=name)
-    except table.Student.DoesNotExist:
-        return Response({'message': '학생 정보가 없습니다.'}, status=status.HTTP_400_BAD_REQUEST)
-    _class = table.Class.objects.create(subject=subject, tutor_id=tutor_id, tutation=fee, grade = grade, student_id=student_id)
-    return Response({'message': '수업 등록 성공!', 'class': _class.class_id}, status)
+    
+    print(request.data)
+    _class = table.Class.objects.create(subject=subject, tutor_id=tutor, tuition=fee, grade = grade)
+    return Response({'message': '수업 등록 성공!', 'class': _class.class_id})
 
 # 수업 시간 설정 API
 @api_view(['POST'])

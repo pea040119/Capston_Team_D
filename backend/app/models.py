@@ -93,7 +93,7 @@ class Class(models.Model):
     point = models.IntegerField(default=0) 
     scheduled_classes = models.IntegerField(default=0)  
     start_date = models.DateTimeField(default=timezone.now)
-    payment_status = models.JSONField() 
+    payment_status = models.JSONField(null=True)
     tuition = models.IntegerField(default=0)  
     
     

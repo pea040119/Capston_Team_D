@@ -17,6 +17,7 @@ def signup_view(request):
     role = request.data.get('role') 
 
     if table.UserAccount.objects.filter(login_id=login_id).exists():
+        print(login_id)
         return Response({'message': '이미 존재하는 아이디입니다.'}, status=status.HTTP_400_BAD_REQUEST)
 
     hashed_password = make_password(login_pw)
