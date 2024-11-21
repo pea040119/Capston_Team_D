@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './StudentModal.css';
 
 const DAYS = ['월', '화', '수', '목', '금', '토', '일'];
-const TIMES = Array.from({ length: 14 }, (_, i) => `${i + 9}:00`);
+const TIMES = Array.from({ length: 18 }, (_, i) => `${i + 7}:00`);
 
 const StudentModal = ({ onClose, onSave }) => {
   const [name, setName] = useState('');
@@ -60,7 +60,7 @@ const StudentModal = ({ onClose, onSave }) => {
             value={selectedTime}
             onChange={(e) => setSelectedTime(e.target.value)}
           >
-            <option value="">시간 선택</option>
+            <option value="">시작 시간 선택</option>
             {TIMES.map((time) => (
               <option key={time} value={time}>
                 {time}
@@ -75,7 +75,7 @@ const StudentModal = ({ onClose, onSave }) => {
         <ul className="schedule-list">
           {schedule.map((sch, index) => (
             <li key={index}>
-              {`${sch.day} ${sch.time}`}
+              <span>{`${sch.day} ${sch.time}`}</span>
               <button
                 className="remove-schedule-button"
                 onClick={() => removeSchedule(index)}
@@ -85,6 +85,7 @@ const StudentModal = ({ onClose, onSave }) => {
             </li>
           ))}
         </ul>
+
 
         <label>학년</label>
         <input value={grade} onChange={(e) => setGrade(e.target.value)} />

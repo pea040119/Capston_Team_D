@@ -24,8 +24,8 @@
 .studentmodal-content {
   background-color: white;
   padding: 20px;
-  width: 50%;
-  height: 600px;
+  width: 40%;
+  height: 65%;
   max-width: 100%;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -48,7 +48,7 @@
 }
 
 .studentmodal-content input {
-  width: calc(100% - 10px);
+  width: calc(100% - 40px);
   padding: 8px;
   margin-top: 5px;
   border-radius: 4px;
@@ -57,10 +57,11 @@
 }
 
 .schedule-input {
+  margin-top: 10px;
   display: flex;
   align-items: center;
-  gap: 10px;
-  margin-bottom: 10px;
+  justify-content: center;
+  gap: 5%;
 }
 
 .schedule-input select {
@@ -68,6 +69,10 @@
   border-radius: 4px;
   border: 1px solid #ccc;
   font-size: 14px;
+  width: 30%; 
+  padding: 10px; 
+  margin-right: 10px; 
+  justify-content: center;
 }
 
 .add-schedule-button {
@@ -84,14 +89,43 @@
 }
 
 .schedule-list {
-  list-style-type: none;
-  padding: 0;
-  margin: 10px 0;
-  max-height: 100px;
-  overflow-y: auto;
-  font-size: 14px;
-  color: #333;
+  display: grid; /* 그리드 레이아웃 사용 */
+  grid-template-columns: 1fr auto 1fr auto; /* 텍스트와 버튼을 별도 열로 나눔 */
+  row-gap: 5px; /* 행 간 간격 */
+  column-gap: 15px; /* 텍스트와 버튼 간격 설정 */
+  max-height: 10%; /* 리스트 높이 제한 */
+  overflow-y: auto; /* 스크롤 생성 */
+  padding: 5px 30px; /* 내부 여백 */
+  font-size: 15px;
+  height: 10%;
+  margin-left: 40px;
 }
+
+.schedule-list li {
+  display: contents; /* 그리드의 각 항목을 개별 셀처럼 표시 */
+  gap: 16px;
+}
+
+.schedule-list li span {
+  text-align: left; /* 텍스트 왼쪽 정렬 */
+  white-space: nowrap; /* 텍스트 줄바꿈 방지 */
+}
+
+.remove-schedule-button {
+  margin-right: 70px;
+  background-color: #EF74766E !important;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 12px;
+  width: 14%;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+}
+
 
 .studentmodal-content button {
   padding: 8px 16px;
@@ -115,18 +149,4 @@
 .studentmodal-content button:hover {
   opacity: 0.9;
 }
-.remove-schedule-button {
-  background-color: #ff5c5c;
-  border: none;
-  color: white;
-  margin-left: 8px;
-  cursor: pointer;
-  border-radius: 4px;
-  font-size: 12px;
-  width: 50px;
-  height: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  white-space: nowrap;
-}
+
