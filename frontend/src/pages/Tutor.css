@@ -4,19 +4,26 @@ body {
   overflow: hidden;
 }
 
+.tutorcontainer .left-section .StudentList {
+  margin-top: 0px !important;
+}
+
 .tutorcontainer {
   display: flex;
   height: 100%;
   justify-content: center;
 }
+
 .homelogo {
   width: 180px;
   margin-left: 45px !important;
 }
+
 .left-section {
   flex: 1;
   padding: 10px;
   flex-direction: column;
+  margin: 0px;
 }
 
 .right-section {
@@ -41,7 +48,7 @@ body {
   margin-top: 0px !important;
   display: flex;
   flex-direction: column;
-  gap: 19px;
+  gap: 19px; /* 간격 조정 */
   position: relative;
   overflow-y: auto;
   max-height: 27%;
@@ -128,7 +135,6 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 20px !important;
 }
 
 .ButtonContainer {
