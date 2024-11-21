@@ -110,41 +110,54 @@ def class_list(request):
 
 @api_view(['GET'])
 def class_get_assignment(request):
-    tutor_id = request.data.get('tutor_id')
+    class_id = request.data.get('class_id')
     try:
-        tutor = table.Tutor.objects.get(tutor_id=tutor_id)
-    except table.Tutor.DoesNotExist:
-        return Response({'message': '튜터 정보가 없습니다.'}, status=status.HTTP_400_BAD_REQUEST)
-    assignments = table.Assignment.objects.filter(tutor=tutor_id)
+        _class = table.Class.objects.get(class_id=class_id)
+    except table.Class.DoesNotExist:
+        return Response({'message': '수업 정보가 없습니다.'}, status=status.HTTP_400_BAD_REQUEST)
+    assignments = table.Assignment.objects.filter(class_id=class_id)
     assignments_data = []
     for assignment in assignments:
         assignment_data = {
-            'assignment_id': assignment.assignment_id,
-            'daily_id': assignment.daily_id,
-            'date': assignment.date,
-            'due': assignment.due,
-            'contents': assignment.contents,
-            'state': assignment.state,
+            "assignment_id": assignment.assignment_id,
+            "date": assignment.date,
+            "due": assignment.due,
+            "contents": assignment.contents,
+            "state": assignment.state
         }
         assignments_data.append(assignment_data)
-    return Response({'message': '과제 리스트 조회 성공!', 'assignments': assignments_data})
+    return Response({'message': '과제 조회 성공!', 'assignments': assignments})
 
 @api_view(["GET"])
 def class_get_score(request):
-    tutor_id = request.data.get('tutor_id')
+    class_id = request.data.get('class_id')
     try:
-        tutor = table.Tutor.objects.get(tutor_id=tutor_id)
-    except table.Tutor.DoesNotExist:
-        return Response({'message': '튜터 정보가 없습니다.'}, status=status.HTTP_400_BAD_REQUEST)
-    classes = table.Class.objects.filter(tutor=tutor_id)
+        _class = table.Class.objects.get(class_id=class_id)
+    except table.Class.DoesNotExist:
+        return Response({'message': '수업 정보가 없습니다.'}, status=status.HTTP_400_BAD_REQUEST)
+    scores = table.Score.objects.filter(class_id=class_id)
     scores_data = []
-    for _class in classes:
-        scores = table.Score.objects.filter(class_id=_class.class_id)
-        for score in scores:
-            score_data = {
-                'score_id': score.score_id,
-                'student_id': score.student_id,
-                'type': score.type,
-                'grade': score.grade,
-            }
-            scores_data.append(score_data)
+    for score in scores:
+        score_data = {
+            "type": score.type,
+            "grade": score.grade
+        }
+        scores_data.append(score_data)
+    return Response({'message': '성적 조회 성공!', 'scores': scores_data})
+
+
+@api_view(['GET'])
+def class_get_progress(request):
+    class_id = request.data.get('class_id')
+    try:
+        _class = table.Class.objects.get(class_id=class_id)
+    except table.Class.DoesNotExist:
+        return Response({'message': '수업 정보가 없습니다.'}, status=status.HTTP_400_BAD_REQUEST)
+    progress = table.Progress.objects.filter(class_id=class_id)
+    progress_data = []
+    for _progress in progress:
+        progress_data.append({
+            "subject": _progress.subject,
+            "unit": _progress.unit
+        })
+    return Response({'message': '진도 조회 성공!', 'progress': progress_data})
