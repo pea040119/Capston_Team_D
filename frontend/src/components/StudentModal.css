@@ -6,10 +6,11 @@
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
   display: flex;
-
   justify-content: center;
+  align-items: center;
   z-index: 1000;
 }
+
 .schedule-list li {
   display: flex;
   align-items: center;
@@ -23,9 +24,9 @@
 .studentmodal-content {
   background-color: #e9eff0;
   padding: 20px;
-  width: 300px;
+  width: 50%;
   height: 600px;
-  max-width: 90%;
+  max-width: 100%;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   text-align: center;
@@ -33,13 +34,17 @@
 
 .studentmodal-content h2 {
   margin-top: 0;
+  color: #40b3d2;
+  font-size: 30px;
+  font-weight: 600;
 }
 
 .studentmodal-content label {
   display: block;
   margin-top: 10px;
-  font-weight: bold;
-  font-size: 14px;
+  font-weight: 400;
+  font-size: 20px;
+  color: #759097;
 }
 
 .studentmodal-content input {
