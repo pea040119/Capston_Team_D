@@ -233,7 +233,6 @@ const Tutor = () => {
         </div>
         <LogoutButton />
 
-        console.log("tutorId in Tutor component:", tutorId);
         {isModalOpen && (
           <StudentModal
             onClose={() => setIsModalOpen(false)}
