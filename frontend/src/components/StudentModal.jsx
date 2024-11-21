@@ -31,78 +31,88 @@ const StudentModal = ({ onClose, onSave, tutorId }) => {
     setSchedule(schedule.filter((_, i) => i !== index));
   };
 
-  const handleSave = async () => {
-    const studentData = {
+  // const handleSave = async () => {
+  //   const studentData = {
+  //     name,
+  //     schedule,
+  //     grade,
+  //     subject,
+  //     fee: parseInt(fee) || 0,
+  //     tutor_id: tutorId,
+  //   };
+  
+  //   try {
+  //     console.log("학생 데이터:", studentData); // 학생 데이터 확인
+  
+  //     // 1. 수업 등록 API 호출
+  //     const classResponse = await axios.post('http://localhost:5000/api/class_create', {
+  //       subject,
+  //       tutor_id: tutorId,
+  //     });
+  //     console.log("수업 등록 응답:", classResponse.data); // 수업 등록 응답 확인
+  
+  //     const classId = classResponse.data.class;
+  //     if (!classId) {
+  //       console.error("수업 ID가 없습니다.");
+  //       alert('수업 등록에 실패했습니다. 다시 시도해주세요.');
+  //       return;
+  //     }
+  
+  //     // 2. 수업 시간 설정 API 호출
+  //     for (const sch of schedule) {
+  //       try {
+  //         const classTimeResponse = await axios.post('http://localhost:5000/api/class_set_time', {
+  //           class_id: classId,
+  //           day: sch.day,
+  //           time: sch.time,
+  //         });
+  //         console.log(`수업 시간 설정 완료: ${sch.day} ${sch.time}`, classTimeResponse.data); // 수업 시간 설정 성공
+  //       } catch (timeError) {
+  //         console.error(`수업 시간 설정 실패: ${sch.day} ${sch.time}`, timeError);
+  //         alert('수업 시간 설정에 실패했습니다. 다시 시도해주세요.');
+  //         return;
+  //       }
+  //     }
+  
+  //     // 3. 학생 등록 API 호출
+  //     const studentResponse = await axios.post('http://localhost:5000/api/students', studentData);
+  //     console.log("학생 등록 응답:", studentResponse.data); // 학생 등록 응답 확인
+  
+  //     const studentId = studentResponse.data.student_id; // 응답에서 student_id 받기
+  //     if (!studentId) {
+  //       console.error("학생 ID가 없습니다.");
+  //       alert('학생 등록에 실패했습니다. 다시 시도해주세요.');
+  //       return;
+  //     }
+  
+  //     // 4. 수업과 학생 연결 API 호출
+  //     const classStudentResponse = await axios.post('http://localhost:5000/api/class_set_student', {
+  //       class_id: classId,
+  //       student_id: studentId,
+  //     });
+  //     console.log("수업-학생 연결 응답:", classStudentResponse.data); // 수업-학생 연결 응답 확인
+  
+  //     // onSave 콜백 호출 (선택 사항)
+  //     onSave(studentData);
+  
+  //     // 모달 닫기
+  //     onClose();
+  //   } catch (error) {
+  //     console.error('학생 데이터 저장 실패:', error); // 전체 에러 메시지 출력
+  //     alert('저장에 실패했습니다. 다시 시도해주세요.');
+  //   }
+  // };
+  
+  const handleSave = () => {
+    onSave({
       name,
       schedule,
       grade,
       subject,
       fee: parseInt(fee) || 0,
-      tutor_id: tutorId,
-    };
-  
-    try {
-      console.log("학생 데이터:", studentData); // 학생 데이터 확인
-  
-      // 1. 수업 등록 API 호출
-      const classResponse = await axios.post('http://localhost:5000/api/class_create', {
-        subject,
-        tutor_id: tutorId,
-      });
-      console.log("수업 등록 응답:", classResponse.data); // 수업 등록 응답 확인
-  
-      const classId = classResponse.data.class;
-      if (!classId) {
-        console.error("수업 ID가 없습니다.");
-        alert('수업 등록에 실패했습니다. 다시 시도해주세요.');
-        return;
-      }
-  
-      // 2. 수업 시간 설정 API 호출
-      for (const sch of schedule) {
-        try {
-          const classTimeResponse = await axios.post('http://localhost:5000/api/class_set_time', {
-            class_id: classId,
-            day: sch.day,
-            time: sch.time,
-          });
-          console.log(`수업 시간 설정 완료: ${sch.day} ${sch.time}`, classTimeResponse.data); // 수업 시간 설정 성공
-        } catch (timeError) {
-          console.error(`수업 시간 설정 실패: ${sch.day} ${sch.time}`, timeError);
-          alert('수업 시간 설정에 실패했습니다. 다시 시도해주세요.');
-          return;
-        }
-      }
-  
-      // 3. 학생 등록 API 호출
-      const studentResponse = await axios.post('http://localhost:5000/api/students', studentData);
-      console.log("학생 등록 응답:", studentResponse.data); // 학생 등록 응답 확인
-  
-      const studentId = studentResponse.data.student_id; // 응답에서 student_id 받기
-      if (!studentId) {
-        console.error("학생 ID가 없습니다.");
-        alert('학생 등록에 실패했습니다. 다시 시도해주세요.');
-        return;
-      }
-  
-      // 4. 수업과 학생 연결 API 호출
-      const classStudentResponse = await axios.post('http://localhost:5000/api/class_set_student', {
-        class_id: classId,
-        student_id: studentId,
-      });
-      console.log("수업-학생 연결 응답:", classStudentResponse.data); // 수업-학생 연결 응답 확인
-  
-      // onSave 콜백 호출 (선택 사항)
-      onSave(studentData);
-  
-      // 모달 닫기
-      onClose();
-    } catch (error) {
-      console.error('학생 데이터 저장 실패:', error); // 전체 에러 메시지 출력
-      alert('저장에 실패했습니다. 다시 시도해주세요.');
-    }
+    });
+    onClose();
   };
-  
 
   return (
     <div className="studentmodal">
