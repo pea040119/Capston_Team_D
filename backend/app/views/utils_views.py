@@ -32,3 +32,45 @@ def d_day_create(request):
         return Response({'message': '사용자 정보가 없습니다.'}, status=status.HTTP_400_BAD_REQUEST)
     d_day = table.D_Day.objects.create(name=name, user_id=user_id)
     return Response({'message': 'D-Day 등록 성공!', 'd_day': d_day.d_day_id}, status)
+
+
+@api_view(['GET'])
+def class_get_progress(request):
+    class_id = request.data.get('class_id')
+    try:
+        _class = table.Class.objects.get(class_id=class_id)
+    except table.Class.DoesNotExist:
+        return Response({'message': '수업 정보가 없습니다.'}, status=status.HTTP_400_BAD_REQUEST)
+    progress = table.Progress.objects.filter(class_id=class_id)
+    return Response({'message': '수업 진도 조회 성공!', 'progress': progress})
+
+
+@api_view(['GET'])
+def class_list(request):
+    user_id = request.data.get('user_id')
+    try:
+        user = table.UserAccount.objects.get(user_id=user_id)
+    except table.UserAccount.DoesNotExist:
+        return Response({'message': '사용자 정보가 없습니다.'}, status=status.HTTP_400_BAD_REQUEST)
+    if user.role == 'Student' or user.role == 'student':
+        try:
+            student_id = table.Student.objects.get(user_id=user_id)
+        except table.Student.DoesNotExist:
+            return Response({'message': '학생 정보가 없습니다.'}, status=status.HTTP_400_BAD_REQUEST)
+        classes = table.Class.objects.filter(student=student_id.student_id)
+        
+    elif user.role == "Tutor" or user.role == "tutor":
+        try:
+            tutor_id = table.Tutor.objects.get(user_id=user_id)
+        except table.Tutor.DoesNotExist:
+            return Response({'message': '튜터 정보가 없습니다.'}, status=status.HTTP_400_BAD_REQUEST)
+        classes = table.Class.objects.filter(tutor=tutor_id.tutor_id)
+    elif user.role == "Parent" or user.role == "parent":
+        try:
+            parent_id = table.Parent.objects.get(user_id=user_id)
+        except table.Parent.DoesNotExist:
+            return Response({'message': '부모 정보가 없습니다.'}, status=status.HTTP_400_BAD_REQUEST)
+        classes = table.Class.objects.filter(parent=parent_id.parent_id)
+    else:
+        return Response({'message': '역할 정보가 없습니다.'}, status=status.HTTP_400_BAD_REQUEST)
+    return Response({'message': '수업 리스트 조회 성공!', 'classes': classes})
