@@ -91,7 +91,7 @@ class Class(models.Model):
     grade = models.CharField(max_length=2, choices=Grade.choices, default=Grade.A)
     created_at = models.DateField(auto_now_add=True)  
     point = models.IntegerField(default=0) 
-    scheduled_classes = models.IntegerField(default=0)  
+    scheduled_classes = models.JSONField(null=True) 
     start_date = models.DateTimeField(default=timezone.now)
     payment_status = models.JSONField(null=True)
     tuition = models.IntegerField(default=0)  
