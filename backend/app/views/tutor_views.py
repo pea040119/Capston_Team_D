@@ -8,7 +8,7 @@ from app import models as table
 from app.serializers import UserAccountSerializer 
 
 
-# 수업 등록 API 
+# 수업 등록 API - StudentModal.jsx
 @api_view(['POST'])
 def class_create(request):
     print(request.data)
@@ -28,6 +28,20 @@ def class_create(request):
     print(request.data)
     _class = table.Class.objects.create(subject=subject, tutor_id=tutor, tuition=fee, grade = grade, scheduled_classes = schedule, student_name = name)
     return Response({'message': '수업 등록 성공!', 'class': _class.class_id})
+
+# 본인 학생 조회 API - Tutor.jsx
+@api_view(['GET'])
+def get_student_list(request, tutor_id):
+    try: 
+        print(tutor_id)
+        tutor = table.Tutor.objects.get(user_id = tutor_id)
+    except table.Tutor.DoesNotExist:
+        print("정보 없음")
+        return Response({'message': '튜터 정보가 없습니다.'}, status=status.HTTP_400_BAD_REQUEST)
+    classes = table.Class.objects.filter(tutor_id=tutor).values('student_name', 'scheduled_classes', 'grade', 'subject', 'tuition')
+    class_data = list(classes) 
+    print(class_data)
+    return Response({'classes': class_data})
 
 # 수업 시간 설정 API
 @api_view(['POST'])
