@@ -16,7 +16,7 @@ import Content from '../components/Content';
 import LogoutButton from '../components/LogoutButton';
 import ExCalendar from '../components/Excalendar';
 const Tutor = () => {
-  const { user } = useUser(); // 로그인된 유저 정보 가져오기
+  const { user } = useUser(); 
 
   if (user) {
     console.log('로그인된 유저:', user);
@@ -24,21 +24,13 @@ const Tutor = () => {
     console.log('로그인된 유저가 없습니다.');
   }
 
-  const tutorId = user?.user_id; // 유저에서 tutorId (user_id) 가져오기
+  const tutorId = user?.user_id; 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [students, setStudents] = useState([]);
   const [totalFee, setTotalFee] = useState(0);
   const [currentWeek, setCurrentWeek] = useState(new Date());
   const [today, setToday] = useState({ formattedDate: '', formattedDay: '' });
   const navigate = useNavigate();
-
-  useEffect(() => {
-    if (user) {
-      const tutorId = user.user_id;
-      console.log('로그인된 tutorId:', user);
-    }
-  }, [user]);
-
 
   const days = [
     '월요일',
