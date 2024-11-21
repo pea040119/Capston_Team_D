@@ -106,3 +106,45 @@ def class_list(request):
     else:
         return Response({'message': '역할 정보가 없습니다.'}, status=status.HTTP_400_BAD_REQUEST)
     return Response({'message': '수업 리스트 조회 성공!', 'classes': classes})
+
+
+@api_view(['GET'])
+def class_get_assignment(request):
+    tutor_id = request.data.get('tutor_id')
+    try:
+        tutor = table.Tutor.objects.get(tutor_id=tutor_id)
+    except table.Tutor.DoesNotExist:
+        return Response({'message': '튜터 정보가 없습니다.'}, status=status.HTTP_400_BAD_REQUEST)
+    assignments = table.Assignment.objects.filter(tutor=tutor_id)
+    assignments_data = []
+    for assignment in assignments:
+        assignment_data = {
+            'assignment_id': assignment.assignment_id,
+            'daily_id': assignment.daily_id,
+            'date': assignment.date,
+            'due': assignment.due,
+            'contents': assignment.contents,
+            'state': assignment.state,
+        }
+        assignments_data.append(assignment_data)
+    return Response({'message': '과제 리스트 조회 성공!', 'assignments': assignments_data})
+
+@api_view(["GET"])
+def class_get_score(request):
+    tutor_id = request.data.get('tutor_id')
+    try:
+        tutor = table.Tutor.objects.get(tutor_id=tutor_id)
+    except table.Tutor.DoesNotExist:
+        return Response({'message': '튜터 정보가 없습니다.'}, status=status.HTTP_400_BAD_REQUEST)
+    classes = table.Class.objects.filter(tutor=tutor_id)
+    scores_data = []
+    for _class in classes:
+        scores = table.Score.objects.filter(class_id=_class.class_id)
+        for score in scores:
+            score_data = {
+                'score_id': score.score_id,
+                'student_id': score.student_id,
+                'type': score.type,
+                'grade': score.grade,
+            }
+            scores_data.append(score_data)
