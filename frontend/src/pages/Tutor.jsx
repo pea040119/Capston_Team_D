@@ -16,12 +16,23 @@ import Button from '../components/Button';
 import Content from '../components/Content';
 import LogoutButton from '../components/LogoutButton';
 import ExCalendar from '../components/Excalendar';
+import WeekPopup from '../components/WeekPopup';
 const Tutor = () => {
   const { user } = useUser();
   const [tutorId, setTutorId] = useState(null);
   const [students, setStudents] = useState([]);
   const [totalFee, setTotalFee] = useState(0);
+<<<<<<< Updated upstream
   const [loading, setLoading] = useState(true);  // 로딩 상태
+=======
+  const [currentWeek, setCurrentWeek] = useState(new Date());
+  const [today, setToday] = useState({ formattedDate: '', formattedDay: '' });
+  //추가
+  const [selectedSchedule, setSelectedSchedule] = useState(null);
+  const [isWeekPopupOpen, setIsWeekPopupOpen] = useState(false);
+
+  const navigate = useNavigate();
+>>>>>>> Stashed changes
 
   useEffect(() => {
     if (user) {
@@ -32,6 +43,7 @@ const Tutor = () => {
     }
   }, [user]);
 
+<<<<<<< Updated upstream
   useEffect(() => {
     if (tutorId) {
       loadStudents(); // tutorId가 설정되면 학생 목록 로드
@@ -43,6 +55,8 @@ const Tutor = () => {
   const [today, setToday] = useState({ formattedDate: '', formattedDay: '' });
   const navigate = useNavigate();
 
+=======
+>>>>>>> Stashed changes
   const days = [
     '월요일',
     '화요일',
@@ -136,6 +150,10 @@ const Tutor = () => {
     return Math.ceil((date.getDate() + firstDay) / 7);
   };
 
+  const handleScheduleClick = (student, date) => {
+    setSelectedSchedule({ student, date });
+    setIsWeekPopupOpen(true); // WeekPopup 열기
+  };
   return (
     <>
       <div className="tutorcontainer">
@@ -215,6 +233,7 @@ const Tutor = () => {
               }
             />
           </div>
+
           <div className="weekcalendar-container">
             <div className="weekcalendar">
               {days.map((day, index) => {
@@ -239,12 +258,74 @@ const Tutor = () => {
                           ? 'selected'
                           : 'default'
                       }
-                      onClick={() => { }}
+                      onClick={() => {}}
                     />
                     <div
                       className="weekday-content"
                       style={{ position: 'relative', marginTop: '10px' }}
                     >
+                      {students.flatMap((student, studentIndex) =>
+                        student.schedule
+                          .filter((sch) => sch.day === day[0])
+                          .map((sch) => (
+                            <div
+                              key={`${student.name}-${sch.time}`}
+                              style={{
+                                position: 'absolute',
+                                top: `${calculateTopPosition(sch.time)}px`,
+                              }}
+                              // 여기에 클릭 시 팝업을 열기 위한 onClick 설정 추가
+                              onClick={() =>
+                                handleScheduleClick(student, formattedDate)
+                              } // 학생과 날짜를 인자로 전달
+                            >
+                              <Content
+                                time={sch.time}
+                                name={`${student.name} ${student.subject}`}
+                                index={studentIndex} // 색상 순환을 위해 studentIndex를 전달
+                                onMove={() => {}} // 이동 기능 (추후 구현 가능)
+                              />
+                            </div>
+                          ))
+                      )}
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* <div className="weekcalendar-container">
+            <div className="weekcalendar">
+              {days.map((day, index) => {
+                const date = new Date(currentWeek);
+                date.setDate(
+                  currentWeek.getDate() - ((date.getDay() + 6) % 7) + index
+                );
+                const formattedDate = `${date.getDate()}일`;
+                const formattedDay = `(${day[0]})`;
+
+                return (
+                  <div key={day} className="weekday-section">
+                    <Cbutton
+                      text={
+                        <>
+                          {formattedDate}
+                          <span className="small-text">{formattedDay}</span>
+                        </>
+                      }
+                      type={
+                        today?.formattedDate === formattedDate
+                          ? 'selected'
+                          : 'default'
+                      }
+                      onClick={() => {}}
+                    />
+                    <div
+                      className="weekday-content"
+                      style={{ position: 'relative', marginTop: '10px' }}
+                    >
+<<<<<<< Updated upstream
                       {students.length > 0 ? (
                         students.flatMap((student, studentIndex) =>
                           student.scheduled_classes
@@ -273,6 +354,27 @@ const Tutor = () => {
                         )
                       ) : (
                         <p> </p>
+=======
+                      {students.flatMap((student, studentIndex) =>
+                        student.schedule
+                          .filter((sch) => sch.day === day[0])
+                          .map((sch) => (
+                            <div
+                              key={`${student.name}-${sch.time}`}
+                              style={{
+                                position: 'absolute',
+                                top: `${calculateTopPosition(sch.time)}px`,
+                              }}
+                            >
+                              <Content
+                                time={sch.time}
+                                name={`${student.name} ${student.subject}`}
+                                index={studentIndex} // 색상 순환을 위해 studentIndex를 전달
+                                onMove={() => {}}
+                              />
+                            </div>
+                          ))
+>>>>>>> Stashed changes
                       )}
 
                     </div>
@@ -280,7 +382,7 @@ const Tutor = () => {
                 );
               })}
             </div>
-          </div>
+          </div> */}
           <div className="fee-box-container">
             <Box text={'이달의 수입'} />
             <div className="total-fee">
@@ -298,6 +400,12 @@ const Tutor = () => {
               setIsModalOpen(false);
             }}
             tutorId={tutorId}
+          />
+        )}
+        {isWeekPopupOpen && (
+          <WeekPopup
+            onClose={() => setIsWeekPopupOpen(false)}
+            selectedSchedule={selectedSchedule}
           />
         )}
       </div>
