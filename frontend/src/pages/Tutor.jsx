@@ -217,15 +217,17 @@ const Tutor = () => {
                                 top: `${calculateTopPosition(sch.time)}px`,
                               }}
                               // 여기에 클릭 시 팝업을 열기 위한 onClick 설정 추가
-                              onClick={() =>
-                                handleScheduleClick(student, formattedDate)
-                              } // 학생과 날짜를 인자로 전달
+                              // 학생과 날짜를 인자로 전달
                             >
                               <Content
                                 time={sch.time}
                                 name={`${student.name} ${student.subject}`}
-                                index={studentIndex} // 색상 순환을 위해 studentIndex를 전달
-                                onMove={() => {}} // 이동 기능 (추후 구현 가능)
+                                type={
+                                  today?.formattedDate === formattedDate
+                                    ? 'today'
+                                    : undefined
+                                } // 오늘 날짜에 'today' 타입 지정
+                                onMove={() => {}}
                               />
                             </div>
                           ))

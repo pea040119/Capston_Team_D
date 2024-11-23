@@ -17,7 +17,7 @@
 .time {
   font-size: 11px;
   position: absolute;
-  top: 5px;
+  top: 3px;
   left: 5px;
   color: black;
 }
@@ -30,8 +30,14 @@
 
 .name,
 .subject {
-  font-size: 20px !important;
+  font-size: 18px !important;
   color: black;
   text-align: center;
 }
 
+.memo {
+  align-self: flex-end; /* 자신만 오른쪽으로 정렬 */
+  width: 12px; /* 이미지의 가로 크기 */
+  height: 10px; /* 이미지의 세로 크기 */
+  object-fit: contain; /* 이미지 비율 유지 */
+}
