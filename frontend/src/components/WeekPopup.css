@@ -55,12 +55,12 @@
   justify-content: space-between;
 } */
 
-button {
+.popup-footer button {
   width: 80px;
   gap: 10px;
   height: 30px;
 }
-label {
+.progress-popup label {
   margin-right: 10px;
 }
 .popup-footer {

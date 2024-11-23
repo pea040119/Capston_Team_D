@@ -26,8 +26,16 @@ const ExCalendar = () => {
   };
 
   const generateCalendarDates = () => {
-    const startOfMonth = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1);
-    const endOfMonth = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0);
+    const startOfMonth = new Date(
+      currentDate.getFullYear(),
+      currentDate.getMonth(),
+      1
+    );
+    const endOfMonth = new Date(
+      currentDate.getFullYear(),
+      currentDate.getMonth() + 1,
+      0
+    );
     const dates = [];
 
     // 빈 칸 추가 (달 시작 요일 전까지)
@@ -72,26 +80,34 @@ const ExCalendar = () => {
         {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map((day, index) => (
           <div
             key={day}
-            className={`ex-calendar-day-${index === 0 ? 'sun' : index === 6 ? 'sat' : 'name'}`}
+            className={`ex-calendar-day-${
+              index === 0 ? 'sun' : index === 6 ? 'sat' : 'name'
+            }`}
           >
             {day[0]} {/* 첫 글자만 표시 */}
           </div>
         ))}
 
-
         {dates.map((date, index) => {
-          const dateObj = new Date(currentDate.getFullYear(), currentDate.getMonth(), date);
+          const dateObj = new Date(
+            currentDate.getFullYear(),
+            currentDate.getMonth(),
+            date
+          );
           const isCurrentWeek = dateObj >= startOfWeek && dateObj <= endOfWeek;
 
           return (
             <div
               key={index}
-              className={`ex-calendar-date ${isCurrentWeek ? 'ex-calendar-current-week' : ''} ${date === new Date().getDate() &&
-                  currentDate.getMonth() === new Date().getMonth() &&
-                  currentDate.getFullYear() === new Date().getFullYear()
+              className={`ex-calendar-date ${
+                isCurrentWeek ? 'ex-calendar-current-week' : ''
+              } ${
+                date === new Date().getDate() &&
+                currentDate.getMonth() === new Date().getMonth() &&
+                currentDate.getFullYear() === new Date().getFullYear()
                   ? 'ex-calendar-today'
                   : ''
-                }`}
+              }`}
             >
               {date}
             </div>

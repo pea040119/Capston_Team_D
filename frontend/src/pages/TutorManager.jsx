@@ -54,24 +54,24 @@ const TutorManager = () => {
   const loadStudents = async () => {
     try {
       console.log('튜터 ID:', tutorId);
-      const response = await axios.get(`http://127.0.0.1:8000/tutor/student_list/${tutorId}/`);
+      const response = await axios.get(
+        `http://127.0.0.1:8000/tutor/student_list/${tutorId}/`
+      );
 
       console.log(response.data);
       console.log(response.data.classes);
 
-
       setStudents(response.data.classes);
-
     } catch (error) {
       console.error('학생 목록 로딩 실패:', error);
     } finally {
-      setLoading(false);  // 데이터 로딩 완료
+      setLoading(false); // 데이터 로딩 완료
     }
   };
 
   useEffect(() => {
     if (students.length > 0) {
-      console.log("students:", students);  // students 값이 업데이트된 후 실행
+      console.log('students:', students); // students 값이 업데이트된 후 실행
     }
   }, [students]);
 
@@ -336,7 +336,6 @@ const TutorManager = () => {
         <LogoutButton />
       </div>
       {/* Student List Section */}
-      
 
       {isModalOpen && (
         <StudentModal
