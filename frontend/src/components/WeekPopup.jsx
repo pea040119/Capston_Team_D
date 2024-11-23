@@ -39,13 +39,13 @@ const WeekPopup = ({ student, date, onClose, onSave }) => {
 
   return (
     <div className="progress-popup">
-      <div className="popup-header">
-        {/* 학생 이름, 과목, 날짜 */}
+      {/*} <div className="popup-header">
+        { 학생 이름, 과목, 날짜 }
         <h3>
           {student?.name} {student?.subject}
         </h3>
         <p>{date}</p>
-      </div>
+      </div> */}
       <div className="pop-container">
         <div className="leftmemo">
           <h4>지난수업요약</h4>

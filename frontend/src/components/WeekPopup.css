@@ -1,7 +1,7 @@
 .progress-popup {
-  position: absolute;
-  top: 70%;
-  left: 60%;
+  position: fixed;
+  margin-top: 40px;
+  margin-left: 280px;
   transform: translate(-50%, -50%);
   background-color: rgba(233, 239, 240, 100);
   padding: 20px;
