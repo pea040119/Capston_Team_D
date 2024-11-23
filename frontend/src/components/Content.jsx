@@ -5,13 +5,13 @@ import memo2 from '../img/memo2.png';
 import WeekPopup from './WeekPopup';
 
 const Content = ({ time, name, type: initialType, onDoubleClick }) => {
-  const [type, setType] = useState(initialType); // 전달받은 타입을 상태로 관리
-  const [currentMemo, setCurrentMemo] = useState(memo); // 현재 메모 이미지
-  const [isPopupOpen, setIsPopupOpen] = useState(false); // 팝업 열림 상태
+  const [type, setType] = useState(initialType);
+  const [currentMemo, setCurrentMemo] = useState(memo);
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
 
   useEffect(() => {
-    setType(initialType); // 부모 컴포넌트에서 전달받은 타입 반영
-  }, [initialType]); // initialType이 변경될 때마다 업데이트
+    setType(initialType);
+  }, [initialType]);
 
   const backgroundColor =
     type === 'today'
@@ -20,35 +20,35 @@ const Content = ({ time, name, type: initialType, onDoubleClick }) => {
       ? '#EF74766E'
       : type === 'makeup'
       ? '#6AC995'
-      : '#e9eff0'; // 기본값
+      : '#e9eff0';
 
   const handleContentClick = (e) => {
     if (e.target.tagName !== 'IMG') {
       if (type === 'canceled') {
         const isReconfirmed = window.confirm('일정을 다시 활성화하시겠습니까?');
         if (isReconfirmed) {
-          setType('today'); // 오늘로 복구
+          setType(undefined);
         }
       } else {
         const isConfirmed = window.confirm('일정을 취소하시겠습니까?');
         if (isConfirmed) {
-          setType('canceled'); // 상태를 취소로 변경
+          setType('canceled');
         }
       }
     }
   };
 
   const handleMemoClick = () => {
-    setIsPopupOpen(true); // 팝업 열기
+    setIsPopupOpen(true);
   };
 
   const handleSave = (updatedData) => {
-    setCurrentMemo(memo2); // 저장 후 이미지 변경
-    setIsPopupOpen(false); // 팝업 닫기
+    setCurrentMemo(memo2);
+    setIsPopupOpen(false);
   };
 
   const handleClose = () => {
-    setIsPopupOpen(false); // 팝업 닫기
+    setIsPopupOpen(false);
   };
 
   return (
@@ -67,15 +67,10 @@ const Content = ({ time, name, type: initialType, onDoubleClick }) => {
           src={currentMemo}
           alt="memo"
           className="memo"
-          onClick={handleMemoClick} // 메모 클릭 시 팝업 열기
+          onClick={handleMemoClick}
         />
       </div>
-      {isPopupOpen && (
-        <WeekPopup
-          onClose={handleClose}
-          onSave={handleSave} // 저장 시 이미지 변경 콜백 호출
-        />
-      )}
+      {isPopupOpen && <WeekPopup onClose={handleClose} onSave={handleSave} />}
     </>
   );
 };
