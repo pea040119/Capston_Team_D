@@ -3,10 +3,9 @@ import axios from 'axios';
 import './StudentModal.css';
 
 const DAYS = ['월', '화', '수', '목', '금', '토', '일'];
-const TIMES = Array.from({ length: 18 }, (_, i) => `${i + 7}:00`);
+const TIMES = Array.from({ length: 14 }, (_, i) => `${i + 9}:00`);
 
 const StudentModal = ({ onClose, onSave, tutorId }) => {
-
   const [name, setName] = useState('');
   const [grade, setGrade] = useState('');
   const [subject, setSubject] = useState('');
@@ -38,26 +37,28 @@ const StudentModal = ({ onClose, onSave, tutorId }) => {
     };
 
     try {
-      console.log("데이터:", data);
+      console.log('데이터:', data);
 
-      const response = await axios.post('http://127.0.0.1:8000/tutor/class_register', {
-        subject,
-        tutor_id: tutorId,
-        fee,
-        grade,
-        name,
-        schedule,
-      });
-      console.log("수업 등록 응답:", response.data); 
+      const response = await axios.post(
+        'http://127.0.0.1:8000/tutor/class_register',
+        {
+          subject,
+          tutor_id: tutorId,
+          fee,
+          grade,
+          name,
+          schedule,
+        }
+      );
+      console.log('수업 등록 응답:', response.data);
 
       if (onSave) {
-        onSave(data); 
+        onSave(data);
       }
-  
+
       if (onClose) {
         onClose();
       }
-
     } catch (error) {
       console.error('학생 데이터 저장 실패:', error);
       alert('저장에 실패했습니다. 다시 시도해주세요.');
