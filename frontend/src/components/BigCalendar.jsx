@@ -1,14 +1,30 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import './BigCalendar.css';
-const BigCalendar = () => {
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
+const BigCalendar = ({ students }) => {
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [events, setEvents] = useState({});
   const [isAddingEvent, setIsAddingEvent] = useState(false);
   const [newEvent, setNewEvent] = useState('');
   const [editingIndex, setEditingIndex] = useState(null);
   const [editingValue, setEditingValue] = useState('');
+  const [selectedStudent, setSelectedStudent] = useState(null);
+  const [studentColors, setStudentColors] = useState({});
+  const [endDate, setEndDate] = useState(new Date());
+
+  const colors = ['#F0F1B3', '#C8E2E9', '#CA9BE3', '#EF74766E'];
+
+  useEffect(() => {
+    const tempStudentColors = {};
+    students.forEach((student, index) => {
+      tempStudentColors[student.student_name] = colors[index % colors.length];
+    });
+    setStudentColors(tempStudentColors);
+  }, [students]);
+
   const formatDate = (date) => {
     return `${date.getMonth() + 1}월 ${date.getDate()}일`;
   };
@@ -28,16 +44,41 @@ const BigCalendar = () => {
   };
 
   const handleSaveEvent = () => {
-    if (!newEvent.trim()) return;
-    const dateKey = selectedDate.toISOString().split('T')[0];
-    setEvents((prevEvents) => ({
-      ...prevEvents,
-      [dateKey]: [...(prevEvents[dateKey] || []), newEvent],
-    }));
+    if (!newEvent.trim()) {
+      alert('내용을 입력하세요.');
+      return;
+    }
+
+    let current = new Date(selectedDate); // 시작일
+    const end = new Date(endDate); // 종료일
+    const color =
+      selectedStudent && selectedStudent !== '선택 x'
+        ? studentColors[selectedStudent]
+        : 'white';
+
+    const fullEvent = {
+      text:
+        selectedStudent && selectedStudent !== '선택 x'
+          ? `${selectedStudent} ${newEvent}`
+          : newEvent,
+      color,
+    };
+
+    const updatedEvents = { ...events };
+
+    // 날짜 반복하면서 이벤트 추가
+    while (current <= end) {
+      const dateKey = current.toISOString().split('T')[0];
+      updatedEvents[dateKey] = [...(updatedEvents[dateKey] || []), fullEvent];
+      current.setDate(current.getDate() + 1); // 다음 날로 이동
+    }
+
+    setEvents(updatedEvents);
     setNewEvent('');
+    setSelectedStudent('');
+    setEndDate(new Date());
     setIsAddingEvent(false);
   };
-
   const handleEditEvent = (index, value) => {
     setEditingIndex(index);
     setEditingValue(value);
@@ -48,7 +89,7 @@ const BigCalendar = () => {
     const dateKey = selectedDate.toISOString().split('T')[0];
     setEvents((prevEvents) => {
       const updatedEvents = [...prevEvents[dateKey]];
-      updatedEvents[editingIndex] = editingValue;
+      updatedEvents[editingIndex].text = editingValue;
       return { ...prevEvents, [dateKey]: updatedEvents };
     });
     setEditingIndex(null);
@@ -63,16 +104,19 @@ const BigCalendar = () => {
       return { ...prevEvents, [dateKey]: updatedEvents };
     });
   };
+
   const formatTileContent = ({ date, view }) => {
     const dateKey = date.toISOString().split('T')[0];
-
-    // Check if there are events for this date
     if (view === 'month' && events[dateKey]) {
       return (
         <ul className="event-list">
           {events[dateKey].map((event, index) => (
-            <li key={index} className="calendar-event-item">
-              {event}
+            <li
+              key={index}
+              className="calendar-event-item"
+              style={{ backgroundColor: event.color }}
+            >
+              {event.text}
             </li>
           ))}
         </ul>
@@ -80,24 +124,15 @@ const BigCalendar = () => {
     }
     return null;
   };
+
   const tileClassName = ({ date, view }) => {
     const dateKey = date.toISOString().split('T')[0];
-
-    if (view === 'month' && events[dateKey] && date.getDay() === 6) {
-      return 'saturday-event';
-    }
-    // Check if there are events on this date
     if (view === 'month' && events[dateKey]) {
-      return 'has-event'; // Add a custom CSS class
+      return 'has-event';
     }
-
-    // Check if the day is Saturday
-    if (view === 'month' && date.getDay() === 6) {
-      return 'saturday-tile';
-    }
-
     return null;
   };
+
   return (
     <div className="Maincalendar">
       <div className="main-calendar-container">
@@ -115,7 +150,7 @@ const BigCalendar = () => {
           prev2Label={null}
           next2Label={null}
           tileContent={formatTileContent}
-          tileClassName={tileClassName} // Added this line
+          tileClassName={tileClassName}
         />
       </div>
       <button className="add-event-button" onClick={handleAddEventClick}>
@@ -141,10 +176,10 @@ const BigCalendar = () => {
                     <div className="edit_delete">
                       <div>
                         <div className="event_title">
-                          <span>{event}</span>
+                          <span>{event.text}</span>
                           <div className="event_button">
                             <button
-                              onClick={() => handleEditEvent(index, event)}
+                              onClick={() => handleEditEvent(index, event.text)}
                             >
                               수정
                             </button>
@@ -163,12 +198,33 @@ const BigCalendar = () => {
         </div>
         {isAddingEvent && (
           <div className="add-event-form">
+            <select
+              className="student-dropdown"
+              value={selectedStudent}
+              onChange={(e) => setSelectedStudent(e.target.value)}
+            >
+              <option value="">학생 선택</option>
+
+              {students.map((student, index) => (
+                <option key={index} value={student.student_name}>
+                  {student.student_name}
+                </option>
+              ))}
+              <option value="선택 x">선택 x</option>
+            </select>
             <input
               className="ctext"
               type="text"
               value={newEvent}
               onChange={(e) => setNewEvent(e.target.value)}
               placeholder="내용을 입력하세요."
+            />
+            <label>종료일 선택:</label>
+            <DatePicker
+              selected={endDate}
+              onChange={(date) => setEndDate(date)}
+              minDate={selectedDate}
+              className="date-picker"
             />
             <button onClick={handleSaveEvent}>저장</button>
           </div>
