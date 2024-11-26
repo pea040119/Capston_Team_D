@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Table from '../components/Table.jsx';
 import './TutorManager.css';
+import { useNavigate } from 'react-router-dom';
 import '../components/ScoreChart.css';
 import '../components/Memo.css';
 import ScoreCharts from '../components/ScoreChart.jsx';
@@ -24,7 +25,7 @@ const TutorManager = () => {
   const [newHomeworkName, setNewHomeworkName] = useState('');
   const [newHomeworkAssignment, setNewHomeworkAssignment] = useState('');
   const [newSupplementItem, setNewSupplementItem] = useState('');
-
+  const navigate = useNavigate();
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const progressColumns = ['#', '내용', '진도', ''];
@@ -138,7 +139,12 @@ const TutorManager = () => {
     <>
       <div className="MainLayout">
         <div className="leftoption">
-          <img src={logo} alt="homelogo" className="homelogo" />
+          <img
+            src={logo}
+            alt="homelogo"
+            className="homelogo"
+            onClick={() => navigate('/tutor')}
+          />
 
           <div className="excalendar">
             <ExCalendar />

@@ -6,6 +6,7 @@
 .tchomelogo {
   width: 180px;
   margin-left: 25px !important;
+  cursor: pointer;
 }
 .left-section {
   flex: 1;

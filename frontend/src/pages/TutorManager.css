@@ -17,6 +17,7 @@ body {
 .homelogo {
   width: 180px;
   margin-left: 45px !important;
+  cursor: pointer;
 }
 
 .leftoption {

@@ -4,6 +4,7 @@ import logo from '../img/new_logo.png';
 import Button from '../components/Button';
 import StudentItem from '../components/StudentItem';
 import StudentModal from '../components/StudentModal';
+import { useNavigate } from 'react-router-dom';
 import './TutorCalendar.css';
 import LogoutButton from '../components/LogoutButton';
 import BigCalendar from '../components/BigCalendar';
@@ -13,7 +14,7 @@ import WeekCount from '../components/WeekCount';
 
 const TutorCalendar = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-
+  const navigate = useNavigate();
   const addStudent = (student) => {
     const newSchedule = student.schedule.reduce((acc, sch) => {
       const key = sch.time;
@@ -83,7 +84,12 @@ const TutorCalendar = () => {
   return (
     <div className="tutorcalendar">
       <div className="tutor-calendar-left">
-        <img src={logo} alt="tchomelogo" className="tchomelogo" />
+        <img
+          src={logo}
+          alt="tchomelogo"
+          className="tchomelogo"
+          onClick={() => navigate('/tutor')}
+        />
         <div className="weeksummaryoutline">
           <div className="weeksummary">
             <p>주간 요약</p>
