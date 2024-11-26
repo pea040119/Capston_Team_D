@@ -161,11 +161,16 @@
 
 .event-list {
   list-style: none;
+
   padding: 0;
   margin: 0;
   font-size: 10px;
   color: #333;
   font-weight: bold;
+}
+
+.event-list li {
+  margin-bottom: 10px; /*추가*/
 }
 .event-list-container {
   width: 300px;
@@ -192,11 +197,42 @@
 .saturday-event {
   color: #40b3d2;
 }
+
 .calendar-event-item {
   background-color: #f0f1b3; /* Highlight color for events */
-  border-radius: 10px;
-  padding: 1px 2px;
+  /* border-radius: 10px; */
+
+  padding: 1px 25px;
   margin-bottom: 2px;
   font-size: 10px;
   color: #333;
+}
+
+/*추가*/
+.event_title_button {
+  display: flex;
+  gap: 18px;
+  align-items: center;
+}
+
+.event_title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.event_title span {
+  flex-grow: 1;
+  text-align: left;
+  width: 150px;
+}
+
+.event_button {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: flex-start;
+  margin-left: 0;
+  width: 150px;
 }
