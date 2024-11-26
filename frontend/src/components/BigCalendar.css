@@ -212,3 +212,9 @@
   text-align: left;
   width: 150px;
 }
+
+.event_button {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
