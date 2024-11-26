@@ -138,7 +138,7 @@ const BigCalendar = () => {
                       <button onClick={handleSaveEdit}>저장</button>
                     </div>
                   ) : (
-                    <div className="event_title_button">
+                    <div className="edit_delete">
                       <div>
                         <div className="event_title">
                           <span>{event}</span>
