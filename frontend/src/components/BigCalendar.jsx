@@ -127,9 +127,20 @@ const BigCalendar = ({ students }) => {
 
   const tileClassName = ({ date, view }) => {
     const dateKey = date.toISOString().split('T')[0];
-    if (view === 'month' && events[dateKey]) {
-      return 'has-event';
+
+    if (view === 'month' && events[dateKey] && date.getDay() === 6) {
+      return 'saturday-event';
     }
+    // Check if there are events on this date
+    if (view === 'month' && events[dateKey]) {
+      return 'has-event'; // Add a custom CSS class
+    }
+
+    // Check if the day is Saturday
+    if (view === 'month' && date.getDay() === 6) {
+      return 'saturday-tile';
+    }
+
     return null;
   };
 

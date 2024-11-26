@@ -91,7 +91,7 @@ const TutorCalendar = () => {
         </div>
         <WeekCount students={students} />
 
-        <div className="ButtonContainer">
+        <div className="c-ButtonContainer">
           <Button
             onClick={() => setIsModalOpen(true)}
             text={'학생 등록'}

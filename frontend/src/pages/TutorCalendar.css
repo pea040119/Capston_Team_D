@@ -43,7 +43,7 @@
   margin-top: -30px;
 }
 .c-student-list-view p {
-  margin-top: 160px;
+  margin-top: 5px;
   color: #759097;
   font-family: Inter;
   font-size: 18px;
@@ -56,4 +56,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.c-ButtonContainer {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 90px;
 }
