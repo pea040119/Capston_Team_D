@@ -199,14 +199,30 @@
 }
 
 .calendar-event-item {
-  background-color: #f0f1b3; /* Highlight color for events */
-  /* border-radius: 10px; */
-
-  padding: 1px 38px;
+  width: 80px;
+  background-color: #f0f1b3; /* 배경 색상 */
+  /* padding: 1px px; */
   margin-bottom: 2px;
   font-size: 10px;
   color: #333;
+
+  display: flex;
+  justify-content: center; /* 수평 가운데 정렬 */
+  align-items: center; /* 수직 가운데 정렬 */
 }
+
+/* .calendar-event-item {
+  background-color: #f0f1b3; /* Highlight color for events */
+/* border-radius: 10px; 
+
+  padding: 1px 40px;
+  margin-bottom: 2px;
+  font-size: 10px;
+  /* display: flex; 
+
+  /* align-items: center; 
+  color: #333;
+} */
 
 /*추가*/
 .event_title_button {
