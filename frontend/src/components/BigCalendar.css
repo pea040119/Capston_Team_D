@@ -200,3 +200,15 @@
   font-size: 10px;
   color: #333;
 }
+/*추가*/
+
+.event_title {
+  display: flex;
+  white-space: nowrap;
+}
+
+.event_title span {
+  flex-grow: 1;
+  text-align: left;
+  width: 150px;
+}

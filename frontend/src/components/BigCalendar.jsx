@@ -139,13 +139,17 @@ const BigCalendar = () => {
                     </div>
                   ) : (
                     <div>
-                      <span>{event}</span>
-                      <button onClick={() => handleEditEvent(index, event)}>
-                        수정
-                      </button>
-                      <button onClick={() => handleDeleteEvent(index)}>
-                        삭제
-                      </button>
+                      <div className="event_title">
+                        <span>{event}</span>
+                        <div className="event_button">
+                          <button onClick={() => handleEditEvent(index, event)}>
+                            수정
+                          </button>
+                          <button onClick={() => handleDeleteEvent(index)}>
+                            삭제
+                          </button>
+                        </div>
+                      </div>
                     </div>
                   )}
                 </li>
