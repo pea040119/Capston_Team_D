@@ -2,8 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import './BigCalendar.css';
-import DatePicker from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.css';
+
 const BigCalendar = ({ students }) => {
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [events, setEvents] = useState({});
@@ -13,7 +12,7 @@ const BigCalendar = ({ students }) => {
   const [editingValue, setEditingValue] = useState('');
   const [selectedStudent, setSelectedStudent] = useState(null);
   const [studentColors, setStudentColors] = useState({});
-  const [endDate, setEndDate] = useState(new Date());
+  //const [endDate, setEndDate] = useState(new Date());
 
   const colors = ['#F0F1B3', '#C8E2E9', '#CA9BE3', '#EF74766E'];
 
@@ -42,8 +41,34 @@ const BigCalendar = ({ students }) => {
     setIsAddingEvent(true);
     setEditingIndex(null);
   };
-
   const handleSaveEvent = () => {
+    if (!newEvent.trim()) {
+      alert('내용을 입력하세요.');
+      return;
+    }
+    const dateKey = selectedDate.toISOString().split('T')[0];
+    const color =
+      selectedStudent && selectedStudent !== '선택 x'
+        ? studentColors[selectedStudent]
+        : 'white'; // 선택 x는 흰색
+    const fullEvent = {
+      text:
+        selectedStudent && selectedStudent !== '선택 x'
+          ? `${selectedStudent} ${newEvent}`
+          : newEvent,
+      color,
+    };
+    setEvents((prevEvents) => ({
+      ...prevEvents,
+      [dateKey]: [...(prevEvents[dateKey] || []), fullEvent],
+    }));
+    setNewEvent('');
+    setSelectedStudent(''); // Reset selected student
+    setIsAddingEvent(false);
+  };
+
+  {
+    /*const handleSaveEvent = () => {
     if (!newEvent.trim()) {
       alert('내용을 입력하세요.');
       return;
@@ -78,7 +103,9 @@ const BigCalendar = ({ students }) => {
     setSelectedStudent('');
     setEndDate(new Date());
     setIsAddingEvent(false);
-  };
+  };*/
+  }
+
   const handleEditEvent = (index, value) => {
     setEditingIndex(index);
     setEditingValue(value);
@@ -230,13 +257,16 @@ const BigCalendar = ({ students }) => {
               onChange={(e) => setNewEvent(e.target.value)}
               placeholder="내용을 입력하세요."
             />
-            <label>종료일 선택:</label>
-            <DatePicker
-              selected={endDate}
-              onChange={(date) => setEndDate(date)}
-              minDate={selectedDate}
-              className="date-picker"
-            />
+            {/*<label>종료일 선택:</label>*/}
+
+            {/* 
+<DatePicker
+  selected={endDate}
+  onChange={(date) => setEndDate(date)}
+  minDate={selectedDate}
+  className="date-picker"
+/> 
+*/}
             <button onClick={handleSaveEvent}>저장</button>
           </div>
         )}
