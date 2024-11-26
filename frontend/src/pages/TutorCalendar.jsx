@@ -7,10 +7,13 @@ import StudentModal from '../components/StudentModal';
 import './TutorCalendar.css';
 import LogoutButton from '../components/LogoutButton';
 import BigCalendar from '../components/BigCalendar';
+import WeekCount from '../components/WeekCount';
 
 const TutorCalendar = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [students, setStudents] = useState([]);
+  const [totalFee, setTotalFee] = useState(0); //추가 주간요약
+
   const addStudent = (student) => {
     const newSchedule = student.schedule.reduce((acc, sch) => {
       const key = sch.time;
@@ -39,9 +42,12 @@ const TutorCalendar = () => {
     <div className="tutorcalendar">
       <div className="tutor-calendar-left">
         <img src={logo} alt="tchomelogo" className="tchomelogo" />
-        <div className="weeksummary">
-          <p>주간 요약</p>
+        <div className="weeksummaryoutline">
+          <div className="weeksummary">
+            <p>주간 요약</p>
+          </div>
         </div>
+        <WeekCount students={students} />
         <div className="StudentList">
           <div className="ButtonContainer">
             <Button
