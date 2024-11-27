@@ -49,7 +49,7 @@ const Signup = () => {
       );
       setErrorMessage(
         error.response?.data.message ||
-        '회원가입 실패: 이미 존재하는 아이디입니다.'
+        '회원가입 실패: 아이디 또는 비밀번호가 올바르지 않습니다.'
       );
     }
   };
