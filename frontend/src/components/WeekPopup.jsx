@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './WeekPopup.css';
+import { useUser } from '../context/UserContext';
 
 const WeekPopup = ({ student, date, onClose, onSave }) => {
   const [progress, setProgress] = useState(student?.progress || '');
@@ -12,7 +13,21 @@ const WeekPopup = ({ student, date, onClose, onSave }) => {
   );
   const [assignment, setAssignment] = useState(student?.assignment || '');
 
+  const { user } = useUser();
+  const [tutorId, setTutorId] = useState(null);
+
   useEffect(() => {
+    if (user) {
+      console.log('로그인된 유저:', user);
+      setTutorId(user.user_id);
+    } else {
+      console.log('로그인된 유저가 없습니다.');
+    }
+  }, [user]);
+
+  useEffect(() => {
+    console.log('로그인된 유저:', user);
+      setTutorId(user.user_id);
     if (student) {
       setLastprogress(student.lastprogress || '');
       setProgress(student.progress || '');
@@ -24,7 +39,7 @@ const WeekPopup = ({ student, date, onClose, onSave }) => {
     }
   }, [student]);
 
-  const handleSave = () => {
+  const handleSave = async() => {
     const updatedStudent = {
       ...student,
       lastprogress,
@@ -33,6 +48,21 @@ const WeekPopup = ({ student, date, onClose, onSave }) => {
       examResults,
       assignment,
     };
+    try {
+      const response = await fetch(
+        `http://127.0.0.1:8000/api/add_daily/${tutorId}/`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(updatedStudent),
+        }
+      );
+    }
+    catch (error) {
+      console.error('학생 데이터 저장 실패:', error);
+    };  
     onSave(updatedStudent);
     onClose();
   };

@@ -19,5 +19,17 @@ urlpatterns = [
     # path("tutor/week_schedule", views.week_schedule, name='week_schedule'),
     path("tutor/daily", views.daily_create, name='daily'),
     path("tutor/week_schedule", views.week_schedule, name='week_schedule'),
-    
+    path("api/add_daily/<int:tutor_id>/", views.add_daily, name='get_daily'),
+    # path("api/add_calendar/<int:tutor_id>/", views.add_calendar, name='add_calendar'),
+    path("tutor/add_homework/<int:tutor_id>/", views.add_homework, name='add_homework'),
+    path("tutor/add_supplement/<int:tutor_id>/", views.add_supplement, name='add_supplement'),
+    path('tutor/add_progress/<int:tutor_id>/', views.add_progress, name='add_progress'),
+    path("tutor/delete_progress/<int:tutor_id>/", views.delete_progress, name='delete_progress'),
+    path("tutor/delete_homework/<int:tutor_id>/", views.delete_homework, name='delete_homework'),
+    path("tutor/delete_supplement/<int:tutor_id>/", views.delete_supplement, name='delete_supplement'),
+    path("tutor/get_progress/<int:tutor_id>/", views.get_progress, name='get_progress'),
+    path("tutor/get_homeworks/<int:tutor_id>/", views.get_homework, name='get_homework'),
+    path("tutor/get_supplements/<int:tutor_id>/", views.get_supplement, name='get_supplement'),
+    path("calendar/add_time/<int:user_id>/", views.add_time, name='add_time'),
+    path("calendar/get_time/<int:user_id>/", views.get_time, name='get_time'),
 ]

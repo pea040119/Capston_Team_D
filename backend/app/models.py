@@ -78,8 +78,9 @@ class Tutor(models.Model):
 class D_Day(models.Model):
     d_day_id = models.AutoField(primary_key=True)
     user_id = models.ForeignKey(UserAccount, on_delete=models.CASCADE)
-    name = models.CharField(max_length=20)
-    date = models.DateTimeField(default=timezone.now)
+    name = models.CharField(max_length=30, null=True, blank=True)
+    color = models.CharField(max_length=10, null=True, blank=True)
+    date = models.CharField(max_length=30, null=True, blank=True)
 
 
 class Class(models.Model):
@@ -97,46 +98,50 @@ class Class(models.Model):
     payment_status = models.JSONField(null=True)
     tuition = models.IntegerField(default=0)  
     
-    
+
 class Daily(models.Model):
     daily_id = models.AutoField(primary_key=True)
-    class_id = models.ForeignKey(Class, on_delete=models.CASCADE)
-    date = models.DateTimeField(default=timezone.now)
-    contents = models.TextField()
-    memo = models.TextField()
+    tutor_id = models.ForeignKey(Tutor, on_delete=models.SET_NULL, null=True) 
+    student = models.CharField(max_length=30, null=True)
+    date = models.CharField(max_length=30, null=True)
+    last_progress = models.TextField(null=True, blank=True)
+    progress = models.TextField(null=True, blank=True)
+    parent_message = models.TextField(null=True, blank=True)
+    word_test_result = models.CharField(max_length=100, null=True, blank=True)
+    mock_exam_result = models.CharField(max_length=100, null=True, blank=True)
+    dictation_result = models.CharField(max_length=100, null=True, blank=True)
+    assignment = models.TextField(null=True, blank=True)
+    contents = models.TextField(null=True, blank=True)
+    memo = models.TextField(null=True, blank=True)
+
     
     
 class Assignment(models.Model):
     assignment_id = models.AutoField(primary_key=True)
-    tutor_id = models.ForeignKey(Tutor, on_delete=models.SET_NULL, null=True)
-    daily_id = models.ForeignKey(Daily, on_delete=models.SET_NULL, null=True)
-    date = models.DateTimeField(auto_created=True)
-    due = models.DateTimeField(default=timezone.now) 
-    contents = models.TextField()
-    state = models.BooleanField(default=False)
+    tutor_id = models.ForeignKey(Tutor, on_delete=models.SET_NULL, null=True) 
+    name = models.CharField(max_length=100, null=True, blank=True)
+    assignment = models.CharField(max_length=100, null=True, blank=True)
     
     
 class Score(models.Model):
     score_id = models.AutoField(primary_key=True)
     class_id = models.ForeignKey(Class, on_delete=models.CASCADE)
     student_id = models.ForeignKey(Student, on_delete=models.CASCADE)
-    type = models.CharField(max_length=20)
+    type = models.CharField(max_length=20, null=True, blank=True)
     grade = models.JSONField()
     
     
 class Progress(models.Model):
     progress_id = models.AutoField(primary_key=True)
-    class_id = models.ForeignKey(Class, on_delete=models.CASCADE)
-    subject = models.CharField(max_length=20)
-    unit = models.JSONField() 
+    tutor_id = models.ForeignKey(Tutor, on_delete=models.SET_NULL, null=True) 
+    name = models.CharField(max_length=100, null=True, blank=True)
+    period = models.CharField(max_length=100, null=True, blank=True)
     
     
 class Supplements(models.Model):
     supplements_id = models.AutoField(primary_key=True)
-    class_id = models.ForeignKey(Class, on_delete=models.CASCADE)
-    contents = models.TextField() 
-    file_name = models.CharField(max_length=50)
-    file_data = models.BinaryField()
+    tutor_id = models.ForeignKey(Tutor, on_delete=models.SET_NULL, null=True) 
+    name = models.CharField(max_length=100, null=True, blank=True)
     
     
 class Classtime(models.Model):

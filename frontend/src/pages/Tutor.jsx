@@ -346,6 +346,17 @@ const Tutor = () => {
         <WeekPopup
           onClose={() => setIsWeekPopupOpen(false)}
           selectedSchedule={selectedSchedule}
+          // tutorId={tutorId}
+          onSave={(updatedStudent) => {
+            const newStudents = students.map((student) =>
+              student.student_name === updatedStudent.student_name
+                ? updatedStudent
+                : student
+            );
+            setStudents(newStudents);
+          }}
+          student={students}
+          
         />
       )}
     </div>

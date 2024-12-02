@@ -139,7 +139,10 @@ const TutorCalendar = () => {
       </div>
 
       <div className="tutormaincalendar">
-        <BigCalendar students={students} />
+        <BigCalendar 
+          students={students}
+          userId={tutorId}
+        />
       </div>
       <div className="tutorcalendar_logout">
         {' '}

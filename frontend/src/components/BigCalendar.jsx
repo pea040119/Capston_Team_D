@@ -2,15 +2,16 @@ import React, { useState, useEffect } from 'react';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import './BigCalendar.css';
+import axios from 'axios';
 
-const BigCalendar = ({ students }) => {
+const BigCalendar = ({ students, userId }) => {
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [events, setEvents] = useState({});
   const [isAddingEvent, setIsAddingEvent] = useState(false);
   const [newEvent, setNewEvent] = useState('');
   const [editingIndex, setEditingIndex] = useState(null);
   const [editingValue, setEditingValue] = useState('');
-  const [selectedStudent, setSelectedStudent] = useState(null);
+  const [selectedStudent, setSelectedStudent] = useState("");
   const [studentColors, setStudentColors] = useState({});
   //const [endDate, setEndDate] = useState(new Date());
 
@@ -23,6 +24,11 @@ const BigCalendar = ({ students }) => {
     });
     setStudentColors(tempStudentColors);
   }, [students]);
+
+  useEffect(() => {
+    loadEvents();
+    console.log('Events', events);
+  }, [userId]);
 
   const formatDate = (date) => {
     return `${date.getMonth() + 1}월 ${date.getDate()}일`;
@@ -41,7 +47,45 @@ const BigCalendar = ({ students }) => {
     setIsAddingEvent(true);
     setEditingIndex(null);
   };
-  const handleSaveEvent = () => {
+
+  const loadEvents = async () => { 
+    if (!userId) {
+      return;
+    }
+    try {
+      const response = await fetch(
+         `http://127.0.0.1:8000/calendar/get_time/${userId}/`,
+      );
+      console.log(response);
+      let timeData = response.data;
+
+        // 만약 timeData가 배열이 아니라면 빈 배열로 초기화
+        if (!Array.isArray(timeData)) {
+          // console.log('timeData is not an array. Converting to empty array.');
+          timeData = [];
+        }
+
+        // 서버로부터 가져온 데이터를 상태로 설정
+        const eventMap = timeData.reduce((acc, item) => {
+          const dateKey = item.date;
+          const event = {
+            name: item.name,
+            color: item.color,
+          };
+          if (!acc[dateKey]) {
+            acc[dateKey] = [];
+          }
+          acc[dateKey].push(event);
+          return acc;
+        }, {});
+
+        setEvents(eventMap);
+    } catch (error) {
+      alert(error.message);
+    }
+  };
+
+  const handleSaveEvent = async() => {
     if (!newEvent.trim()) {
       alert('내용을 입력하세요.');
       return;
@@ -58,13 +102,40 @@ const BigCalendar = ({ students }) => {
           : newEvent,
       color,
     };
-    setEvents((prevEvents) => ({
-      ...prevEvents,
-      [dateKey]: [...(prevEvents[dateKey] || []), fullEvent],
-    }));
-    setNewEvent('');
-    setSelectedStudent(''); // Reset selected student
-    setIsAddingEvent(false);
+    console.log(fullEvent);
+
+    try {
+      console.log(fullEvent);
+
+      const data = {
+        "text": fullEvent.text,
+        "color": fullEvent.color,
+        "date": dateKey,
+      }
+      const response = await fetch( `http://127.0.0.1:8000/calendar/add_time/${userId}/`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+  
+      if (!response.ok) {
+        throw new Error('이벤트를 저장하는 동안 오류가 발생했습니다.');
+      }
+  
+      // 서버에 성공적으로 저장된 경우, 클라이언트 측에서도 상태 업데이트
+      setEvents((prevEvents) => ({
+        ...prevEvents,
+        [dateKey]: [...(prevEvents[dateKey] || []), fullEvent],
+      }));
+  
+      setNewEvent('');
+      setSelectedStudent(''); // Reset selected student
+      setIsAddingEvent(false);
+    } catch (error) {
+      alert(error.message);
+    }
   };
 
   {

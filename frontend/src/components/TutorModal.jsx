@@ -4,7 +4,7 @@ import './TutorModal.css';
 const DAYS = ['월', '화', '수', '목', '금', '토', '일'];
 const TIMES = Array.from({ length: 14 }, (_, i) => `${i + 9}:00`);
 
-const TutorModal = ({ onClose, onSave }) => {
+const TutorModal = ({ onClose, onSave, students }) => {
   const [tutorname, setTutorName] = useState('');
   const [tutorsub, setSubject] = useState('');
   const [schedule, setSchedule] = useState([]);
