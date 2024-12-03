@@ -484,3 +484,40 @@ def get_time(request, user_id):
         return Response({'error': '유효하지 않은 user_id 입니다'}, status=400)
     except Exception as e:
         return Response({'error': str(e)}, status=500)
+    
+    
+@api_view(['POST'])
+def add_score(request, tutor_id):
+    try:
+        data = json.loads(request.body)
+        tutor = table.Tutor.objects.get(user_id=tutor_id)
+        score = table.Score.objects.create(
+            tutor_id=tutor,
+            name=data['name'],
+            grade=json.dumps(data['grade'])
+        )
+        return Response({'message': '성적 생성 성공!'})
+    except table.Tutor.DoesNotExist:
+        return Response({'error': '유효하지 않은 tutor_id 입니다'}, status=400)
+    except json.JSONDecodeError:
+        return Response({'error': '잘못된 JSON 형식입니다'}, status=400)
+    except Exception as e:
+        return Response({'error': str(e)}, status=500)
+    
+    
+@api_view(['GET'])
+def get_score(request, tutor_id):
+    try:
+        tutor = table.Tutor.objects.get(user_id=tutor_id)
+        score = table.Score.objects.filter(tutor_id=tutor)
+        score_data = []
+        for item in score:
+            score_data.append({
+                'name': item.name,
+                'grade': json.loads(item.grade)
+            })
+        return Response({'message': '성적 조회 성공!', 'score': score_data})
+    except table.Tutor.DoesNotExist:
+        return Response({'error': '유효하지 않은 tutor_id 입니다'}, status=400)
+    except Exception as e:
+        return Response({'error': str(e)}, status=500)

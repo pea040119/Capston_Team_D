@@ -125,9 +125,8 @@ class Assignment(models.Model):
     
 class Score(models.Model):
     score_id = models.AutoField(primary_key=True)
-    class_id = models.ForeignKey(Class, on_delete=models.CASCADE)
-    student_id = models.ForeignKey(Student, on_delete=models.CASCADE)
-    type = models.CharField(max_length=20, null=True, blank=True)
+    tutor_id = models.ForeignKey(Student, on_delete=models.CASCADE)
+    name = models.CharField(max_length=20, null=True, blank=True)
     grade = models.JSONField()
     
     

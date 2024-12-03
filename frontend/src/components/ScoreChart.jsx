@@ -11,6 +11,7 @@ import {
   Legend,
   ResponsiveContainer,
 } from 'recharts';
+import axios from 'axios';
 
 const ScoreCharts = ({ barTitle, lineTitle }) => {
   const [barData, setBarData] = useState([]);
@@ -25,7 +26,7 @@ const ScoreCharts = ({ barTitle, lineTitle }) => {
   const [currentItem, setCurrentItem] = useState(null);
 
   // Functions for adding data to bar and line charts
-  const addBarData = () => {
+  const addBarData = async () => {
     if (newBarName && newBarScore) {
       setBarData([
         ...barData,
@@ -33,10 +34,16 @@ const ScoreCharts = ({ barTitle, lineTitle }) => {
       ]);
       setNewBarName('');
       setNewBarScore('');
+      const response = await axios.post(
+        `http://127.0.0.1:8000/tutor/add_score/${tutorId}/`, {
+          name: barTitle,
+          score: barData,
+        }
+      );
     }
   };
 
-  const addLineData = () => {
+  const addLineData = async () => {
     if (newLineName && newLineScore) {
       setLineData([
         ...lineData,
@@ -44,13 +51,21 @@ const ScoreCharts = ({ barTitle, lineTitle }) => {
       ]);
       setNewLineName('');
       setNewLineScore('');
+      const response = await axios.post(
+        `http://127.0.0.1:8000/tutor/add_score/${tutorId}/`, {
+          name: lineTitle,
+          score: lineData,
+        }
+      );
     }
   };
+
 
   const handleItemClick = (data, index, type) => {
     setEditMode(true);
     setCurrentItem({ data: { ...data }, index, type });
   };
+
 
   const saveChanges = () => {
     if (currentItem.type === 'bar') {
@@ -68,6 +83,7 @@ const ScoreCharts = ({ barTitle, lineTitle }) => {
     setCurrentItem(null);
   };
 
+
   const deleteItem = () => {
     if (currentItem.type === 'bar') {
       setBarData(barData.filter((_, i) => i !== currentItem.index));
@@ -77,6 +93,7 @@ const ScoreCharts = ({ barTitle, lineTitle }) => {
     setEditMode(false);
     setCurrentItem(null);
   };
+
 
   return (
     <div>
@@ -213,4 +230,6 @@ const ScoreCharts = ({ barTitle, lineTitle }) => {
     </div>
   );
 };
+
+
 export default ScoreCharts;
